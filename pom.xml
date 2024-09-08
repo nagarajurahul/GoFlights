@@ -11,10 +11,12 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.1.4.RELEASE</version>
+        <version>3.3.3</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <properties>
+        <java.version>21</java.version> <!-- Ensure correct Java version -->
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,28 +30,28 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Jakarta EE Dependency (already present) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Jakarta EE Dependency (with provided scope to avoid conflicts) -->
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
             <version>11.0.0-M4</version>
+            <scope>provided</scope> <!-- Prevent conflicts with Spring Boot -->
         </dependency>
 
     </dependencies>
 
     <build>
         <plugins>
+            <!-- Spring Boot Maven Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>
