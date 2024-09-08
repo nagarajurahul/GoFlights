@@ -1,6 +1,7 @@
 package com.rnagaraju.goflights.seeder;
 
 import com.rnagaraju.goflights.model.*;
+import com.rnagaraju.goflights.repository.AirlineRepository;
 import com.rnagaraju.goflights.repository.AirportRepository;
 import com.rnagaraju.goflights.repository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Autowired
     private AirportRepository airportRepository;
+
+    @Autowired
+    private AirlineRepository airlineRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -54,7 +58,21 @@ public class DatabaseSeeder implements CommandLineRunner {
         airportRepository.save(airport14);
         airportRepository.save(airport15);
 
+        Airline airline1 = new Airline("IIT Airlines", 1234567890L, "iitairlines@iit.com", "IIT Airline Address", LocalDateTime.now(), 100);
+        Airline airline2 = new Airline("Seven Seas Aviation", 9876543210L, "info@sevenseasaviation.com", "Seven Seas", LocalDateTime.now(), 200);
+        Airline airline3 = new Airline("BlueWing Airlines", 8888888880L, "info@bluewing.com", "BlueWing Airlines Headquarters, Blue Plaza, City", LocalDateTime.now(), 200);
+        Airline airline4 = new Airline("Sunrise Airways", 9999999990L, "contact@sunriseairways.com", "Sunrise Airways Building, Sunrise Street, Town", LocalDateTime.now(), 150);
+        Airline airline5 = new Airline("SilverCloud Airlines", 10101010100L, "customerservice@silvercloudairlines.com", "SilverCloud Tower, Cloud Avenue, Metropolis", LocalDateTime.now(), 180);
+        Airline airline6 = new Airline("Royal Skies Aviation", 11111111110L, "info@royalskiesaviation.com", "Royal Skies Headquarters, Aviation Street, Capital City", LocalDateTime.now(), 220);
+        Airline airline7 = new Airline("Emerald Airways", 12121212120L, "contactus@emeraldairways.com", "Emerald Tower, Aviation Road, Emerald City", LocalDateTime.now(), 130);
 
+        airlineRepository.save(airline1);
+        airlineRepository.save(airline2);
+        airlineRepository.save(airline3);
+        airlineRepository.save(airline4);
+        airlineRepository.save(airline5);
+        airlineRepository.save(airline6);
+        airlineRepository.save(airline7);
 
 
     }
