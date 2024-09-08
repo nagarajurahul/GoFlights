@@ -1,6 +1,6 @@
 package com.rnagaraju.goflights.security;
 
-import jakarta.inject.Inject;
+//import jakarta.inject.Inject;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
@@ -13,7 +13,7 @@ import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 
 public class UserPasswordHash {
 
-    @Inject
+//    @Inject
     private Pbkdf2PasswordHash hash;
 
     /**
