@@ -1,4 +1,8 @@
 package com.rnagaraju.goflights.repository;
 
-public class FlightRepository {
+import com.rnagaraju.goflights.model.Flight;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+public interface FlightRepository extends JpaRepository<Flight, Long> {
 }

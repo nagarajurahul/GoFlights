@@ -36,6 +36,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>3.3.3</version>
+        </dependency>
+
         <!-- Jakarta EE Dependency (with provided scope to avoid conflicts) -->
         <dependency>
             <groupId>jakarta.platform</groupId>
