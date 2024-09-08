@@ -1,6 +1,6 @@
 package com.rnagaraju.goflights.model;
 
-import edu.iit.sat.itmd4515.rnagaraju.security.User;
+import com.rnagaraju.goflights.security.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
