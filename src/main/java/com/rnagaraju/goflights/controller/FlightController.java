@@ -23,7 +23,6 @@ public class FlightController {
     }
 
     @GetMapping("/flights")
-    @ResponseBody
     public List<Flight> getFlights(){
         return flightService.getAllFlights();
     }
