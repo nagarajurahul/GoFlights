@@ -1,13 +1,13 @@
 package com.rnagaraju.goflights.seeder;
 
 import com.rnagaraju.goflights.model.*;
-import com.rnagaraju.goflights.repository.AirlineRepository;
-import com.rnagaraju.goflights.repository.AirportRepository;
-import com.rnagaraju.goflights.repository.FlightRepository;
+import com.rnagaraju.goflights.repository.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Component
@@ -21,6 +21,11 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Autowired
     private FlightRepository flightRepository;
+
+    @Autowired
+    private PassengerRepository passengerRepository;
+    @Autowired
+    private BookingRepository bookingRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -227,7 +232,74 @@ public class DatabaseSeeder implements CommandLineRunner {
         flightRepository.save(flight24);
         flightRepository.save(flight25);
 
-        
+        Passenger passenger1 = new Passenger("John", "Doe", 1234567890L, "john.doe@example.com", "123 Main St, Anytown", "AB123456", "USA", LocalDate.of(1985, 6, 15));
+        passenger1.setGenderType(GenderType.MALE);
+        passenger1.setSpecialAssistanceRequirements("None");
+
+        Passenger passenger2 = new Passenger("Jane", "Smith", 9876543210L, "jane.smith@example.com", "456 Oak Ave, Othercity", "CD987654", "UK", LocalDate.of(1990, 8, 25));
+        passenger2.setGenderType(GenderType.FEMALE);
+        passenger2.setSpecialAssistanceRequirements("Wheelchair assistance required");
+
+        Passenger passenger3 = new Passenger("Michael", "Johnson", 5555555555L, "michael.johnson@example.com", "789 Elm St, Anothercity", "EF555555", "Canada", LocalDate.of(1970, 4, 10));
+        passenger3.setGenderType(GenderType.MALE);
+        passenger3.setSpecialAssistanceRequirements("Sign language interpreter required");
+
+        Passenger passenger4 = new Passenger("Emily", "Williams", 3333333333L, "emily.williams@example.com", "321 Pine St, Yetanothercity", "GH333333", "Australia", LocalDate.of(1988, 9, 5));
+        passenger4.setGenderType(GenderType.FEMALE);
+        passenger4.setSpecialAssistanceRequirements("Braille signage required");
+
+        Passenger passenger5 = new Passenger("David", "Brown", 4444444444L, "david.brown@example.com", "567 Maple St, Finalcity", "IJ444444", "Germany", LocalDate.of(1982, 3, 20));
+        passenger5.setGenderType(GenderType.MALE);
+        passenger5.setSpecialAssistanceRequirements("Service animals permitted");
+
+        passengerRepository.save(passenger1);
+        passengerRepository.save(passenger2);
+        passengerRepository.save(passenger3);
+        passengerRepository.save(passenger4);
+        passengerRepository.save(passenger5);
+
+
+        // Booking 1
+        Booking booking1 = new Booking(LocalDateTime.now(), 250.0, "A12", "Paid", flight1, passenger1);
+
+        // Booking 2
+        Booking booking2 = new Booking(LocalDateTime.now(), 300.0, "B23", "Paid", flight2, passenger1);
+
+        // Booking 3
+        Booking booking3 = new Booking(LocalDateTime.now(), 200.0, "C34", "Pending", flight3, passenger3);
+
+        // Booking 4
+        Booking booking4 = new Booking(LocalDateTime.now(), 350.0, "D45", "Paid", flight4, passenger4);
+
+        // Booking 5
+        Booking booking5 = new Booking(LocalDateTime.now(), 280.0, "E56", "Paid", flight5, passenger5);
+
+        // Booking 6
+        Booking booking6 = new Booking(LocalDateTime.now(), 320.0, "F67", "Pending", flight1, passenger5);
+
+        // Booking 7
+        Booking booking7 = new Booking(LocalDateTime.now(), 270.0, "G78", "Paid", flight2, passenger5);
+
+        // Booking 8
+        Booking booking8 = new Booking(LocalDateTime.now(), 380.0, "H89", "Pending", flight1, passenger4);
+
+        // Booking 9
+        Booking booking9 = new Booking(LocalDateTime.now(), 290.0, "I90", "Paid", flight2, passenger3);
+
+        // Booking 10
+        Booking booking10 = new Booking(LocalDateTime.now(), 310.0, "J01", "Paid", flight5, passenger1);
+
+        bookingRepository.save(booking1);
+        bookingRepository.save(booking2);
+        bookingRepository.save(booking3);
+        bookingRepository.save(booking4);
+        bookingRepository.save(booking5);
+        bookingRepository.save(booking6);
+        bookingRepository.save(booking7);
+        bookingRepository.save(booking8);
+        bookingRepository.save(booking9);
+        bookingRepository.save(booking10);
+
 
     }
 }
