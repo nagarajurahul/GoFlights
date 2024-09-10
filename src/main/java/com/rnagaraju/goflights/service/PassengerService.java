@@ -8,11 +8,18 @@ import com.rnagaraju.goflights.repository.PassengerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PassengerService {
 
     @Autowired
     private PassengerRepository passengerRepository;
+
+    public List<PassengerDTO> getAllPassengers() {
+        List<Passenger> passengers = passengerRepository.findAll();
+        return PassengerMapper.toDTOList(passengers);
+    }
 
     public PassengerDTO getPassengerById(Long id) {
         Passenger passenger = passengerRepository.findById(id)
