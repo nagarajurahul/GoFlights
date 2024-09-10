@@ -1,7 +1,6 @@
 package com.rnagaraju.goflights.service;
 
 import com.rnagaraju.goflights.dto.FlightDTO;
-import com.rnagaraju.goflights.exception.FlightNotFoundException;
 import com.rnagaraju.goflights.exception.ResourceNotFoundException;
 import com.rnagaraju.goflights.mapper.FlightMapper;
 import com.rnagaraju.goflights.model.Flight;
