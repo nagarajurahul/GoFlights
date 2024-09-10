@@ -25,4 +25,9 @@ public class FlightService extends AbstractService<Flight> {
         return FlightMapper.toDTO(flight);
     }
 
+    public FlightDTO deleteFlightById(Long id) {
+        Flight flight = flightRepository.findById(id).orElse(null);
+        flightRepository.delete(flight);
+        return FlightMapper.toDTO(flight);
+    }
 }
