@@ -14,6 +14,8 @@ public class FlightDTO {
     private Double price;
     private Integer capacity;
     private AirlineDTO airline;
+    private AirportDTO departureAirport;
+    private AirportDTO arrivalAirport;
 
     // Default constructor
     public FlightDTO() {
@@ -48,6 +50,21 @@ public class FlightDTO {
         this.price = price;
         this.capacity = capacity;
         this.airline = airline;
+    }
+
+    public FlightDTO(String flightName, String source, String destination, Integer duration, String type, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity, AirlineDTO airline, AirportDTO departureAirport, AirportDTO arrivalAirport) {
+        this.flightName = flightName;
+        this.source = source;
+        this.destination = destination;
+        this.duration = duration;
+        this.type = type;
+        this.departureDateTime = departureDateTime;
+        this.arrivalDateTime = arrivalDateTime;
+        this.price = price;
+        this.capacity = capacity;
+        this.airline = airline;
+        this.departureAirport = departureAirport;
+        this.arrivalAirport = arrivalAirport;
     }
 
     // Getters and Setters
@@ -132,6 +149,22 @@ public class FlightDTO {
         this.airline = airline;
     }
 
+    public AirportDTO getDepartureAirport() {
+        return departureAirport;
+    }
+
+    public void setDepartureAirport(AirportDTO departureAirport) {
+        this.departureAirport = departureAirport;
+    }
+
+    public AirportDTO getArrivalAirport() {
+        return arrivalAirport;
+    }
+
+    public void setArrivalAirport(AirportDTO arrivalAirport) {
+        this.arrivalAirport = arrivalAirport;
+    }
+
     @Override
     public String toString() {
         return "FlightDTO{" +
@@ -145,6 +178,8 @@ public class FlightDTO {
                 ", price=" + price +
                 ", capacity=" + capacity +
                 ", airline=" + airline +
+                ", departureAirport=" + departureAirport +
+                ", arrivalAirport=" + arrivalAirport +
                 '}';
     }
 }

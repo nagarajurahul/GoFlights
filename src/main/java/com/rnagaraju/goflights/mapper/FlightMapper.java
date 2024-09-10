@@ -21,8 +21,10 @@ public class FlightMapper {
                 flight.getArrivalDateTime(),
                 flight.getPrice(),
                 flight.getCapacity(),
-                AirlineMapper.toDTO(flight.getAirline())
-        );
+                AirlineMapper.toDTO(flight.getAirline()),
+                AirportMapper.toDTO(flight.getDepartureAirport()),
+                AirportMapper.toDTO(flight.getArrivalAirport())
+                );
     }
 
     // Method to map a list of Flights to a list of FlightDTOs
