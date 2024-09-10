@@ -23,12 +23,14 @@ public class AirportService {
     }
 
     public AirportDTO getAirportById(Long id) {
-        Airport airport = airportRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Airport not found with id:"+id));
+        Airport airport = airportRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Airport not found with id:"+id));
         return AirportMapper.toDTO(airport);
     }
 
     public void deleteAirportById(Long id) {
-        Airport airport = airportRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Airport not found with id:"+id));
+        Airport airport = airportRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Airport not found with id:"+id));
         // Attempt to delete the airport
         try {
             airportRepository.delete(airport);
