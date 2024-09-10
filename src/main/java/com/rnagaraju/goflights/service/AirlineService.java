@@ -6,6 +6,7 @@ import com.rnagaraju.goflights.mapper.AirlineMapper;
 import com.rnagaraju.goflights.model.Airline;
 import com.rnagaraju.goflights.repository.AirlineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,5 +27,17 @@ public class AirlineService {
         Airline airline = airlineRepository.findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("Airline not found with id " + id));
         return AirlineMapper.toDTO(airline);
+    }
+
+    public void deleteAirlineById(Long id){
+        Airline airline=airlineRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Airline not found with id " + id));
+        // Attempt to delete the airline
+        try{
+            airlineRepository.delete(airline);
+        }catch (DataIntegrityViolationException ex){
+            // Handle foreign key constraint violation
+            throw new DataIntegrityViolationException("Cannot delete airline. It may be linked to exisiting flights and bookings.");
+        }
     }
 }
