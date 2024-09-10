@@ -6,6 +6,7 @@ import com.rnagaraju.goflights.mapper.BookingMapper;
 import com.rnagaraju.goflights.model.Booking;
 import com.rnagaraju.goflights.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,5 +27,15 @@ public class BookingService {
     public List<BookingDTO> getBookings() {
         List<Booking> bookings = bookingRepository.findAll();
         return BookingMapper.toDTOList(bookings);
+    }
+
+    public void deleteBookingById(Long id) {
+        Booking booking = bookingRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Booking not found with id:"+id));
+        try{
+            bookingRepository.delete(booking);
+        }catch (DataIntegrityViolationException ex){
+            throw new DataIntegrityViolationException("Cannot delete booking. It may be linked to existing passengers and flights.");
+        }
     }
 }
