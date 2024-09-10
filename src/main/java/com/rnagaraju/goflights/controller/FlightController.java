@@ -39,7 +39,7 @@ public class FlightController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<FlightDTO> deleteFlight(@PathVariable Long id){
+    public ResponseEntity<Void> deleteFlight(@PathVariable Long id){
         flightService.deleteFlightById(id);
         return ResponseEntity.noContent().build();
     }

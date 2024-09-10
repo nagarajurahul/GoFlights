@@ -1,13 +1,12 @@
 package com.rnagaraju.goflights.controller;
 
 import com.rnagaraju.goflights.dto.AirportDTO;
+import com.rnagaraju.goflights.exception.ResourceNotFoundException;
+import com.rnagaraju.goflights.model.Airport;
 import com.rnagaraju.goflights.service.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,5 +30,11 @@ public class AirportController {
     public ResponseEntity<AirportDTO> getAirportById(@PathVariable Long id) {
        AirportDTO airportDTO=airportService.getAirportById(id);
        return ResponseEntity.ok(airportDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAirportById(@PathVariable Long id) {
+        airportService.deleteAirportById(id);
+        return ResponseEntity.noContent().build();
     }
 }

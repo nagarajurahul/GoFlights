@@ -26,4 +26,8 @@ public class AirportService {
         return AirportMapper.toDTO(airport);
     }
 
+    public void deleteAirportById(Long id) {
+        Airport airport = airportRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Airport not found with id:"+id));
+        airportRepository.delete(airport);
+    }
 }
