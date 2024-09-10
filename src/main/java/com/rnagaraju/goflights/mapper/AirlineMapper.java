@@ -29,4 +29,13 @@ public class AirlineMapper {
                 flightIds
         );
     }
+
+    public static List<AirlineDTO> toDTOList(List<Airline> airlines) {
+        if(airlines == null) {
+            return null;
+        }
+        return airlines.stream()
+                .map(AirlineMapper::toDTO)
+                .collect(Collectors.toList());
+    }
 }

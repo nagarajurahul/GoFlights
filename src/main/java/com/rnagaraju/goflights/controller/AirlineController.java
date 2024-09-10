@@ -9,12 +9,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/airlines")
 public class AirlineController {
 
     @Autowired
     private AirlineService airlineService;
+
+    @GetMapping("/")
+    public ResponseEntity<List<AirlineDTO>> getAllAirlines() {
+        List<AirlineDTO> airlines = airlineService.getAllAirlines();
+        if (airlines.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(airlines);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<AirlineDTO> getAirline(@PathVariable("id") Long id) {

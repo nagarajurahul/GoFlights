@@ -8,11 +8,19 @@ import com.rnagaraju.goflights.repository.AirlineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class AirlineService {
 
     @Autowired
     private AirlineRepository airlineRepository;
+
+    public List<AirlineDTO> getAllAirlines() {
+        List<Airline> airlines = airlineRepository.findAll();
+        return AirlineMapper.toDTOList(airlines);
+    }
 
     public AirlineDTO getAirlineById(Long id){
         Airline airline = airlineRepository.findById(id)
