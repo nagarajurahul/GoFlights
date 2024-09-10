@@ -6,6 +6,7 @@ import com.rnagaraju.goflights.mapper.PassengerMapper;
 import com.rnagaraju.goflights.model.Passenger;
 import com.rnagaraju.goflights.repository.PassengerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,5 +26,16 @@ public class PassengerService {
         Passenger passenger = passengerRepository.findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("Passenger not found with id: "+id));
         return PassengerMapper.toDTO(passenger);
+    }
+
+    public void deletePassengerById(Long id) {
+        Passenger passenger = passengerRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Passenger not found with id: "+id));
+        try {
+            passengerRepository.delete(passenger);
+        } catch (DataIntegrityViolationException ex) {
+            throw new DataIntegrityViolationException("Cannot delete passenger. It may be linked to existing bookings.");
+        }
+
     }
 }
