@@ -1,9 +1,11 @@
 package com.rnagaraju.goflights.controller;
 
 
+import com.rnagaraju.goflights.dto.FlightDTO;
 import com.rnagaraju.goflights.model.Flight;
 import com.rnagaraju.goflights.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +29,11 @@ public class FlightController {
     }
 
     @GetMapping("/{id}")
-    public Flight getFlight(@PathVariable Long id){
-        return flightService.getFlightById(id);
+    public ResponseEntity<FlightDTO> getFlight(@PathVariable Long id){
+        FlightDTO flightDTO = flightService.getFlightById(id);
+        if(flightDTO == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(flightDTO);
     }
 }

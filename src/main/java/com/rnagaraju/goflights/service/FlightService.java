@@ -1,5 +1,7 @@
 package com.rnagaraju.goflights.service;
 
+import com.rnagaraju.goflights.dto.FlightDTO;
+import com.rnagaraju.goflights.mapper.FlightMapper;
 import com.rnagaraju.goflights.model.Flight;
 import com.rnagaraju.goflights.repository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +20,9 @@ public class FlightService extends AbstractService<Flight> {
         return flights;
     }
 
-    public Flight getFlightById(Long id) {
+    public FlightDTO getFlightById(Long id) {
         Flight flight = flightRepository.findById(id).orElse(null);
-        return flight;
+        return FlightMapper.toDTO(flight);
     }
 
 }
