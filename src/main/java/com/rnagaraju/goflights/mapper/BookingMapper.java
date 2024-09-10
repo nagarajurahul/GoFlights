@@ -3,6 +3,10 @@ package com.rnagaraju.goflights.mapper;
 import com.rnagaraju.goflights.dto.BookingDTO;
 import com.rnagaraju.goflights.model.Booking;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class BookingMapper {
     public static BookingDTO toDTO(Booking booking){
         if(booking == null){
@@ -15,5 +19,14 @@ public class BookingMapper {
                 booking.getPaymentStatus(),
                 FlightMapper.toDTO(booking.getFlight())
         );
+    }
+
+    public static List<BookingDTO> toDTOList(List<Booking> bookings) {
+        if(bookings == null){
+            return null;
+        }
+        return bookings.stream()
+                .map(BookingMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }
