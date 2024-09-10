@@ -18,7 +18,7 @@ public class FlightService extends AbstractService<Flight> {
         return flights;
     }
 
-    public Flight createFlight(Long id) {
+    public Flight getFlightById(Long id) {
         Flight flight = flightRepository.findById(id).orElse(null);
         return flight;
     }
