@@ -13,6 +13,7 @@ public class FlightDTO {
     private LocalDateTime arrivalDateTime;
     private Double price;
     private Integer capacity;
+    private AirlineDTO airline;
 
     // Default constructor
     public FlightDTO() {
@@ -31,6 +32,22 @@ public class FlightDTO {
         this.arrivalDateTime = arrivalDateTime;
         this.price = price;
         this.capacity = capacity;
+    }
+
+    // Parameterized constructor
+    public FlightDTO(String flightName, String source, String destination, Integer duration,
+                     String type, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime,
+                     Double price, Integer capacity, AirlineDTO airline) {
+        this.flightName = flightName;
+        this.source = source;
+        this.destination = destination;
+        this.duration = duration;
+        this.type = type;
+        this.departureDateTime = departureDateTime;
+        this.arrivalDateTime = arrivalDateTime;
+        this.price = price;
+        this.capacity = capacity;
+        this.airline = airline;
     }
 
     // Getters and Setters
@@ -107,6 +124,14 @@ public class FlightDTO {
         this.capacity = capacity;
     }
 
+    public AirlineDTO getAirline() {
+        return airline;
+    }
+
+    public void setAirline(AirlineDTO airline) {
+        this.airline = airline;
+    }
+
     @Override
     public String toString() {
         return "FlightDTO{" +
@@ -119,6 +144,7 @@ public class FlightDTO {
                 ", arrivalDateTime=" + arrivalDateTime +
                 ", price=" + price +
                 ", capacity=" + capacity +
+                ", airline=" + airline +
                 '}';
     }
 }
