@@ -1,6 +1,7 @@
 package com.rnagaraju.goflights.service;
 
 import com.rnagaraju.goflights.dto.FlightDTO;
+import com.rnagaraju.goflights.exception.FlightNotFoundException;
 import com.rnagaraju.goflights.mapper.FlightMapper;
 import com.rnagaraju.goflights.model.Flight;
 import com.rnagaraju.goflights.repository.FlightRepository;
@@ -25,9 +26,10 @@ public class FlightService extends AbstractService<Flight> {
         return FlightMapper.toDTO(flight);
     }
 
-    public FlightDTO deleteFlightById(Long id) {
-        Flight flight = flightRepository.findById(id).orElse(null);
+    public void deleteFlightById(Long id) {
+        Flight flight = flightRepository.findById(id)
+                .orElseThrow(() -> new FlightNotFoundException(id));
         flightRepository.delete(flight);
-        return FlightMapper.toDTO(flight);
+        //return FlightMapper.toDTO(flight);
     }
 }

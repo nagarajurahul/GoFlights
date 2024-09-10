@@ -43,10 +43,12 @@ public class FlightController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<FlightDTO> deleteFlight(@PathVariable Long id){
-        FlightDTO flightDTO = flightService.deleteFlightById(id);
-        if(flightDTO == null){
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(flightDTO);
+//        FlightDTO flightDTO = flightService.deleteFlightById(id);
+//        if(flightDTO == null){
+//            return ResponseEntity.notFound().build();
+//        }
+//        return ResponseEntity.ok(flightDTO);
+        flightService.deleteFlightById(id);
+        return ResponseEntity.noContent().build();
     }
 }
