@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FlightService extends AbstractService<Flight> {
+public class FlightService {
 
     @Autowired
-    FlightRepository flightRepository;
+    private FlightRepository flightRepository;
 
     public List<FlightDTO> getAllFlights() {
         List<Flight> flights = flightRepository.findAll();
