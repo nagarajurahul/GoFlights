@@ -24,8 +24,12 @@ public class FlightController {
 //    }
 
     @GetMapping("/")
-    public List<Flight> getFlights(){
-        return flightService.getAllFlights();
+    public ResponseEntity<List<FlightDTO>> getFlights(){
+        List<FlightDTO> flightDTOS= flightService.getAllFlights();
+        if(flightDTOS.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(flightDTOS);
     }
 
     @GetMapping("/{id}")

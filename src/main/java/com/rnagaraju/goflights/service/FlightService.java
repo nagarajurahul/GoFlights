@@ -15,9 +15,9 @@ public class FlightService extends AbstractService<Flight> {
     @Autowired
     FlightRepository flightRepository;
 
-    public List<Flight> getAllFlights() {
+    public List<FlightDTO> getAllFlights() {
         List<Flight> flights = flightRepository.findAll();
-        return flights;
+        return FlightMapper.toDTOList(flights);
     }
 
     public FlightDTO getFlightById(Long id) {
