@@ -3,7 +3,6 @@ package com.rnagaraju.goflights.mapper;
 import com.rnagaraju.goflights.dto.PassengerDTO;
 import com.rnagaraju.goflights.model.Passenger;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

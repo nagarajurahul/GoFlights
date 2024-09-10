@@ -1,8 +1,6 @@
 package com.rnagaraju.goflights.controller;
 
 import com.rnagaraju.goflights.dto.AirportDTO;
-import com.rnagaraju.goflights.exception.ResourceNotFoundException;
-import com.rnagaraju.goflights.model.Airport;
 import com.rnagaraju.goflights.service.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

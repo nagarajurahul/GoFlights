@@ -1,7 +1,5 @@
 package com.rnagaraju.goflights.dto;
 
-import com.rnagaraju.goflights.model.GenderType;
-
 import java.time.LocalDate;
 
 public class PassengerDTO {
