@@ -35,19 +35,11 @@ public class FlightController {
     @GetMapping("/{id}")
     public ResponseEntity<FlightDTO> getFlight(@PathVariable Long id){
         FlightDTO flightDTO = flightService.getFlightById(id);
-        if(flightDTO == null){
-            return ResponseEntity.notFound().build();
-        }
         return ResponseEntity.ok(flightDTO);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<FlightDTO> deleteFlight(@PathVariable Long id){
-//        FlightDTO flightDTO = flightService.deleteFlightById(id);
-//        if(flightDTO == null){
-//            return ResponseEntity.notFound().build();
-//        }
-//        return ResponseEntity.ok(flightDTO);
         flightService.deleteFlightById(id);
         return ResponseEntity.noContent().build();
     }

@@ -23,16 +23,13 @@ public class FlightService extends AbstractService<Flight> {
     }
 
     public FlightDTO getFlightById(Long id) {
-        Flight flight = flightRepository.findById(id).orElse(null);
+        Flight flight = flightRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Flight not found with id: " + id));
         return FlightMapper.toDTO(flight);
     }
 
     public void deleteFlightById(Long id) {
-//        Flight flight = flightRepository.findById(id)
-//                .orElseThrow(() -> new FlightNotFoundException(id));
         Flight flight = flightRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Flight not found with id: " + id));
         flightRepository.delete(flight);
-        //return FlightMapper.toDTO(flight);
     }
 }
