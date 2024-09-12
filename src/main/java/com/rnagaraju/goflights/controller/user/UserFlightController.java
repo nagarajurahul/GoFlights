@@ -1,5 +1,6 @@
 package com.rnagaraju.goflights.controller.user;
 
+import com.rnagaraju.goflights.dto.user.RoundTripFlightsDTO;
 import com.rnagaraju.goflights.dto.user.UserFlightDTO;
 import com.rnagaraju.goflights.service.user.UserFlightService;
 import org.slf4j.Logger;
@@ -29,15 +30,32 @@ public class UserFlightController {
     public ResponseEntity<List<UserFlightDTO>> getOneWayFlights(
             @RequestParam String source,
             @RequestParam String destination,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime dateTime) {
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime departureDateTime) {
 
-        // Call service to fetch flights based on source, destination, and date
-        List<UserFlightDTO> flights = flightService.getOneWayFlights(source, destination, dateTime);
+        // Call service to fetch flights based on source, destination, and departureDateTime
+        List<UserFlightDTO> flights = flightService.getOneWayFlights(source, destination, departureDateTime);
 
         if(flights.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        
+
         return new ResponseEntity<>(flights, HttpStatus.OK);
+    }
+
+    @GetMapping("/round-trip")
+    public ResponseEntity<RoundTripFlightsDTO> getRoundTripFlights(
+            @RequestParam String source,
+            @RequestParam String destination,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime departureDateTime,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime arrivalDateTime) {
+
+        // Call service to fetch flights based on source, destination, and date
+        RoundTripFlightsDTO roundTripFlights = flightService.getRoundTripFlights(source, destination, departureDateTime, arrivalDateTime);
+
+        if(roundTripFlights == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(roundTripFlights, HttpStatus.OK);
     }
 }

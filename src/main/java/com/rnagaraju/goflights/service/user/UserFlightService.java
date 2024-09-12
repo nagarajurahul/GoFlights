@@ -1,6 +1,7 @@
 package com.rnagaraju.goflights.service.user;
 
 import com.rnagaraju.goflights.dto.FlightDTO;
+import com.rnagaraju.goflights.dto.user.RoundTripFlightsDTO;
 import com.rnagaraju.goflights.dto.user.UserFlightDTO;
 import com.rnagaraju.goflights.exception.ResourceNotFoundException;
 import com.rnagaraju.goflights.mapper.user.UserFlightMapper;
@@ -31,9 +32,9 @@ public class UserFlightService {
         return UserFlightMapper.toDTO(flight);
     }
 
-    public List<UserFlightDTO> getOneWayFlights(String source, String destination, LocalDateTime dateTime) {
+    public List<UserFlightDTO> getOneWayFlights(String source, String destination, LocalDateTime departureDateTime) {
         // Define a range around the dateTime to account for the entire day
-        LocalDateTime startOfDay = dateTime.toLocalDate().atStartOfDay();
+        LocalDateTime startOfDay = departureDateTime.toLocalDate().atStartOfDay();
         LocalDateTime endOfDay = startOfDay.plusDays(1).minusNanos(1);
 
         // Query the database using the date range
@@ -42,4 +43,30 @@ public class UserFlightService {
 
         return UserFlightMapper.toDTOList(flights);
     }
+
+    public RoundTripFlightsDTO getRoundTripFlights(String source, String destination,
+                                                   LocalDateTime departureDateTime,
+                                                   LocalDateTime returnDateTime) {
+
+        LocalDateTime departureStart = departureDateTime.toLocalDate().atStartOfDay();
+        LocalDateTime departureEnd = departureStart.plusDays(1).minusNanos(1);
+
+        LocalDateTime returnStart = returnDateTime.toLocalDate().atStartOfDay();
+        LocalDateTime returnEnd = returnStart.plusDays(1).minusNanos(1);
+
+        // Find outgoing and return flights
+        List<Flight> outgoingFlights = flightRepository.findBySourceAndDestinationAndDepartureDateTimeBetween(
+                source, destination, departureStart, departureEnd);
+
+        List<Flight> returnFlights = flightRepository.findBySourceAndDestinationAndDepartureDateTimeBetween(
+                destination, source, returnStart, returnEnd);
+
+        // Map flights to DTOs
+        RoundTripFlightsDTO roundTripFlightsDTO = new RoundTripFlightsDTO();
+        roundTripFlightsDTO.setOutgoingFlights(UserFlightMapper.toDTOList(outgoingFlights));
+        roundTripFlightsDTO.setReturnFlights(UserFlightMapper.toDTOList(returnFlights));
+
+        return roundTripFlightsDTO;
+    }
+
 }
