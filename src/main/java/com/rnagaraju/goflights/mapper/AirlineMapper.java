@@ -25,8 +25,7 @@ public class AirlineMapper {
                 airline.getEmail(),
                 airline.getAddress(),
                 airline.getCertificationDateTime(),
-                airline.getCustomerReviews(),
-                flightIds
+                airline.getCustomerReviews()
         );
     }
 

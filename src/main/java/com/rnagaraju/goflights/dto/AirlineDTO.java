@@ -1,7 +1,6 @@
 package com.rnagaraju.goflights.dto;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class AirlineDTO {
     private String airlineName;
@@ -10,7 +9,6 @@ public class AirlineDTO {
     private String address;
     private LocalDateTime certificationDateTime;
     private Integer customerReviews;
-    private List<Long> flightIds;
 
     public AirlineDTO() {
 
@@ -23,16 +21,6 @@ public class AirlineDTO {
         this.address = address;
         this.certificationDateTime = certificationDateTime;
         this.customerReviews = customerReviews;
-    }
-
-    public AirlineDTO(String airlineName, Long contact, String email, String address, LocalDateTime certificationDateTime, Integer customerReviews, List<Long> flightIds) {
-        this.airlineName = airlineName;
-        this.contact = contact;
-        this.email = email;
-        this.address = address;
-        this.certificationDateTime = certificationDateTime;
-        this.customerReviews = customerReviews;
-        this.flightIds = flightIds;
     }
 
     public String getAirlineName() {
@@ -83,13 +71,6 @@ public class AirlineDTO {
         this.customerReviews = customerReviews;
     }
 
-    public List<Long> getFlightIds() {
-        return flightIds;
-    }
-
-    public void setFlightIds(List<Long> flightIds) {
-        this.flightIds = flightIds;
-    }
 
     @Override
     public String toString() {
@@ -100,7 +81,6 @@ public class AirlineDTO {
                 ", address='" + address + '\'' +
                 ", certificationDateTime=" + certificationDateTime +
                 ", customerReviews=" + customerReviews +
-                ", flightIds=" + flightIds +
                 '}';
     }
 }

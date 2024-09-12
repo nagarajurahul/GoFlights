@@ -15,8 +15,7 @@ public class BookingMapper {
                 booking.getBookingDateTime(),
                 booking.getTotalPrice(),
                 booking.getSeatNumber(),
-                booking.getPaymentStatus(),
-                FlightMapper.toDTO(booking.getFlight())
+                booking.getPaymentStatus()
         );
     }
 

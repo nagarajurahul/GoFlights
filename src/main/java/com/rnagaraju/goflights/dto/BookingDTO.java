@@ -8,17 +8,15 @@ public class BookingDTO {
     private String seatNumber;
     private String paymentStatus;
 
-    private FlightDTO flight;
 
     public BookingDTO() {
     }
 
-    public BookingDTO(LocalDateTime bookingDateTime, double totalPrice, String seatNumber, String paymentStatus, FlightDTO flight) {
+    public BookingDTO(LocalDateTime bookingDateTime, double totalPrice, String seatNumber, String paymentStatus) {
         this.bookingDateTime = bookingDateTime;
         this.totalPrice = totalPrice;
         this.seatNumber = seatNumber;
         this.paymentStatus = paymentStatus;
-        this.flight = flight;
     }
 
     public LocalDateTime getBookingDateTime() {
@@ -53,13 +51,6 @@ public class BookingDTO {
         this.paymentStatus = paymentStatus;
     }
 
-    public FlightDTO getFlight() {
-        return flight;
-    }
-
-    public void setFlight(FlightDTO flight) {
-        this.flight = flight;
-    }
 
     @Override
     public String toString() {
@@ -68,7 +59,6 @@ public class BookingDTO {
                 ", totalPrice=" + totalPrice +
                 ", seatNumber='" + seatNumber + '\'' +
                 ", paymentStatus='" + paymentStatus + '\'' +
-                ", flight=" + flight +
                 '}';
     }
 }
