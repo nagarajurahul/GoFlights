@@ -26,7 +26,7 @@ public class UserFlightService {
     }
 
     // Confusion - whether return type should be UserFlightDTO or just FlightDTO
-    public FlightDTO getFlightById(Long id) {
+    public UserFlightDTO getFlightById(Long id) {
         Flight flight = flightRepository.findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("Flight not found with id: " + id));
         return UserFlightMapper.toDTO(flight);
