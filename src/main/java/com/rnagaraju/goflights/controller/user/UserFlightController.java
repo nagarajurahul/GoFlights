@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user/")
+@RequestMapping("/user/flights/")
 public class UserFlightController {
 
     private static final Logger log = LoggerFactory.getLogger(UserFlightController.class);
@@ -32,12 +32,12 @@ public class UserFlightController {
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime dateTime) {
 
         // Call service to fetch flights based on source, destination, and date
-//        List<UserFlightDTO> flights = flightService.getOneWayFlights(source, destination, date);
+        List<UserFlightDTO> flights = flightService.getOneWayFlights(source, destination, dateTime);
 
-        log.info(source+destination+dateTime);
-
-        List<UserFlightDTO> flights=flightService.getAllFlights();
-
+        if(flights.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        
         return new ResponseEntity<>(flights, HttpStatus.OK);
     }
 }
