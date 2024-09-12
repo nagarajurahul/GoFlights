@@ -47,10 +47,10 @@ public class UserFlightController {
             @RequestParam String source,
             @RequestParam String destination,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime departureDateTime,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime arrivalDateTime) {
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime returnDateTime) {
 
         // Call service to fetch flights based on source, destination, and date
-        RoundTripFlightsDTO roundTripFlights = flightService.getRoundTripFlights(source, destination, departureDateTime, arrivalDateTime);
+        RoundTripFlightsDTO roundTripFlights = flightService.getRoundTripFlights(source, destination, departureDateTime, returnDateTime);
 
         if(roundTripFlights == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
