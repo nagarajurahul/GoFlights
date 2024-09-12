@@ -13,7 +13,6 @@ public class FlightDTO {
     private LocalDateTime arrivalDateTime;
     private Double price;
     private Integer capacity;
-    private AirlineDTO airline;
     private AirportDTO departureAirport;
     private AirportDTO arrivalAirport;
 
@@ -36,23 +35,8 @@ public class FlightDTO {
         this.capacity = capacity;
     }
 
-    // Parameterized constructor
-    public FlightDTO(String flightName, String source, String destination, Integer duration,
-                     String type, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime,
-                     Double price, Integer capacity, AirlineDTO airline) {
-        this.flightName = flightName;
-        this.source = source;
-        this.destination = destination;
-        this.duration = duration;
-        this.type = type;
-        this.departureDateTime = departureDateTime;
-        this.arrivalDateTime = arrivalDateTime;
-        this.price = price;
-        this.capacity = capacity;
-        this.airline = airline;
-    }
 
-    public FlightDTO(String flightName, String source, String destination, Integer duration, String type, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity, AirlineDTO airline, AirportDTO departureAirport, AirportDTO arrivalAirport) {
+    public FlightDTO(String flightName, String source, String destination, Integer duration, String type, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity, AirportDTO departureAirport, AirportDTO arrivalAirport) {
         this.flightName = flightName;
         this.source = source;
         this.destination = destination;
@@ -62,7 +46,6 @@ public class FlightDTO {
         this.arrivalDateTime = arrivalDateTime;
         this.price = price;
         this.capacity = capacity;
-        this.airline = airline;
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
     }
@@ -141,14 +124,6 @@ public class FlightDTO {
         this.capacity = capacity;
     }
 
-    public AirlineDTO getAirline() {
-        return airline;
-    }
-
-    public void setAirline(AirlineDTO airline) {
-        this.airline = airline;
-    }
-
     public AirportDTO getDepartureAirport() {
         return departureAirport;
     }
@@ -177,7 +152,6 @@ public class FlightDTO {
                 ", arrivalDateTime=" + arrivalDateTime +
                 ", price=" + price +
                 ", capacity=" + capacity +
-                ", airline=" + airline +
                 ", departureAirport=" + departureAirport +
                 ", arrivalAirport=" + arrivalAirport +
                 '}';

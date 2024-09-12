@@ -21,7 +21,6 @@ public class FlightMapper {
                 flight.getArrivalDateTime(),
                 flight.getPrice(),
                 flight.getCapacity(),
-                AirlineMapper.toDTO(flight.getAirline()),
                 AirportMapper.toDTO(flight.getDepartureAirport()),
                 AirportMapper.toDTO(flight.getArrivalAirport())
                 );
