@@ -1,6 +1,5 @@
 package com.rnagaraju.goflights.mapper.airline;
 
-import com.rnagaraju.goflights.dto.FlightDTO;
 import com.rnagaraju.goflights.dto.airline.AirlineFlightDTO;
 import com.rnagaraju.goflights.mapper.AirportMapper;
 import com.rnagaraju.goflights.model.Flight;
@@ -30,7 +29,7 @@ public class AirlineFlightMapper {
     }
 
     // Method to map a list of Flights to a list of FlightDTOs
-    public static List<FlightDTO> toDTOList(List<Flight> flights) {
+    public static List<AirlineFlightDTO> toDTOList(List<Flight> flights) {
         if (flights == null) {
             return null;
         }
