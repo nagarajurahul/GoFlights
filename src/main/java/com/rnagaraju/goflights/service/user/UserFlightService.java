@@ -1,6 +1,5 @@
 package com.rnagaraju.goflights.service.user;
 
-import com.rnagaraju.goflights.dto.FlightDTO;
 import com.rnagaraju.goflights.dto.user.RoundTripFlightsDTO;
 import com.rnagaraju.goflights.dto.user.UserFlightDTO;
 import com.rnagaraju.goflights.exception.ResourceNotFoundException;
@@ -19,13 +18,11 @@ public class UserFlightService {
     @Autowired
     private UserFlightRepository flightRepository;
 
-    // Confusion - whether return type should be UserFlightDTO or just FlightDTO
     public List<UserFlightDTO> getAllFlights() {
         List<Flight> flights = flightRepository.findAll();
         return UserFlightMapper.toDTOList(flights);
     }
 
-    // Confusion - whether return type should be UserFlightDTO or just FlightDTO
     public UserFlightDTO getFlightById(Long id) {
         Flight flight = flightRepository.findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("Flight not found with id: " + id));

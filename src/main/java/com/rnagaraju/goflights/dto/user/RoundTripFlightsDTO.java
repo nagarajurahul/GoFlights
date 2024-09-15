@@ -3,6 +3,7 @@ package com.rnagaraju.goflights.dto.user;
 import java.util.List;
 
 public class RoundTripFlightsDTO {
+
     private List<UserFlightDTO> outgoingFlights;
     private List<UserFlightDTO> returnFlights;
 

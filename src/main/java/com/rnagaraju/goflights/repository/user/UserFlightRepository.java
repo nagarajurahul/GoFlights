@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface UserFlightRepository extends JpaRepository<Flight, Long> {
+
     Flight findById(long id);
 
     Flight findByFlightName(String flightName);

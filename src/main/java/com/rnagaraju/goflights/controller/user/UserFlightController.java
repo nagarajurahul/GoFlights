@@ -23,6 +23,24 @@ public class UserFlightController {
     @Autowired
     private UserFlightService flightService;
 
+    @GetMapping("/")
+    public ResponseEntity<List<UserFlightDTO>> getAllFlights() {
+        List<UserFlightDTO> flights=flightService.getAllFlights();
+        if(flights.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(flights, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserFlightDTO> getFlightById(@PathVariable Long id) {
+        UserFlightDTO flight=flightService.getFlightById(id);
+        if(flight == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(flight, HttpStatus.OK);
+    }
+
     @GetMapping("/search/one-way")
     public ResponseEntity<List<UserFlightDTO>> getOneWayFlights(
             @RequestParam String source,
@@ -54,14 +72,5 @@ public class UserFlightController {
         }
 
         return new ResponseEntity<>(roundTripFlights, HttpStatus.OK);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<UserFlightDTO> getFlightById(@PathVariable Long id) {
-        UserFlightDTO flight=flightService.getFlightById(id);
-        if(flight == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(flight, HttpStatus.OK);
     }
 }

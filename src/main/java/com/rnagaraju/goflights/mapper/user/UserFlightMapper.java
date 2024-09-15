@@ -1,8 +1,6 @@
 package com.rnagaraju.goflights.mapper.user;
 
 import com.rnagaraju.goflights.dto.user.UserFlightDTO;
-import com.rnagaraju.goflights.mapper.AirlineMapper;
-import com.rnagaraju.goflights.mapper.AirportMapper;
 import com.rnagaraju.goflights.model.Flight;
 
 import java.util.List;
@@ -23,9 +21,9 @@ public class UserFlightMapper {
                 flight.getArrivalDateTime(),
                 flight.getPrice(),
                 flight.getCapacity(),
-                AirportMapper.toDTO(flight.getDepartureAirport()),
-                AirportMapper.toDTO(flight.getArrivalAirport()),
-                AirlineMapper.toDTO(flight.getAirline())
+                UserAirportMapper.toDTO(flight.getDepartureAirport()),
+                UserAirportMapper.toDTO(flight.getArrivalAirport()),
+                UserAirlineMapper.toDTO(flight.getAirline())
         );
     }
 
