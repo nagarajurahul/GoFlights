@@ -18,6 +18,14 @@ public class UserPassengerController {
     @Autowired
     private UserPassengerService passengerService;
 
+    @GetMapping("/")
+    public ResponseEntity<List<UserPassengerDTO>> getAllPassengers() {
+        List<UserPassengerDTO> passengers = passengerService.getPassengers();
+        if (passengers == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(passengers);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserPassengerDTO> getPassengerById(@PathVariable("id") Long id) {
@@ -26,15 +34,6 @@ public class UserPassengerController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(passenger);
-    }
-
-    @GetMapping("/")
-    public ResponseEntity<List<UserPassengerDTO>> getAllPassengers() {
-        List<UserPassengerDTO> passengers = passengerService.getPassengers();
-        if (passengers == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(passengers);
     }
 
 }

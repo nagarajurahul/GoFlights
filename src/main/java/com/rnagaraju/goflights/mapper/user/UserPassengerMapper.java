@@ -1,8 +1,6 @@
 package com.rnagaraju.goflights.mapper.user;
 
-import com.rnagaraju.goflights.dto.PassengerDTO;
 import com.rnagaraju.goflights.dto.user.UserPassengerDTO;
-import com.rnagaraju.goflights.mapper.BookingMapper;
 import com.rnagaraju.goflights.model.Passenger;
 
 import java.util.List;
@@ -23,8 +21,7 @@ public class UserPassengerMapper {
                 passenger.getPassportNumber(),
                 passenger.getNationality(),
                 passenger.getBirthDate(),
-                passenger.getGenderType()!=null?passenger.getGenderType().name():null,
-                BookingMapper.toDTOList(passenger.getBookings())
+                passenger.getGenderType()!=null?passenger.getGenderType().name():null
         );
     }
 
