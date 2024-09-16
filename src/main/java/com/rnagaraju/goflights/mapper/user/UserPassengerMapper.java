@@ -33,4 +33,21 @@ public class UserPassengerMapper {
                 .map(UserPassengerMapper::toDTO)
                 .collect(Collectors.toList());
     }
+
+    public static Passenger toEntity(UserPassengerDTO userPassengerDTO) {
+        if(userPassengerDTO == null) {
+            return null;
+        }
+
+        return new Passenger(
+                userPassengerDTO.getFirstName(),
+                userPassengerDTO.getLastName(),
+                userPassengerDTO.getMobileNumber(),
+                userPassengerDTO.getEmailId(),
+                userPassengerDTO.getAddress(),
+                userPassengerDTO.getPassportNumber(),
+                userPassengerDTO.getNationality(),
+                userPassengerDTO.getBirthDate()
+        );
+    }
 }
