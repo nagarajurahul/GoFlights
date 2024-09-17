@@ -32,4 +32,8 @@ public class AirlineFlightService {
         return null;
     }
 
+    public List<AirlineFlightDTO> getAllFlightsByAirlineId(Long id) {
+        List<Flight> flights = flightRepository.findByAirlineId(id);
+        return AirlineFlightMapper.toDTOList(flights);
+    }
 }

@@ -42,5 +42,14 @@ public class AirlineFlightController {
         return ResponseEntity.ok(flight);
     }
 
+    @GetMapping("/airline/{id}")
+    public ResponseEntity<List<AirlineFlightDTO>> getAllFlightsByAirlineId(@PathVariable("id") Long id) {
+        List<AirlineFlightDTO> flights=flightService.getAllFlightsByAirlineId(id);
+        if (flights.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(flights);
+    }
+
 
 }
