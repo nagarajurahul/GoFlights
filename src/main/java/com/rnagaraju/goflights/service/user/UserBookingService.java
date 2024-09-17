@@ -1,5 +1,6 @@
 package com.rnagaraju.goflights.service.user;
 
+import com.rnagaraju.goflights.dto.user.CreateUserBookingDTO;
 import com.rnagaraju.goflights.dto.user.UserBookingDTO;
 import com.rnagaraju.goflights.mapper.user.UserBookingMapper;
 import com.rnagaraju.goflights.model.Booking;
@@ -29,5 +30,10 @@ public class UserBookingService {
     public List<UserBookingDTO> getBookingsByPassengerId(Long id) {
         List<Booking> bookings = bookingRepository.findByPassengerId(id);
         return UserBookingMapper.toDTOList(bookings);
+    }
+
+    public UserBookingDTO createBooking(CreateUserBookingDTO bookingDTO) {
+        
+        return null;
     }
 }
