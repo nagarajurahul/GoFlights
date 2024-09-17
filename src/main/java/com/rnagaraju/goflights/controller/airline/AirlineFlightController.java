@@ -4,10 +4,7 @@ import com.rnagaraju.goflights.dto.airline.AirlineFlightDTO;
 import com.rnagaraju.goflights.service.airline.AirlineFlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,19 +18,29 @@ public class AirlineFlightController {
     @GetMapping("/")
     public ResponseEntity<List<AirlineFlightDTO>> getAllFlights() {
         List<AirlineFlightDTO> flights = flightService.getAllFlights();
-
         if (flights.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(flights);
     }
 
+    @PostMapping("/")
+    public ResponseEntity<AirlineFlightDTO> createFlight(@RequestBody AirlineFlightDTO flightDTO) {
+        AirlineFlightDTO flight =flightService.createFlight(flightDTO);
+        if (flight == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(flight);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<AirlineFlightDTO> getFlightById(@PathVariable("id") Long id) {
-        AirlineFlightDTO flightDTO = flightService.getFlightById(id);
-        if (flightDTO == null) {
+        AirlineFlightDTO flight = flightService.getFlightById(id);
+        if (flight == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(flightDTO);
+        return ResponseEntity.ok(flight);
     }
+
+
 }

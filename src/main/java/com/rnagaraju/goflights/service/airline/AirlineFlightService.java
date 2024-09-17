@@ -8,7 +8,6 @@ import com.rnagaraju.goflights.repository.airline.AirlineFlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,4 +27,9 @@ public class AirlineFlightService {
 
         return AirlineFlightMapper.toDTO(flight);
     }
+
+    public AirlineFlightDTO createFlight(AirlineFlightDTO flightDTO) {
+        return null;
+    }
+
 }
