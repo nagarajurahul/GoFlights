@@ -3,8 +3,6 @@ package com.rnagaraju.goflights.controller.user;
 import com.rnagaraju.goflights.dto.user.RoundTripFlightsDTO;
 import com.rnagaraju.goflights.dto.user.UserFlightDTO;
 import com.rnagaraju.goflights.service.user.UserFlightService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -17,8 +15,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/user/flights/")
 public class UserFlightController {
-
-    private static final Logger log = LoggerFactory.getLogger(UserFlightController.class);
 
     @Autowired
     private UserFlightService flightService;

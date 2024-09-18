@@ -33,7 +33,7 @@ public class UserBookingService {
         return UserBookingMapper.toDTO(booking);
     }
 
-    public List<UserBookingDTO> getBookingsByPassengerId(Long id) {
+    public List<UserBookingDTO> getAllBookingsByPassengerId(Long id) {
         List<Booking> bookings = bookingRepository.findByPassengerId(id);
         return UserBookingMapper.toDTOList(bookings);
     }

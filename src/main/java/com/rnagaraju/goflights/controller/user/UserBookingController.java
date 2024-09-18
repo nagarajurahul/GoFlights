@@ -44,9 +44,9 @@ public class UserBookingController {
         return ResponseEntity.ok(booking);
     }
 
-    @GetMapping("/passengers/{id}")
-    public ResponseEntity<List<UserBookingDTO>> getBookingsByPassengerId(@PathVariable("id") Long id) {
-        List<UserBookingDTO> booking = bookingService.getBookingsByPassengerId(id);
+    @GetMapping("/passenger/{id}")
+    public ResponseEntity<List<UserBookingDTO>> getAllBookingsByPassengerId(@PathVariable("id") Long id) {
+        List<UserBookingDTO> booking = bookingService.getAllBookingsByPassengerId(id);
         if (booking == null) {
             return ResponseEntity.notFound().build();
         }

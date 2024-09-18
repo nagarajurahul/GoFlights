@@ -10,8 +10,6 @@ public interface UserFlightRepository extends JpaRepository<Flight, Long> {
 
     Flight findById(long id);
 
-    Flight findByFlightName(String flightName);
-
     List<Flight> findBySourceAndDestinationAndDepartureDateTimeBetween(
             String source,
             String destination,
