@@ -4,6 +4,7 @@ import com.rnagaraju.goflights.dto.PassengerDTO;
 import com.rnagaraju.goflights.dto.user.CreateUserBookingDTO;
 import com.rnagaraju.goflights.dto.user.UserBookingDTO;
 import com.rnagaraju.goflights.dto.user.UserFlightDTO;
+import com.rnagaraju.goflights.externalClient.flight.FlightService;
 import com.rnagaraju.goflights.mapper.user.UserBookingMapper;
 import com.rnagaraju.goflights.model.Booking;
 import com.rnagaraju.goflights.repository.user.UserBookingRepository;
@@ -18,6 +19,9 @@ public class UserBookingService {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private FlightService flightService;
 
     @Autowired
     private UserBookingRepository bookingRepository;
@@ -40,18 +44,9 @@ public class UserBookingService {
 
     public UserBookingDTO createBooking(CreateUserBookingDTO bookingDTO) {
 
+        // To-do
         Booking booking=new Booking();
-
-        String flightUrl="http://user/flights/";
-        flightUrl+=bookingDTO.getFlightId();
-        UserFlightDTO flight=restTemplate.getForObject(flightUrl, UserFlightDTO.class);
-
-        String passengerUrl="http://user/passengers/";
-        passengerUrl+=bookingDTO.getPassengerId();
-        PassengerDTO passenger=restTemplate.getForObject(passengerUrl, PassengerDTO.class);
-
         bookingRepository.save(booking);
-
         return null;
     }
 }
