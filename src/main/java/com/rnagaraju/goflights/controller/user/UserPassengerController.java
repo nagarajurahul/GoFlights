@@ -16,6 +16,7 @@ public class UserPassengerController {
     @Autowired
     private UserPassengerService passengerService;
 
+    // Take-out
     @GetMapping("/")
     public ResponseEntity<List<UserPassengerDTO>> getAllPassengers() {
         List<UserPassengerDTO> passengers = passengerService.getPassengers();
@@ -25,15 +26,7 @@ public class UserPassengerController {
         return ResponseEntity.ok(passengers);
     }
 
-    @PostMapping("/")
-    public ResponseEntity<UserPassengerDTO> createPassenger(@RequestBody UserPassengerDTO userPassengerDTO) {
-        UserPassengerDTO savedPassenger=passengerService.createPassenger(userPassengerDTO);
-        if (savedPassenger == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedPassenger);
-    }
-
+    // Take-out - but how will user get passenger
     @GetMapping("/{id}")
     public ResponseEntity<UserPassengerDTO> getPassengerById(@PathVariable("id") Long id) {
         UserPassengerDTO passenger = passengerService.getPassengerById(id);
@@ -41,6 +34,15 @@ public class UserPassengerController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(passenger);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<UserPassengerDTO> createPassenger(@RequestBody UserPassengerDTO userPassengerDTO) {
+        UserPassengerDTO savedPassenger=passengerService.createPassenger(userPassengerDTO);
+        if (savedPassenger == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedPassenger);
     }
 
 }

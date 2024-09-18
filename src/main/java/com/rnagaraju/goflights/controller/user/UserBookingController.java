@@ -17,6 +17,7 @@ public class UserBookingController {
     @Autowired
     private UserBookingService bookingService;
 
+    // Take-out
     @GetMapping("/")
     public ResponseEntity<List<UserBookingDTO>> getAllBookings() {
         List<UserBookingDTO> bookings = bookingService.getAllBookings();
@@ -26,19 +27,20 @@ public class UserBookingController {
         return ResponseEntity.ok(bookings);
     }
 
-    @PostMapping("/")
-    public ResponseEntity<UserBookingDTO> createBooking(@RequestBody CreateUserBookingDTO bookingDTO) {
-        UserBookingDTO  booking=bookingService.createBooking(bookingDTO);
-        if (booking==null) {
+    // Take-out - but how will user get specific booking
+    @GetMapping("/{id}")
+    public ResponseEntity<UserBookingDTO> getBookingById(@PathVariable("id") Long id) {
+        UserBookingDTO booking = bookingService.getBookingById(id);
+        if (booking == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(booking);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<UserBookingDTO> getBookingById(@PathVariable("id") Long id) {
-        UserBookingDTO booking = bookingService.getBookingById(id);
-        if (booking == null) {
+    @PostMapping("/")
+    public ResponseEntity<UserBookingDTO> createBooking(@RequestBody CreateUserBookingDTO bookingDTO) {
+        UserBookingDTO  booking=bookingService.createBooking(bookingDTO);
+        if (booking==null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(booking);

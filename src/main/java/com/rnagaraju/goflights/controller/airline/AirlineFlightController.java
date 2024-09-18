@@ -15,6 +15,7 @@ public class AirlineFlightController {
     @Autowired
     private AirlineFlightService flightService;
 
+    // Take-out
     @GetMapping("/")
     public ResponseEntity<List<AirlineFlightDTO>> getAllFlights() {
         List<AirlineFlightDTO> flights = flightService.getAllFlights();
@@ -24,20 +25,21 @@ public class AirlineFlightController {
         return ResponseEntity.ok(flights);
     }
 
-    @PostMapping("/")
-    public ResponseEntity<AirlineFlightDTO> createFlight(@RequestBody AirlineFlightDTO flightDTO) {
-        AirlineFlightDTO flight =flightService.createFlight(flightDTO);
-        if (flight == null) {
-            return ResponseEntity.badRequest().build();
-        }
-        return ResponseEntity.ok(flight);
-    }
-
+    // Take-out - but how will airline get specific flight
     @GetMapping("/{id}")
     public ResponseEntity<AirlineFlightDTO> getFlightById(@PathVariable("id") Long id) {
         AirlineFlightDTO flight = flightService.getFlightById(id);
         if (flight == null) {
             return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(flight);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<AirlineFlightDTO> createFlight(@RequestBody AirlineFlightDTO flightDTO) {
+        AirlineFlightDTO flight =flightService.createFlight(flightDTO);
+        if (flight == null) {
+            return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok(flight);
     }
@@ -50,6 +52,5 @@ public class AirlineFlightController {
         }
         return ResponseEntity.ok(flights);
     }
-
 
 }
