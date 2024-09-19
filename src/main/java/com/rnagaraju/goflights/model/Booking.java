@@ -25,7 +25,11 @@ public class Booking extends AbstractEntity{
     private String paymentStatus;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "BOOKING_CLASS")
+    @Column(name = "BOOKING_Status")
+    private BookingStatus bookingStatus;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "BOOKING_Class")
     private BookingClass bookingClass;
 
     @Column(name = "BOOKING_SPECIAL_MEAL_REQUEST")
@@ -95,6 +99,14 @@ public class Booking extends AbstractEntity{
         this.passengerId = passengerId;
     }
 
+    public BookingStatus getBookingStatus() {
+        return bookingStatus;
+    }
+
+    public void setBookingStatus(BookingStatus bookingStatus) {
+        this.bookingStatus = bookingStatus;
+    }
+
     public BookingClass getBookingClass() {
         return bookingClass;
     }
@@ -119,6 +131,7 @@ public class Booking extends AbstractEntity{
                 ", totalPrice=" + totalPrice +
                 ", seatNumber='" + seatNumber + '\'' +
                 ", paymentStatus='" + paymentStatus + '\'' +
+                ", bookingStatus=" + bookingStatus + '\'' +
                 ", bookingClass=" + bookingClass + '\'' +
                 ", specialMealRequest='" + specialMealRequest + '\'' +
                 ", flightId=" + flightId +
