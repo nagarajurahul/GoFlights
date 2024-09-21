@@ -1,14 +1,21 @@
 package com.rnagaraju.goflights.dto.user;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class UserAirlineDTO {
+    private Long id;
     private String airlineName;
     private Long contact;
     private String email;
     private String address;
     private LocalDateTime certificationDateTime;
     private Integer customerReviews;
+    private String logoUrl;
+    private String headquarters;
+    private Integer totalEmployees;
+    private String frequentFlyerProgram;
+    private BigDecimal annualRevenue;
 
     public UserAirlineDTO() {
 
@@ -21,6 +28,29 @@ public class UserAirlineDTO {
         this.address = address;
         this.certificationDateTime = certificationDateTime;
         this.customerReviews = customerReviews;
+    }
+
+    public UserAirlineDTO(Long id, String airlineName, Long contact, String email, String address, LocalDateTime certificationDateTime, Integer customerReviews, String logoUrl, String headquarters, Integer totalEmployees, String frequentFlyerProgram, BigDecimal annualRevenue) {
+        this.id=id;
+        this.airlineName = airlineName;
+        this.contact = contact;
+        this.email = email;
+        this.address = address;
+        this.certificationDateTime = certificationDateTime;
+        this.customerReviews = customerReviews;
+        this.logoUrl = logoUrl;
+        this.headquarters = headquarters;
+        this.totalEmployees = totalEmployees;
+        this.frequentFlyerProgram = frequentFlyerProgram;
+        this.annualRevenue = annualRevenue;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getAirlineName() {
@@ -71,16 +101,43 @@ public class UserAirlineDTO {
         this.customerReviews = customerReviews;
     }
 
+    public String getLogoUrl() {
+        return logoUrl;
+    }
 
-    @Override
-    public String toString() {
-        return "AirlineDTO{" +
-                "airlineName='" + airlineName + '\'' +
-                ", contact=" + contact +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", certificationDateTime=" + certificationDateTime +
-                ", customerReviews=" + customerReviews +
-                '}';
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
+    public String getHeadquarters() {
+        return headquarters;
+    }
+
+    public void setHeadquarters(String headquarters) {
+        this.headquarters = headquarters;
+    }
+
+    public Integer getTotalEmployees() {
+        return totalEmployees;
+    }
+
+    public void setTotalEmployees(Integer totalEmployees) {
+        this.totalEmployees = totalEmployees;
+    }
+
+    public String getFrequentFlyerProgram() {
+        return frequentFlyerProgram;
+    }
+
+    public void setFrequentFlyerProgram(String frequentFlyerProgram) {
+        this.frequentFlyerProgram = frequentFlyerProgram;
+    }
+
+    public BigDecimal getAnnualRevenue() {
+        return annualRevenue;
+    }
+
+    public void setAnnualRevenue(BigDecimal annualRevenue) {
+        this.annualRevenue = annualRevenue;
     }
 }

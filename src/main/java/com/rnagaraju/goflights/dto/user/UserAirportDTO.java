@@ -1,9 +1,10 @@
 package com.rnagaraju.goflights.dto.user;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class UserAirportDTO {
-
+    private Long id;
     private String airportName;
     private String location;
     private String timeZone;
@@ -13,12 +14,14 @@ public class UserAirportDTO {
     private Long contact;
     private String email;
     private String accessibilityFeatures;
+    private Integer runwayCount;
+    private Integer terminalCount;
+    private BigDecimal annualRevenue;
+    private Double averageFlightDelay;
 
-    // Default constructor
     public UserAirportDTO() {
     }
 
-    // Parameterized constructor
     public UserAirportDTO(String airportName, String location, String timeZone,
                           Integer totalEmployees, LocalDateTime establishmentDate,
                           String airportCode, Long contact, String email,
@@ -34,7 +37,30 @@ public class UserAirportDTO {
         this.accessibilityFeatures = accessibilityFeatures;
     }
 
-    // Getters and Setters
+    public UserAirportDTO(Long id, String airportName, String location, String timeZone, Integer totalEmployees, LocalDateTime establishmentDate, String airportCode, Long contact, String email, String accessibilityFeatures, Integer runwayCount, Integer terminalCount, BigDecimal annualRevenue, Double averageFlightDelay) {
+        this.id=id;
+        this.airportName = airportName;
+        this.location = location;
+        this.timeZone = timeZone;
+        this.totalEmployees = totalEmployees;
+        this.establishmentDate = establishmentDate;
+        this.airportCode = airportCode;
+        this.contact = contact;
+        this.email = email;
+        this.accessibilityFeatures = accessibilityFeatures;
+        this.runwayCount = runwayCount;
+        this.terminalCount = terminalCount;
+        this.annualRevenue = annualRevenue;
+        this.averageFlightDelay = averageFlightDelay;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getAirportName() {
         return airportName;
@@ -108,18 +134,36 @@ public class UserAirportDTO {
         this.accessibilityFeatures = accessibilityFeatures;
     }
 
-    @Override
-    public String toString() {
-        return "AirportDTO{" +
-                "airportName='" + airportName + '\'' +
-                ", location='" + location + '\'' +
-                ", timeZone='" + timeZone + '\'' +
-                ", totalEmployees=" + totalEmployees +
-                ", establishmentDate=" + establishmentDate +
-                ", airportCode='" + airportCode + '\'' +
-                ", contact=" + contact +
-                ", email='" + email + '\'' +
-                ", accessibilityFeatures='" + accessibilityFeatures + '\'' +
-                '}';
+    public Integer getRunwayCount() {
+        return runwayCount;
     }
+
+    public void setRunwayCount(Integer runwayCount) {
+        this.runwayCount = runwayCount;
+    }
+
+    public Integer getTerminalCount() {
+        return terminalCount;
+    }
+
+    public void setTerminalCount(Integer terminalCount) {
+        this.terminalCount = terminalCount;
+    }
+
+    public BigDecimal getAnnualRevenue() {
+        return annualRevenue;
+    }
+
+    public void setAnnualRevenue(BigDecimal annualRevenue) {
+        this.annualRevenue = annualRevenue;
+    }
+
+    public Double getAverageFlightDelay() {
+        return averageFlightDelay;
+    }
+
+    public void setAverageFlightDelay(Double averageFlightDelay) {
+        this.averageFlightDelay = averageFlightDelay;
+    }
+
 }
