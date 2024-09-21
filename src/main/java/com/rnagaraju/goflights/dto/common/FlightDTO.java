@@ -4,6 +4,7 @@ package com.rnagaraju.goflights.dto.common;
 import java.time.LocalDateTime;
 
 public class FlightDTO{
+    private Long id;
     private String flightName;
     private String source;
     private String destination;
@@ -37,7 +38,8 @@ public class FlightDTO{
         this.capacity = capacity;
     }
 
-    public FlightDTO(String flightName, String source, String destination, Integer duration, String type, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity, String status, Double carbonEmissions, Long airlineId, Long departureAirportId, Long arrivalAirportId) {
+    public FlightDTO(Long id, String flightName, String source, String destination, Integer duration, String type, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity, String status, Double carbonEmissions, Long airlineId, Long departureAirportId, Long arrivalAirportId) {
+        this.id=id;
         this.flightName = flightName;
         this.source = source;
         this.destination = destination;
@@ -52,6 +54,14 @@ public class FlightDTO{
         this.airlineId = airlineId;
         this.departureAirportId = departureAirportId;
         this.arrivalAirportId = arrivalAirportId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFlightName() {

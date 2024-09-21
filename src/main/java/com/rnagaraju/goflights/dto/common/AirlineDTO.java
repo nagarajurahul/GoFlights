@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class AirlineDTO {
+    private Long id;
     private String airlineName;
     private Long contact;
     private String email;
@@ -29,7 +30,8 @@ public class AirlineDTO {
         this.customerReviews = customerReviews;
     }
 
-    public AirlineDTO(String airlineName, Long contact, String email, String address, LocalDateTime certificationDateTime, Integer customerReviews, String logoUrl, String headquarters, Integer totalEmployees, String frequentFlyerProgram, BigDecimal annualRevenue) {
+    public AirlineDTO(Long id, String airlineName, Long contact, String email, String address, LocalDateTime certificationDateTime, Integer customerReviews, String logoUrl, String headquarters, Integer totalEmployees, String frequentFlyerProgram, BigDecimal annualRevenue) {
+        this.id=id;
         this.airlineName = airlineName;
         this.contact = contact;
         this.email = email;
@@ -41,6 +43,14 @@ public class AirlineDTO {
         this.totalEmployees = totalEmployees;
         this.frequentFlyerProgram = frequentFlyerProgram;
         this.annualRevenue = annualRevenue;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getAirlineName() {

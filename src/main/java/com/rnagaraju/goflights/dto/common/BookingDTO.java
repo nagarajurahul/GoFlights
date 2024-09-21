@@ -3,7 +3,7 @@ package com.rnagaraju.goflights.dto.common;
 import java.time.LocalDateTime;
 
 public class BookingDTO{
-
+    private Long id;
     private LocalDateTime bookingDateTime;
     private double totalPrice;
     private String seatNumber;
@@ -27,7 +27,8 @@ public class BookingDTO{
         this.paymentStatus = paymentStatus;
     }
 
-    public BookingDTO(LocalDateTime bookingDateTime, double totalPrice, String seatNumber, String paymentStatus, String bookingStatus, String bookingClass, String specialMealRequest, Long flightId, Long passengerId) {
+    public BookingDTO(Long id, LocalDateTime bookingDateTime, double totalPrice, String seatNumber, String paymentStatus, String bookingStatus, String bookingClass, String specialMealRequest, Long flightId, Long passengerId) {
+        this.id=id;
         this.bookingDateTime = bookingDateTime;
         this.totalPrice = totalPrice;
         this.seatNumber = seatNumber;
@@ -37,6 +38,14 @@ public class BookingDTO{
         this.specialMealRequest = specialMealRequest;
         this.flightId = flightId;
         this.passengerId = passengerId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public LocalDateTime getBookingDateTime() {

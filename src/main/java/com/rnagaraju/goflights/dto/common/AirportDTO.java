@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class AirportDTO {
-
+    private Long id;
     private String airportName;
     private String location;
     private String timeZone;
@@ -37,7 +37,8 @@ public class AirportDTO {
         this.accessibilityFeatures = accessibilityFeatures;
     }
 
-    public AirportDTO(String airportName, String location, String timeZone, Integer totalEmployees, LocalDateTime establishmentDate, String airportCode, Long contact, String email, String accessibilityFeatures, Integer runwayCount, Integer terminalCount, BigDecimal annualRevenue, Double averageFlightDelay) {
+    public AirportDTO(Long id, String airportName, String location, String timeZone, Integer totalEmployees, LocalDateTime establishmentDate, String airportCode, Long contact, String email, String accessibilityFeatures, Integer runwayCount, Integer terminalCount, BigDecimal annualRevenue, Double averageFlightDelay) {
+        this.id=id;
         this.airportName = airportName;
         this.location = location;
         this.timeZone = timeZone;
@@ -53,6 +54,13 @@ public class AirportDTO {
         this.averageFlightDelay = averageFlightDelay;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getAirportName() {
         return airportName;

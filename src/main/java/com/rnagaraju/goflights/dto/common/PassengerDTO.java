@@ -3,7 +3,7 @@ package com.rnagaraju.goflights.dto.common;
 import java.time.LocalDate;
 
 public class PassengerDTO{
-
+    private Long id;
     private String firstName;
     private String lastName;
     private Long mobileNumber;
@@ -36,7 +36,8 @@ public class PassengerDTO{
         this.genderType = genderType;
     }
 
-    public PassengerDTO(String firstName, String lastName, Long mobileNumber, String emailId, String address, String passportNumber, String nationality, LocalDate birthDate, String genderType, String specialAssistanceRequirements, String emergencyContactName, Long emergencyContactNumber, String emergencyContactRelation) {
+    public PassengerDTO(Long id, String firstName, String lastName, Long mobileNumber, String emailId, String address, String passportNumber, String nationality, LocalDate birthDate, String genderType, String specialAssistanceRequirements, String emergencyContactName, Long emergencyContactNumber, String emergencyContactRelation) {
+        this.id=id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.mobileNumber = mobileNumber;
@@ -50,6 +51,14 @@ public class PassengerDTO{
         this.emergencyContactName = emergencyContactName;
         this.emergencyContactNumber = emergencyContactNumber;
         this.emergencyContactRelation = emergencyContactRelation;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
