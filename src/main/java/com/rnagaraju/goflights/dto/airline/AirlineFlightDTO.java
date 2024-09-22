@@ -1,8 +1,5 @@
 package com.rnagaraju.goflights.dto.airline;
 
-import com.rnagaraju.goflights.dto.AirportDTO;
-import com.rnagaraju.goflights.dto.FlightDTO;
-
 import java.time.LocalDateTime;
 import java.util.List;
 

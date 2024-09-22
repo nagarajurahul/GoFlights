@@ -1,6 +1,6 @@
 package com.rnagaraju.goflights.controller;
 
-import com.rnagaraju.goflights.dto.AirportDTO;
+import com.rnagaraju.goflights.dto.common.AirportDTO;
 import com.rnagaraju.goflights.service.common.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +22,15 @@ public class AirportController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(airportDTOS);
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<AirportDTO> createAirport(@RequestBody AirportDTO airportDTO) {
+        AirportDTO airport = airportService.createAirport(airportDTO);
+        if(airport==null){
+            ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(airport);
     }
 
     @GetMapping("/{id}")

@@ -1,7 +1,6 @@
 package com.rnagaraju.goflights.mapper.airline;
 
 import com.rnagaraju.goflights.dto.airline.AirlineFlightDTO;
-import com.rnagaraju.goflights.mapper.AirportMapper;
 import com.rnagaraju.goflights.model.Flight;
 
 import java.util.List;

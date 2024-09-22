@@ -1,8 +1,8 @@
 package com.rnagaraju.goflights.service.common;
 
-import com.rnagaraju.goflights.dto.FlightDTO;
+import com.rnagaraju.goflights.dto.common.FlightDTO;
 import com.rnagaraju.goflights.exception.ResourceNotFoundException;
-import com.rnagaraju.goflights.mapper.FlightMapper;
+import com.rnagaraju.goflights.mapper.common.FlightMapper;
 import com.rnagaraju.goflights.model.Flight;
 import com.rnagaraju.goflights.repository.common.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;

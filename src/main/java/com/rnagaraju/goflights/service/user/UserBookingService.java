@@ -1,9 +1,7 @@
 package com.rnagaraju.goflights.service.user;
 
-import com.rnagaraju.goflights.dto.PassengerDTO;
 import com.rnagaraju.goflights.dto.user.CreateUserBookingDTO;
 import com.rnagaraju.goflights.dto.user.UserBookingDTO;
-import com.rnagaraju.goflights.dto.user.UserFlightDTO;
 import com.rnagaraju.goflights.externalClient.flight.FlightService;
 import com.rnagaraju.goflights.mapper.user.UserBookingMapper;
 import com.rnagaraju.goflights.model.Booking;

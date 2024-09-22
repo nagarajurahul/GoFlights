@@ -37,4 +37,25 @@ public class AirportMapper {
                 .map(AirportMapper::toDTO)
                 .collect(Collectors.toList());
     }
+
+    public static Airport toEntity(AirportDTO airportDTO) {
+        if(airportDTO == null) {
+            return null;
+        }
+        return new Airport(
+                airportDTO.getAirportName(),
+                airportDTO.getLocation(),
+                airportDTO.getTimeZone(),
+                airportDTO.getTotalEmployees(),
+                airportDTO.getEstablishmentDate(),
+                airportDTO.getAirportCode(),
+                airportDTO.getContact(),
+                airportDTO.getEmail(),
+                airportDTO.getAccessibilityFeatures(),
+                airportDTO.getRunwayCount(),
+                airportDTO.getTerminalCount(),
+                airportDTO.getAnnualRevenue(),
+                airportDTO.getAverageFlightDelay()
+        );
+    }
 }

@@ -1,8 +1,5 @@
 package com.rnagaraju.goflights.dto.airline;
 
-import com.rnagaraju.goflights.dto.BookingDTO;
-import com.rnagaraju.goflights.dto.PassengerDTO;
-
 import java.time.LocalDateTime;
 
 public class AirlineBookingDTO extends BookingDTO {
