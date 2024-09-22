@@ -58,7 +58,7 @@ public class BookingController {
 
     @PostMapping("/")
     public ResponseEntity<BookingDTO> createBooking(@RequestBody BookingDTO bookingDTO) {
-        UserBookingDTO  booking=bookingService.createBooking(bookingDTO);
+        BookingDTO  booking=bookingService.createBooking(bookingDTO);
         if (booking==null) {
             return ResponseEntity.notFound().build();
         }
