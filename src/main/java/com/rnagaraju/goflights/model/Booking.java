@@ -51,6 +51,18 @@ public class Booking extends AbstractEntity{
         this.paymentStatus = paymentStatus;
     }
 
+    public Booking(LocalDateTime bookingDateTime, double totalPrice, String seatNumber, String paymentStatus, BookingStatus bookingStatus, BookingClass bookingClass, String specialMealRequest, Long flightId, Long passengerId) {
+        this.bookingDateTime = bookingDateTime;
+        this.totalPrice = totalPrice;
+        this.seatNumber = seatNumber;
+        this.paymentStatus = paymentStatus;
+        this.bookingStatus = bookingStatus;
+        this.bookingClass = bookingClass;
+        this.specialMealRequest = specialMealRequest;
+        this.flightId = flightId;
+        this.passengerId = passengerId;
+    }
+
     public LocalDateTime getBookingDateTime() {
         return bookingDateTime;
     }

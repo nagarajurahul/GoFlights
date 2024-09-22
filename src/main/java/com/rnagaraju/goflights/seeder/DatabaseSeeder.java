@@ -297,34 +297,135 @@ public class DatabaseSeeder implements CommandLineRunner {
 
 
         // Booking 1
-        Booking booking1 = new Booking(LocalDateTime.now(), 250.0, "A12", "Paid", flight1, passenger1);
+        Booking booking1 = new Booking(
+                LocalDateTime.now(),
+                250.0,
+                "A12",
+                "Paid",
+                BookingStatus.CONFIRMED,
+                BookingClass.ECONOMY,
+                "Vegetarian meal",
+                flight1.getId(),
+                passenger1.getId()
+        );
 
         // Booking 2
-        Booking booking2 = new Booking(LocalDateTime.now(), 300.0, "B23", "Paid", flight2, passenger1);
+        Booking booking2 = new Booking(
+                LocalDateTime.now(),
+                300.0,
+                "B23",
+                "Paid",
+                BookingStatus.CONFIRMED,
+                BookingClass.BUSINESS,
+                "Gluten-free meal",
+                flight2.getId(),
+                passenger1.getId()
+        );
 
         // Booking 3
-        Booking booking3 = new Booking(LocalDateTime.now(), 200.0, "C34", "Pending", flight3, passenger3);
+        Booking booking3 = new Booking(
+                LocalDateTime.now(),
+                200.0,
+                "C34",
+                "Pending",
+                BookingStatus.PENDING,
+                BookingClass.ECONOMY,
+                "No special meal",
+                flight3.getId(),
+                passenger3.getId()
+        );
 
         // Booking 4
-        Booking booking4 = new Booking(LocalDateTime.now(), 350.0, "D45", "Paid", flight4, passenger4);
+        Booking booking4 = new Booking(
+                LocalDateTime.now(),
+                350.0,
+                "D45",
+                "Paid",
+                BookingStatus.CONFIRMED,
+                BookingClass.FIRST_CLASS,
+                "Seafood meal",
+                flight4.getId(),
+                passenger4.getId()
+        );
 
         // Booking 5
-        Booking booking5 = new Booking(LocalDateTime.now(), 280.0, "E56", "Paid", flight5, passenger5);
+        Booking booking5 = new Booking(
+                LocalDateTime.now(),
+                280.0,
+                "E56",
+                "Paid",
+                BookingStatus.CONFIRMED,
+                BookingClass.ECONOMY,
+                "Vegetarian meal",
+                flight5.getId(),
+                passenger5.getId()
+        );
 
         // Booking 6
-        Booking booking6 = new Booking(LocalDateTime.now(), 320.0, "F67", "Pending", flight1, passenger5);
+        Booking booking6 = new Booking(
+                LocalDateTime.now(),
+                320.0,
+                "F67",
+                "Pending",
+                BookingStatus.PENDING,
+                BookingClass.BUSINESS,
+                "Vegan meal",
+                flight1.getId(),
+                passenger5.getId()
+        );
 
         // Booking 7
-        Booking booking7 = new Booking(LocalDateTime.now(), 270.0, "G78", "Paid", flight2, passenger5);
+        Booking booking7 = new Booking(
+                LocalDateTime.now(),
+                270.0,
+                "G78",
+                "Paid",
+                BookingStatus.CONFIRMED,
+                BookingClass.ECONOMY,
+                "No special meal",
+                flight2.getId(),
+                passenger5.getId()
+        );
 
         // Booking 8
-        Booking booking8 = new Booking(LocalDateTime.now(), 380.0, "H89", "Pending", flight1, passenger4);
+        Booking booking8 = new Booking(
+                LocalDateTime.now(),
+                380.0,
+                "H89",
+                "Pending",
+                BookingStatus.PENDING,
+                BookingClass.FIRST_CLASS,
+                "Kosher meal",
+                flight1.getId(),
+                passenger4.getId()
+        );
 
         // Booking 9
-        Booking booking9 = new Booking(LocalDateTime.now(), 290.0, "I90", "Paid", flight2, passenger3);
+        Booking booking9 = new Booking(
+                LocalDateTime.now(),
+                290.0,
+                "I90",
+                "Paid",
+                BookingStatus.CONFIRMED,
+                BookingClass.BUSINESS,
+                "Paleo meal",
+                flight2.getId(),
+                passenger3.getId()
+        );
 
         // Booking 10
-        Booking booking10 = new Booking(LocalDateTime.now(), 310.0, "J01", "Paid", flight5, passenger1);
+        Booking booking10 = new Booking(
+                LocalDateTime.now(),
+                310.0,
+                "J01",
+                "Paid",
+                BookingStatus.CONFIRMED,
+                BookingClass.ECONOMY,
+                "Diabetic meal",
+                flight5.getId(),
+                passenger1.getId()
+        );
+
 
         bookingRepository.save(booking1);
         bookingRepository.save(booking2);
@@ -336,7 +437,6 @@ public class DatabaseSeeder implements CommandLineRunner {
         bookingRepository.save(booking8);
         bookingRepository.save(booking9);
         bookingRepository.save(booking10);
-
 
     }
 }
