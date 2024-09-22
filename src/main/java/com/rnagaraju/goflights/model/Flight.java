@@ -4,16 +4,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 //@Table(name="Flight_Table")
@@ -83,18 +78,6 @@ public class Flight extends AbstractEntity {
         this.type = type;
     }
 
-
-    public Flight( String flightName, String source, String destination, Integer duration, FlightType type, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime) {
-        this.flightName = flightName;
-        this.source = source;
-        this.destination = destination;
-        this.duration = duration;
-        this.type = type;
-        this.departureDateTime = departureDateTime;
-        this.arrivalDateTime = arrivalDateTime;
-    }
-
-
     public Flight( String flightName, String source, String destination, Integer duration, FlightType type, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity) {
         this.flightName = flightName;
         this.source = source;
@@ -105,6 +88,23 @@ public class Flight extends AbstractEntity {
         this.arrivalDateTime = arrivalDateTime;
         this.price=price;
         this.capacity=capacity;
+    }
+
+    public Flight(String flightName, String source, String destination, Integer duration, FlightType type, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity, FlightStatus status, Double carbonEmissions, Long airlineId, Long departureAirportId, Long arrivalAirportId) {
+        this.flightName = flightName;
+        this.source = source;
+        this.destination = destination;
+        this.duration = duration;
+        this.type = type;
+        this.departureDateTime = departureDateTime;
+        this.arrivalDateTime = arrivalDateTime;
+        this.price = price;
+        this.capacity = capacity;
+        this.status = status;
+        this.carbonEmissions = carbonEmissions;
+        this.airlineId = airlineId;
+        this.departureAirportId = departureAirportId;
+        this.arrivalAirportId = arrivalAirportId;
     }
 
     public String getFlightName() {

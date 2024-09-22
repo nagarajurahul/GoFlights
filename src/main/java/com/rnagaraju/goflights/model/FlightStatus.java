@@ -6,7 +6,7 @@ public enum FlightStatus {
     DELAYED("Delayed"),
     IN_FLIGHT("In Flight"),
     LANDED("Landed"),
-    CANCELED("Canceled"),
+    CANCELLED("Cancelled"),
     BOARDING("Boarding"),
     DIVERTED("Diverted"),
     GROUNDED("Grounded"),

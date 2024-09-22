@@ -125,130 +125,107 @@ public class DatabaseSeeder implements CommandLineRunner {
 
 
         // Creating Flight objects
-        Flight flight1 = new Flight("AA1001", "Los Angeles", "New York", 300, FlightType.DIRECT, LocalDateTime.of(2025, 5, 1, 8, 0), LocalDateTime.of(2025, 5, 1, 12, 0), 250.00, 200);
-        flight1.setAirline(airline1);
-        flight1.setDepartureAirport(airport1);
-        flight1.setArrivalAirport(airport2);
+        Flight flight1 = new Flight("AA1001", "Los Angeles", "New York", 300, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 1, 8, 0), LocalDateTime.of(2025, 5, 1, 12, 0), 300.0, 150,
+                FlightStatus.ON_TIME, 50.0, airline1.getId(), airport1.getId(), airport2.getId());
 
-        Flight flight2 = new Flight("UA2002", "New York", "Los Angeles", 300, FlightType.DIRECT, LocalDateTime.of(2025, 5, 2, 9, 0), LocalDateTime.of(2025, 5, 2, 13, 0), 260.00, 200);
-        flight2.setAirline(airline2);
-        flight2.setDepartureAirport(airport2);
-        flight2.setArrivalAirport(airport1);
+        Flight flight2 = new Flight("AA1002", "Atlanta", "San Francisco", 330, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 2, 9, 0), LocalDateTime.of(2025, 5, 2, 14, 0), 350.0, 160,
+                FlightStatus.ON_TIME, 55.0, airline2.getId(), airport2.getId(), airport9.getId());
 
-        Flight flight3 = new Flight("BA3003", "Chicago", "London", 600, FlightType.CONNECTING, LocalDateTime.of(2025, 5, 3, 10, 0), LocalDateTime.of(2025, 5, 3, 22, 0), 500.00, 150);
-        flight3.setAirline(airline3);
-        flight3.setDepartureAirport(airport10);
-        flight3.setArrivalAirport(airport7);
+        Flight flight3 = new Flight("AA1003", "Dubai", "Los Angeles", 960, FlightType.NON_STOP,
+                LocalDateTime.of(2025, 5, 3, 1, 0), LocalDateTime.of(2025, 5, 3, 17, 0), 1200.0, 220,
+                FlightStatus.DELAYED, 85.0, airline3.getId(), airport11.getId(), airport1.getId());
 
-        Flight flight4 = new Flight("EK4004", "London", "Dubai", 540, FlightType.NON_STOP, LocalDateTime.of(2025, 5, 4, 11, 0), LocalDateTime.of(2025, 5, 5, 3, 0), 600.00, 180);
-        flight4.setAirline(airline4);
-        flight4.setDepartureAirport(airport7);
-        flight4.setArrivalAirport(airport11);
+        Flight flight4 = new Flight("AA1004", "Toronto", "Chicago", 120, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 4, 13, 30), LocalDateTime.of(2025, 5, 4, 15, 30), 200.0, 140,
+                FlightStatus.ON_TIME, 40.0, airline4.getId(), airport6.getId(), airport10.getId());
 
-        Flight flight5 = new Flight("SQ5005", "Dubai", "Singapore", 330, FlightType.DIRECT, LocalDateTime.of(2025, 5, 5, 12, 0), LocalDateTime.of(2025, 5, 5, 17, 30), 450.00, 220);
-        flight5.setAirline(airline5);
-        flight5.setDepartureAirport(airport11);
-        flight5.setArrivalAirport(airport12);
+        Flight flight5 = new Flight("AA1005", "Heathrow", "Delhi", 600, FlightType.NON_STOP,
+                LocalDateTime.of(2025, 5, 5, 10, 0), LocalDateTime.of(2025, 5, 5, 20, 0), 900.0, 180,
+                FlightStatus.CANCELLED, 65.0, airline5.getId(), airport7.getId(), airport3.getId());
 
-        Flight flight6 = new Flight("QF6006", "Singapore", "Sydney", 400, FlightType.DIRECT, LocalDateTime.of(2025, 5, 6, 13, 0), LocalDateTime.of(2025, 5, 6, 19, 0), 420.00, 200);
-        flight6.setAirline(airline6);
-        flight6.setDepartureAirport(airport12);
-        flight6.setArrivalAirport(airport14);
+        Flight flight6 = new Flight("AA1006", "Atlanta", "Denver", 180, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 6, 12, 30), LocalDateTime.of(2025, 5, 6, 15, 30), 280.0, 130,
+                FlightStatus.ON_TIME, 48.0, airline6.getId(), airport2.getId(), airport8.getId());
 
-        Flight flight7 = new Flight("LH7007", "Sydney", "Frankfurt", 660, FlightType.CONNECTING, LocalDateTime.of(2025, 5, 7, 14, 0), LocalDateTime.of(2025, 5, 8, 6, 0), 700.00, 250);
-        flight7.setAirline(airline7);
-        flight7.setDepartureAirport(airport14);
-        flight7.setArrivalAirport(airport15);
+        Flight flight7 = new Flight("AA1007", "Tokyo", "San Francisco", 600, FlightType.NON_STOP,
+                LocalDateTime.of(2025, 5, 7, 6, 0), LocalDateTime.of(2025, 5, 7, 14, 0), 750.0, 200,
+                FlightStatus.ON_TIME, 60.0, airline7.getId(), airport5.getId(), airport9.getId());
 
-        Flight flight8 = new Flight("AA8008", "Los Angeles", "Chicago", 240, FlightType.DIRECT, LocalDateTime.of(2025, 5, 8, 15, 0), LocalDateTime.of(2025, 5, 8, 18, 0), 180.00, 180);
-        flight8.setAirline(airline1);
-        flight8.setDepartureAirport(airport1);
-        flight8.setArrivalAirport(airport10);
+        Flight flight8 = new Flight("AA1008", "Frankfurt", "Abu Dhabi", 420, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 8, 22, 30), LocalDateTime.of(2025, 5, 9, 4, 30), 550.0, 160,
+                FlightStatus.DELAYED, 70.0, airline1.getId(), airport15.getId(), airport4.getId());
 
-        Flight flight9 = new Flight("DL9009", "New York", "San Francisco", 360, FlightType.DIRECT, LocalDateTime.of(2025, 5, 9, 16, 0), LocalDateTime.of(2025, 5, 9, 21, 0), 300.00, 220);
-        flight9.setAirline(airline2);
-        flight9.setDepartureAirport(airport2);
-        flight9.setArrivalAirport(airport9);
+        Flight flight9 = new Flight("AA1009", "Sydney", "Tokyo", 540, FlightType.NON_STOP,
+                LocalDateTime.of(2025, 5, 9, 9, 30), LocalDateTime.of(2025, 5, 9, 18, 0), 680.0, 190,
+                FlightStatus.ON_TIME, 55.0, airline2.getId(), airport14.getId(), airport5.getId());
 
-        Flight flight10 = new Flight("UA1010", "Chicago", "Denver", 180, FlightType.DIRECT, LocalDateTime.of(2025, 5, 10, 17, 0), LocalDateTime.of(2025, 5, 10, 19, 0), 150.00, 150);
-        flight10.setAirline(airline3);
-        flight10.setDepartureAirport(airport10);
-        flight10.setArrivalAirport(airport8);
+        Flight flight10 = new Flight("AA1010", "Chicago", "Singapore", 900, FlightType.NON_STOP,
+                LocalDateTime.of(2025, 5, 10, 11, 0), LocalDateTime.of(2025, 5, 11, 2, 0), 1100.0, 230,
+                FlightStatus.ON_TIME, 90.0, airline3.getId(), airport10.getId(), airport12.getId());
 
-        Flight flight11 = new Flight("EK1111", "Dubai", "Abu Dhabi", 120, FlightType.DIRECT, LocalDateTime.of(2025, 5, 11, 18, 0), LocalDateTime.of(2025, 5, 11, 20, 0), 100.00, 100);
-        flight11.setAirline(airline4);
-        flight11.setDepartureAirport(airport11);
-        flight11.setArrivalAirport(airport4);
+        // Creating Flight objects from 11 to 20
+        Flight flight11 = new Flight("AA1011", "New York", "London", 420, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 11, 18, 0), LocalDateTime.of(2025, 5, 12, 0, 0), 700.0, 180,
+                FlightStatus.ON_TIME, 80.0, airline4.getId(), airport2.getId(), airport7.getId());
 
-        Flight flight12 = new Flight("SQ1212", "Singapore", "Tokyo", 300, FlightType.DIRECT, LocalDateTime.of(2025, 5, 12, 19, 0), LocalDateTime.of(2025, 5, 12, 23, 0), 280.00, 180);
-        flight12.setAirline(airline5);
-        flight12.setDepartureAirport(airport12);
-        flight12.setArrivalAirport(airport5);
+        Flight flight12 = new Flight("AA1012", "Los Angeles", "Tokyo", 720, FlightType.NON_STOP,
+                LocalDateTime.of(2025, 5, 12, 12, 30), LocalDateTime.of(2025, 5, 13, 6, 30), 850.0, 200,
+                FlightStatus.ON_TIME, 90.0, airline5.getId(), airport1.getId(), airport5.getId());
 
-        Flight flight13 = new Flight("QF1313", "Sydney", "Los Angeles", 720, FlightType.CONNECTING, LocalDateTime.of(2025, 5, 13, 20, 0), LocalDateTime.of(2025, 5, 14, 14, 0), 650.00, 200);
-        flight13.setAirline(airline6);
-        flight13.setDepartureAirport(airport14);
-        flight13.setArrivalAirport(airport1);
+        Flight flight13 = new Flight("AA1013", "Dubai", "Toronto", 840, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 13, 5, 0), LocalDateTime.of(2025, 5, 13, 19, 0), 1100.0, 210,
+                FlightStatus.DELAYED, 85.0, airline6.getId(), airport11.getId(), airport6.getId());
 
-        Flight flight14 = new Flight("LH1414", "Frankfurt", "Paris", 120, FlightType.DIRECT, LocalDateTime.of(2025, 5, 14, 21, 0), LocalDateTime.of(2025, 5, 14, 23, 0), 90.00, 120);
-        flight14.setAirline(airline7);
-        flight14.setDepartureAirport(airport15);
-        flight14.setArrivalAirport(airport13);
+        Flight flight14 = new Flight("AA1014", "Chicago", "New Delhi", 780, FlightType.NON_STOP,
+                LocalDateTime.of(2025, 5, 14, 9, 0), LocalDateTime.of(2025, 5, 15, 10, 0), 1200.0, 220,
+                FlightStatus.ON_TIME, 95.0, airline7.getId(), airport10.getId(), airport3.getId());
 
-        Flight flight15 = new Flight("AA1515", "Los Angeles", "New York", 300, FlightType.DIRECT, LocalDateTime.of(2025, 5, 15, 22, 0), LocalDateTime.of(2025, 5, 16, 3, 0), 250.00, 200);
-        flight15.setAirline(airline1);
-        flight15.setDepartureAirport(airport1);
-        flight15.setArrivalAirport(airport2);
+        Flight flight15 = new Flight("AA1015", "Sydney", "San Francisco", 660, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 15, 7, 30), LocalDateTime.of(2025, 5, 15, 18, 30), 880.0, 190,
+                FlightStatus.ON_TIME, 75.0, airline1.getId(), airport14.getId(), airport9.getId());
 
-        Flight flight16 = new Flight("DL1616", "Chicago", "Atlanta", 120, FlightType.DIRECT, LocalDateTime.of(2025, 5, 16, 23, 0), LocalDateTime.of(2025, 5, 17, 1, 0), 100.00, 120);
-        flight16.setAirline(airline2);
-        flight16.setDepartureAirport(airport10);
-        flight16.setArrivalAirport(airport2);
+        Flight flight16 = new Flight("AA1016", "Atlanta", "Dubai", 960, FlightType.NON_STOP,
+                LocalDateTime.of(2025, 5, 16, 14, 0), LocalDateTime.of(2025, 5, 17, 6, 0), 1400.0, 250,
+                FlightStatus.DELAYED, 100.0, airline2.getId(), airport2.getId(), airport11.getId());
 
-        Flight flight17 = new Flight("UA1717", "Denver", "San Francisco", 180, FlightType.DIRECT, LocalDateTime.of(2025, 5, 17, 12, 0), LocalDateTime.of(2025, 5, 17, 14, 0), 150.00, 150);
-        flight17.setAirline(airline3);
-        flight17.setDepartureAirport(airport8);
-        flight17.setArrivalAirport(airport9);
+        Flight flight17 = new Flight("AA1017", "Frankfurt", "Chicago", 540, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 17, 16, 0), LocalDateTime.of(2025, 5, 17, 23, 0), 750.0, 180,
+                FlightStatus.ON_TIME, 80.0, airline3.getId(), airport15.getId(), airport10.getId());
 
-        Flight flight18 = new Flight("EK1818", "Dubai", "London", 360, FlightType.DIRECT, LocalDateTime.of(2025, 5, 18, 14, 0), LocalDateTime.of(2025, 5, 18, 20, 0), 300.00, 220);
-        flight18.setAirline(airline4);
-        flight18.setDepartureAirport(airport11);
-        flight18.setArrivalAirport(airport7);
+        Flight flight18 = new Flight("AA1018", "Tokyo", "Frankfurt", 660, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 18, 10, 0), LocalDateTime.of(2025, 5, 18, 21, 0), 900.0, 200,
+                FlightStatus.CANCELLED, 95.0, airline4.getId(), airport5.getId(), airport15.getId());
 
-        Flight flight19 = new Flight("SQ1919", "Tokyo", "Singapore", 240, FlightType.DIRECT, LocalDateTime.of(2025, 5, 19, 16, 0), LocalDateTime.of(2025, 5, 19, 19, 0), 200.00, 150);
-        flight19.setAirline(airline5);
-        flight19.setDepartureAirport(airport5);
-        flight19.setArrivalAirport(airport12);
+        Flight flight19 = new Flight("AA1019", "Abu Dhabi", "Heathrow", 480, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 19, 3, 30), LocalDateTime.of(2025, 5, 19, 11, 30), 600.0, 170,
+                FlightStatus.ON_TIME, 70.0, airline5.getId(), airport4.getId(), airport7.getId());
 
-        Flight flight20 = new Flight("QF2020", "Sydney", "Paris", 720, FlightType.CONNECTING, LocalDateTime.of(2025, 5, 20, 18, 0), LocalDateTime.of(2025, 5, 21, 10, 0), 650.00, 200);
-        flight20.setAirline(airline6);
-        flight20.setDepartureAirport(airport14);
-        flight20.setArrivalAirport(airport13);
+        Flight flight20 = new Flight("AA1020", "Los Angeles", "Chicago", 240, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 20, 7, 0), LocalDateTime.of(2025, 5, 20, 11, 0), 400.0, 150,
+                FlightStatus.ON_TIME, 65.0, airline6.getId(), airport1.getId(), airport10.getId());
 
-        Flight flight21 = new Flight("LH2121", "Frankfurt", "New York", 540, FlightType.CONNECTING, LocalDateTime.of(2025, 5, 21, 20, 0), LocalDateTime.of(2025, 5, 22, 10, 0), 500.00, 180);
-        flight21.setAirline(airline7);
-        flight21.setDepartureAirport(airport15);
-        flight21.setArrivalAirport(airport2);
+        // Creating Flight objects from 21 to 25
+        Flight flight21 = new Flight("AA1021", "San Francisco", "London", 660, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 21, 15, 0), LocalDateTime.of(2025, 5, 22, 3, 0), 900.0, 200,
+                FlightStatus.ON_TIME, 85.0, airline7.getId(), airport9.getId(), airport7.getId());
 
-        Flight flight22 = new Flight("AA2222", "Los Angeles", "Chicago", 240, FlightType.DIRECT, LocalDateTime.of(2025, 5, 22, 8, 0), LocalDateTime.of(2025, 5, 22, 11, 0), 180.00, 150);
-        flight22.setAirline(airline1);
-        flight22.setDepartureAirport(airport1);
-        flight22.setArrivalAirport(airport10);
+        Flight flight22 = new Flight("AA1022", "New York", "Dubai", 720, FlightType.NON_STOP,
+                LocalDateTime.of(2025, 5, 22, 9, 0), LocalDateTime.of(2025, 5, 23, 6, 0), 950.0, 210,
+                FlightStatus.DELAYED, 100.0, airline1.getId(), airport2.getId(), airport11.getId());
 
-        Flight flight23 = new Flight("DL2323", "New York", "Denver", 300, FlightType.DIRECT, LocalDateTime.of(2025, 5, 23, 14, 0), LocalDateTime.of(2025, 5, 23, 17, 0), 220.00, 180);
-        flight23.setAirline(airline2);
-        flight23.setDepartureAirport(airport2);
-        flight23.setArrivalAirport(airport8);
+        Flight flight23 = new Flight("AA1023", "Chicago", "Tokyo", 840, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 23, 10, 0), LocalDateTime.of(2025, 5, 24, 6, 0), 1050.0, 230,
+                FlightStatus.ON_TIME, 90.0, airline2.getId(), airport10.getId(), airport5.getId());
 
-        Flight flight24 = new Flight("UA2424", "San Francisco", "Tokyo", 540, FlightType.CONNECTING, LocalDateTime.of(2025, 5, 24, 16, 0), LocalDateTime.of(2025, 5, 25, 10, 0), 500.00, 200);
-        flight24.setAirline(airline3);
-        flight24.setDepartureAirport(airport9);
-        flight24.setArrivalAirport(airport5);
+        Flight flight24 = new Flight("AA1024", "Toronto", "Paris", 420, FlightType.NON_STOP,
+                LocalDateTime.of(2025, 5, 24, 16, 30), LocalDateTime.of(2025, 5, 25, 0, 30), 700.0, 180,
+                FlightStatus.CANCELLED, 70.0, airline3.getId(), airport6.getId(), airport8.getId());
 
-        Flight flight25 = new Flight("EK2525", "Dubai", "Sydney", 780, FlightType.CONNECTING, LocalDateTime.of(2025, 5, 25, 20, 0), LocalDateTime.of(2025, 5, 26, 16, 0), 700.00, 220);
-        flight25.setAirline(airline4);
-        flight25.setDepartureAirport(airport11);
-        flight25.setArrivalAirport(airport14);
+        Flight flight25 = new Flight("AA1025", "Los Angeles", "Sydney", 960, FlightType.NON_STOP,
+                LocalDateTime.of(2025, 5, 25, 22, 0), LocalDateTime.of(2025, 5, 26, 12, 0), 1300.0, 250,
+                FlightStatus.ON_TIME, 110.0, airline4.getId(), airport1.getId(), airport14.getId());
 
         flightRepository.save(flight1);
         flightRepository.save(flight2);
