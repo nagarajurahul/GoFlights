@@ -88,6 +88,22 @@ public class Airport extends AbstractEntity {
         this.accessibilityFeatures = accessibilityFeatures;
     }
 
+    public Airport(String airportName, String location, String timeZone, Integer totalEmployees, LocalDateTime establishmentDate, String airportCode, Long contact, String email, String accessibilityFeatures, Integer runwayCount, Integer terminalCount, BigDecimal annualRevenue, Double averageFlightDelay) {
+        this.airportName = airportName;
+        this.location = location;
+        this.timeZone = timeZone;
+        this.totalEmployees = totalEmployees;
+        this.establishmentDate = establishmentDate;
+        this.airportCode = airportCode;
+        this.contact = contact;
+        this.email = email;
+        this.accessibilityFeatures = accessibilityFeatures;
+        this.runwayCount = runwayCount;
+        this.terminalCount = terminalCount;
+        this.annualRevenue = annualRevenue;
+        this.averageFlightDelay = averageFlightDelay;
+    }
+
     public String getAirportName() {
         return airportName;
     }
