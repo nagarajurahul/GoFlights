@@ -1,4 +1,4 @@
-package com.rnagaraju.goflights.controller;
+package com.rnagaraju.goflights.controller.common;
 
 import com.rnagaraju.goflights.dto.common.PassengerDTO;
 import com.rnagaraju.goflights.service.common.PassengerService;
