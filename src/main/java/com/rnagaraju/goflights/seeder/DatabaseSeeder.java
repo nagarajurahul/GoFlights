@@ -253,25 +253,41 @@ public class DatabaseSeeder implements CommandLineRunner {
         flightRepository.save(flight24);
         flightRepository.save(flight25);
 
-        Passenger passenger1 = new Passenger("John", "Doe", 1234567890L, "john.doe@example.com", "123 Main St, Anytown", "AB123456", "USA", LocalDate.of(1985, 6, 15));
-        passenger1.setGenderType(GenderType.MALE);
-        passenger1.setSpecialAssistanceRequirements("None");
+        Passenger passenger1 = new Passenger(
+                "John", "Doe", 1234567890L, "john.doe@example.com",
+                "123 Main St, Anytown", "AB123456", "USA",
+                LocalDate.of(1985, 6, 15), GenderType.MALE,
+                "None", "Mary Doe", 1112223333L, "Wife"
+        );
 
-        Passenger passenger2 = new Passenger("Jane", "Smith", 9876543210L, "jane.smith@example.com", "456 Oak Ave, Othercity", "CD987654", "UK", LocalDate.of(1990, 8, 25));
-        passenger2.setGenderType(GenderType.FEMALE);
-        passenger2.setSpecialAssistanceRequirements("Wheelchair assistance required");
+        Passenger passenger2 = new Passenger(
+                "Jane", "Smith", 9876543210L, "jane.smith@example.com",
+                "456 Oak Ave, Othercity", "CD987654", "UK",
+                LocalDate.of(1990, 8, 25), GenderType.FEMALE,
+                "Wheelchair assistance required", "John Smith", 4445556666L, "Husband"
+        );
 
-        Passenger passenger3 = new Passenger("Michael", "Johnson", 5555555555L, "michael.johnson@example.com", "789 Elm St, Anothercity", "EF555555", "Canada", LocalDate.of(1970, 4, 10));
-        passenger3.setGenderType(GenderType.MALE);
-        passenger3.setSpecialAssistanceRequirements("Sign language interpreter required");
+        Passenger passenger3 = new Passenger(
+                "Michael", "Johnson", 5555555555L, "michael.johnson@example.com",
+                "789 Elm St, Anothercity", "EF555555", "Canada",
+                LocalDate.of(1970, 4, 10), GenderType.MALE,
+                "Sign language interpreter required", "Sarah Johnson", 7778889999L, "Daughter"
+        );
 
-        Passenger passenger4 = new Passenger("Emily", "Williams", 3333333333L, "emily.williams@example.com", "321 Pine St, Yetanothercity", "GH333333", "Australia", LocalDate.of(1988, 9, 5));
-        passenger4.setGenderType(GenderType.FEMALE);
-        passenger4.setSpecialAssistanceRequirements("Braille signage required");
+        Passenger passenger4 = new Passenger(
+                "Emily", "Williams", 3333333333L, "emily.williams@example.com",
+                "321 Pine St, Yetanothercity", "GH333333", "Australia",
+                LocalDate.of(1988, 9, 5), GenderType.FEMALE,
+                "Braille signage required", "Robert Williams", 2223334444L, "Brother"
+        );
 
-        Passenger passenger5 = new Passenger("David", "Brown", 4444444444L, "david.brown@example.com", "567 Maple St, Finalcity", "IJ444444", "Germany", LocalDate.of(1982, 3, 20));
-        passenger5.setGenderType(GenderType.MALE);
-        passenger5.setSpecialAssistanceRequirements("Service animals permitted");
+        Passenger passenger5 = new Passenger(
+                "David", "Brown", 4444444444L, "david.brown@example.com",
+                "567 Maple St, Finalcity", "IJ444444", "Germany",
+                LocalDate.of(1982, 3, 20), GenderType.MALE,
+                "Service animals permitted", "Lisa Brown", 5556667777L, "Sister"
+        );
+
 
         passengerRepository.save(passenger1);
         passengerRepository.save(passenger2);

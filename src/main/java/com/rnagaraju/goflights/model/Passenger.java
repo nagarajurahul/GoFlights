@@ -90,6 +90,22 @@ public class Passenger extends AbstractEntity {
         this.birthDate = birthDate;
     }
 
+    public Passenger(String firstName, String lastName, Long mobileNumber, String emailId, String address, String passportNumber, String nationality, LocalDate birthDate, GenderType genderType, String specialAssistanceRequirements, String emergencyContactName, Long emergencyContactNumber, String emergencyContactRelation) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.mobileNumber = mobileNumber;
+        this.emailId = emailId;
+        this.address = address;
+        this.passportNumber = passportNumber;
+        this.nationality = nationality;
+        this.birthDate = birthDate;
+        this.genderType = genderType;
+        this.specialAssistanceRequirements = specialAssistanceRequirements;
+        this.emergencyContactName = emergencyContactName;
+        this.emergencyContactNumber = emergencyContactNumber;
+        this.emergencyContactRelation = emergencyContactRelation;
+    }
+
     public String getFirstName() {
         return firstName;
     }
