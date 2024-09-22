@@ -24,7 +24,7 @@ public class AirportController {
         return ResponseEntity.ok(airportDTOS);
     }
 
-    @GetMapping("/")
+    @PostMapping("/")
     public ResponseEntity<AirportDTO> createAirport(@RequestBody AirportDTO airportDTO) {
         AirportDTO airport = airportService.createAirport(airportDTO);
         if(airport==null){

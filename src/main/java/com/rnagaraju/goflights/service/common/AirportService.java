@@ -3,9 +3,7 @@ package com.rnagaraju.goflights.service.common;
 import com.rnagaraju.goflights.dto.common.AirportDTO;
 import com.rnagaraju.goflights.exception.ResourceNotFoundException;
 import com.rnagaraju.goflights.mapper.common.AirportMapper;
-import com.rnagaraju.goflights.mapper.user.UserPassengerMapper;
 import com.rnagaraju.goflights.model.Airport;
-import com.rnagaraju.goflights.model.Passenger;
 import com.rnagaraju.goflights.repository.common.AirportRepository;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +42,6 @@ public class AirportService {
     }
 
     public AirportDTO createAirport(AirportDTO airportDTO) {
-
         try {
             Airport airport = AirportMapper.toEntity(airportDTO);
             Airport savedAirport=airportRepository.save(airport);
@@ -56,6 +53,5 @@ public class AirportService {
         } catch (Exception e) {
             throw new RuntimeException("An unexpected error occurred.", e);
         }
-
     }
 }

@@ -2,6 +2,7 @@ package com.rnagaraju.goflights.mapper.common;
 
 import com.rnagaraju.goflights.dto.common.AirlineDTO;
 import com.rnagaraju.goflights.model.Airline;
+import com.rnagaraju.goflights.model.Airport;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,5 +37,25 @@ public class AirlineMapper {
         return airlines.stream()
                 .map(AirlineMapper::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    public static Airline toEntity(AirlineDTO airlineDTO) {
+        if(airlineDTO == null) {
+            return null;
+        }
+
+        return new Airline(
+                airlineDTO.getAirlineName(),
+                airlineDTO.getContact(),
+                airlineDTO.getEmail(),
+                airlineDTO.getAddress(),
+                airlineDTO.getCertificationDateTime(),
+                airlineDTO.getCustomerReviews(),
+                airlineDTO.getLogoUrl(),
+                airlineDTO.getHeadquarters(),
+                airlineDTO.getTotalEmployees(),
+                airlineDTO.getFrequentFlyerProgram(),
+                airlineDTO.getAnnualRevenue()
+        );
     }
 }
