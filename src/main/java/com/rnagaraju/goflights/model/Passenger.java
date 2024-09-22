@@ -195,5 +195,27 @@ public class Passenger extends AbstractEntity {
         this.specialAssistanceRequirements = specialAssistanceRequirements;
     }
 
+    public String getEmergencyContactName() {
+        return emergencyContactName;
+    }
 
+    public void setEmergencyContactName(String emergencyContactName) {
+        this.emergencyContactName = emergencyContactName;
+    }
+
+    public Long getEmergencyContactNumber() {
+        return emergencyContactNumber;
+    }
+
+    public void setEmergencyContactNumber(Long emergencyContactNumber) {
+        this.emergencyContactNumber = emergencyContactNumber;
+    }
+
+    public String getEmergencyContactRelation() {
+        return emergencyContactRelation;
+    }
+
+    public void setEmergencyContactRelation(String emergencyContactRelation) {
+        this.emergencyContactRelation = emergencyContactRelation;
+    }
 }

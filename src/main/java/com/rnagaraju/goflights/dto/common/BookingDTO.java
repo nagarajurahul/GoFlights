@@ -20,7 +20,6 @@ public class BookingDTO{
     }
 
     public BookingDTO(LocalDateTime bookingDateTime, double totalPrice, String seatNumber, String paymentStatus) {
-
         this.bookingDateTime = bookingDateTime;
         this.totalPrice = totalPrice;
         this.seatNumber = seatNumber;
