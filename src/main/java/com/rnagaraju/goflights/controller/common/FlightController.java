@@ -20,7 +20,7 @@ public class FlightController {
     private FlightService flightService;
 
     @GetMapping("/")
-    public ResponseEntity<List<FlightDTO>> getFlights(){
+    public ResponseEntity<List<FlightDTO>> getAllFlights(){
         List<FlightDTO> flightDTOS= flightService.getAllFlights();
         if(flightDTOS.isEmpty()){
             return ResponseEntity.noContent().build(); // Response code 204
@@ -28,14 +28,23 @@ public class FlightController {
         return ResponseEntity.ok(flightDTOS); // Response code 200
     }
 
+    @PostMapping("/")
+    public ResponseEntity<FlightDTO> createFlight(@RequestBody FlightDTO flightDTO) {
+        FlightDTO flight = flightService.createFlight(flightDTO);
+        if (flight == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(flight);
+    }
+
     @GetMapping("/{id}")
-    public ResponseEntity<FlightDTO> getFlightById(@PathVariable Long id){
+    public ResponseEntity<FlightDTO> getFlightById(@PathVariable("id") Long id){
         FlightDTO flightDTO = flightService.getFlightById(id);
         return ResponseEntity.ok(flightDTO); // Response code 200
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteFlightById(@PathVariable Long id){
+    public ResponseEntity<Void> deleteFlightById(@PathVariable("id") Long id){
         flightService.deleteFlightById(id);
         return ResponseEntity.noContent().build(); // Response code 204
     }
@@ -71,15 +80,6 @@ public class FlightController {
         }
 
         return new ResponseEntity<>(roundTripFlights, HttpStatus.OK);
-    }
-
-    @PostMapping("/")
-    public ResponseEntity<FlightDTO> createFlight(@RequestBody FlightDTO flightDTO) {
-       FlightDTO flight =flightService.createFlight(flightDTO);
-        if (flight == null) {
-            return ResponseEntity.badRequest().build();
-        }
-        return ResponseEntity.ok(flight);
     }
 
     @GetMapping("/airline/{id}")

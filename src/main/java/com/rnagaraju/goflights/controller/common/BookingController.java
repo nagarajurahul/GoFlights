@@ -1,9 +1,9 @@
 package com.rnagaraju.goflights.controller.common;
 
 import com.rnagaraju.goflights.dto.common.BookingDTO;
-import com.rnagaraju.goflights.dto.user.UserBookingDTO;
 import com.rnagaraju.goflights.service.common.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +23,15 @@ public class BookingController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(bookingDTOS);
+    }
 
+    @PostMapping("/")
+    public ResponseEntity<BookingDTO> createBooking(@RequestBody BookingDTO bookingDTO) {
+        BookingDTO  booking=bookingService.createBooking(bookingDTO);
+        if (booking==null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(booking);
     }
 
     @GetMapping("/{id}")
@@ -51,15 +59,6 @@ public class BookingController {
     public ResponseEntity<List<BookingDTO>> getAllBookingsByPassengerId(@PathVariable("id") Long id) {
         List<BookingDTO> booking = bookingService.getAllBookingsByPassengerId(id);
         if (booking == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(booking);
-    }
-
-    @PostMapping("/")
-    public ResponseEntity<BookingDTO> createBooking(@RequestBody BookingDTO bookingDTO) {
-        BookingDTO  booking=bookingService.createBooking(bookingDTO);
-        if (booking==null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(booking);

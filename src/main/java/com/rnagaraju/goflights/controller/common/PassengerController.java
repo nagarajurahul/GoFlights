@@ -25,18 +25,6 @@ public class PassengerController {
         return ResponseEntity.ok(passengerDTOS);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<PassengerDTO> getPassengerById(@PathVariable("id") Long id) {
-        PassengerDTO passengerDTO = passengerService.getPassengerById(id);
-        return ResponseEntity.ok(passengerDTO);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePassengerById(@PathVariable Long id) {
-        passengerService.deletePassengerById(id);
-        return ResponseEntity.noContent().build();
-    }
-
     @PostMapping("/")
     public ResponseEntity<PassengerDTO> createPassenger(@RequestBody PassengerDTO passengerDTO) {
         PassengerDTO savedPassenger=passengerService.createPassenger(passengerDTO);
@@ -44,6 +32,18 @@ public class PassengerController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(savedPassenger);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PassengerDTO> getPassengerById(@PathVariable("id") Long id) {
+        PassengerDTO passengerDTO = passengerService.getPassengerById(id);
+        return ResponseEntity.ok(passengerDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePassengerById(@PathVariable("id") Long id) {
+        passengerService.deletePassengerById(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

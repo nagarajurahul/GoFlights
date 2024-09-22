@@ -3,6 +3,7 @@ package com.rnagaraju.goflights.controller.common;
 import com.rnagaraju.goflights.dto.common.AirportDTO;
 import com.rnagaraju.goflights.service.common.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class AirportController {
     private AirportService airportService;
 
     @GetMapping("/")
-    public ResponseEntity<List<AirportDTO>> getAirports() {
+    public ResponseEntity<List<AirportDTO>> getAllAirports() {
         List<AirportDTO> airportDTOS=airportService.getAllAirports();
         if(airportDTOS.isEmpty()){
             return ResponseEntity.noContent().build();
@@ -26,11 +27,11 @@ public class AirportController {
 
     @PostMapping("/")
     public ResponseEntity<AirportDTO> createAirport(@RequestBody AirportDTO airportDTO) {
-        AirportDTO airport = airportService.createAirport(airportDTO);
-        if(airport==null){
-            ResponseEntity.noContent().build();
+        AirportDTO savedAirport = airportService.createAirport(airportDTO);
+        if(savedAirport==null){
+            ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.ok(airport);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedAirport);
     }
 
     @GetMapping("/{id}")

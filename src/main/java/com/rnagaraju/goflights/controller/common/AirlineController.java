@@ -3,6 +3,7 @@ package com.rnagaraju.goflights.controller.common;
 import com.rnagaraju.goflights.dto.common.AirlineDTO;
 import com.rnagaraju.goflights.service.common.AirlineService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,11 +27,11 @@ public class AirlineController {
 
     @PostMapping("/")
     public ResponseEntity<AirlineDTO> createAirline(@RequestBody AirlineDTO airlineDTO) {
-       AirlineDTO airline=airlineService.createAirline(airlineDTO);
-       if (airline==null) {
+       AirlineDTO savedAirline=airlineService.createAirline(airlineDTO);
+       if (savedAirline==null) {
            return ResponseEntity.badRequest().build();
        }
-       return ResponseEntity.ok(airline);
+       return ResponseEntity.status(HttpStatus.CREATED).body(savedAirline);
     }
 
     @GetMapping("/{id}")
