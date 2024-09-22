@@ -1,6 +1,7 @@
 package com.rnagaraju.goflights.mapper.common;
 
 import com.rnagaraju.goflights.dto.common.PassengerDTO;
+import com.rnagaraju.goflights.model.GenderType;
 import com.rnagaraju.goflights.model.Passenger;
 
 import java.util.List;
@@ -37,5 +38,28 @@ public class PassengerMapper {
         return passengers.stream()
                 .map(PassengerMapper::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    public static Passenger toEntity(PassengerDTO passengerDTO) {
+        if(passengerDTO == null) {
+            return null;
+        }
+
+        return new Passenger(
+                passengerDTO.getFirstName(),
+                passengerDTO.getLastName(),
+                passengerDTO.getMobileNumber(),
+                passengerDTO.getEmailId(),
+                passengerDTO.getAddress(),
+                passengerDTO.getPassportNumber(),
+                passengerDTO.getNationality(),
+                passengerDTO.getBirthDate(),
+                GenderType.fromString(passengerDTO.getGenderType()),
+                passengerDTO.getSpecialAssistanceRequirements(),
+                passengerDTO.getEmergencyContactName(),
+                passengerDTO.getEmergencyContactNumber(),
+                passengerDTO.getEmergencyContactRelation()
+        );
+
     }
 }

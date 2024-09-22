@@ -3,20 +3,34 @@ package com.rnagaraju.goflights.model;
 public enum GenderType {
 
     MALE("Male"),
-
     FEMALE("Female"),
-
     OTHERS("Transgender"),
-
     NA("Don't Specify");
 
-    private String label;
+    private final String gender;
 
-    private GenderType(String label) {
-        this.label = label;
+    GenderType(String gender) {
+        this.gender = gender;
     }
 
-    public String getLabel(){
-        return label;
+    public String getGender() {
+        return gender;
+    }
+
+    @Override
+    public String toString() {
+        return gender;
+    }
+
+    // Static method to get GenderType from a String
+    public static GenderType fromString(String gender) {
+        if (gender != null) {
+            for (GenderType type : GenderType.values()) {
+                if (type.getGender().equalsIgnoreCase(gender)) {
+                    return type;
+                }
+            }
+        }
+        throw new IllegalArgumentException("No enum constant for gender: " + gender);
     }
 }
