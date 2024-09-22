@@ -3,6 +3,7 @@ package com.rnagaraju.goflights.mapper.common;
 import com.rnagaraju.goflights.dto.common.BookingDTO;
 import com.rnagaraju.goflights.model.Booking;
 import com.rnagaraju.goflights.model.BookingStatus;
+import com.rnagaraju.goflights.model.BookingClass;
 
 import java.util.List;
 import java.util.stream.Collectors;

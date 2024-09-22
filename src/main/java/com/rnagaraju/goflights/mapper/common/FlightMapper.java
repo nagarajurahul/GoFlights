@@ -19,7 +19,7 @@ public class FlightMapper {
                 flight.getSource(),
                 flight.getDestination(),
                 flight.getDuration(),
-                flight.getType() != null ? flight.getType().getLabel() : null,
+                flight.getType() != null ? flight.getType().getType() : null,
                 flight.getDepartureDateTime(),
                 flight.getArrivalDateTime(),
                 flight.getPrice(),
