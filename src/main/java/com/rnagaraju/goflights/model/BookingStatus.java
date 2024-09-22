@@ -25,4 +25,16 @@ public enum BookingStatus {
     public String toString() {
         return status;
     }
+
+    // Static method to get BookingStatus from a String
+    public static BookingStatus fromString(String status) {
+        if (status != null) {
+            for (BookingStatus bookingStatus : BookingStatus.values()) {
+                if (bookingStatus.getStatus().equalsIgnoreCase(status)) {
+                    return bookingStatus;
+                }
+            }
+        }
+        throw new IllegalArgumentException("No enum constant for booking status: " + status);
+    }
 }

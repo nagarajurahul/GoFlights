@@ -1,7 +1,7 @@
 package com.rnagaraju.goflights.controller;
 
-
 import com.rnagaraju.goflights.dto.common.BookingDTO;
+import com.rnagaraju.goflights.dto.user.UserBookingDTO;
 import com.rnagaraju.goflights.service.common.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,5 +36,32 @@ public class BookingController {
     public ResponseEntity<Void> deleteBooking(@PathVariable Long id) {
         bookingService.deleteBookingById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/flight/{id}")
+    public ResponseEntity<List<BookingDTO>> getAllBookingsByFlightId(@PathVariable("id") Long id) {
+        List<BookingDTO> bookings = bookingService.getAllBookingsByFlightId(id);
+        if (bookings.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(bookings);
+    }
+
+    @GetMapping("/passenger/{id}")
+    public ResponseEntity<List<BookingDTO>> getAllBookingsByPassengerId(@PathVariable("id") Long id) {
+        List<BookingDTO> booking = bookingService.getAllBookingsByPassengerId(id);
+        if (booking == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(booking);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<BookingDTO> createBooking(@RequestBody BookingDTO bookingDTO) {
+        UserBookingDTO  booking=bookingService.createBooking(bookingDTO);
+        if (booking==null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(booking);
     }
 }

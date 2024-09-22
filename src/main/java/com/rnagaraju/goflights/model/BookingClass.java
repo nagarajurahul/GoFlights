@@ -21,4 +21,16 @@ public enum BookingClass {
     public String toString() {
         return className;
     }
+
+    // Static method to get BookingClass from a String
+    public static BookingClass fromString(String className) {
+        if (className != null) {
+            for (BookingClass bookingClass : BookingClass.values()) {
+                if (bookingClass.getClassName().equalsIgnoreCase(className)) {
+                    return bookingClass;
+                }
+            }
+        }
+        throw new IllegalArgumentException("No enum constant for booking class: " + className);
+    }
 }
