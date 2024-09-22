@@ -71,16 +71,7 @@ public class Airline extends AbstractEntity{
         this.certificationDateTime = certificationDateTime;
     }
 
-    public Airline(String airlineName, Long contact, String email, String address, LocalDateTime certificationDateTime, Integer customerReviews) {
-        this.airlineName = airlineName;
-        this.contact = contact;
-        this.email = email;
-        this.address = address;
-        this.certificationDateTime = certificationDateTime;
-        this.customerReviews = customerReviews;
-    }
-
-    public Airline(String airlineName, Long contact, String email, String address, LocalDateTime certificationDateTime, Integer customerReviews, String logoUrl, String headquarters, Integer totalEmployees, String frequentFlyerProgram) {
+    public Airline(String airlineName, Long contact, String email, String address, LocalDateTime certificationDateTime, Integer customerReviews, String logoUrl, String headquarters, Integer totalEmployees, String frequentFlyerProgram, BigDecimal annualRevenue) {
         this.airlineName = airlineName;
         this.contact = contact;
         this.email = email;
@@ -91,6 +82,7 @@ public class Airline extends AbstractEntity{
         this.headquarters = headquarters;
         this.totalEmployees = totalEmployees;
         this.frequentFlyerProgram = frequentFlyerProgram;
+        this.annualRevenue = annualRevenue;
     }
 
     public String getAirlineName() {

@@ -107,13 +107,13 @@ public class DatabaseSeeder implements CommandLineRunner {
         airportRepository.save(airport14);
         airportRepository.save(airport15);
 
-        Airline airline1 = new Airline("IIT Airlines", 1234567890L, "iitairlines@iit.com", "IIT Airline Address", LocalDateTime.now(), 100);
-        Airline airline2 = new Airline("Seven Seas Aviation", 9876543210L, "info@sevenseasaviation.com", "Seven Seas", LocalDateTime.now(), 200);
-        Airline airline3 = new Airline("BlueWing Airlines", 8888888880L, "info@bluewing.com", "BlueWing Airlines Headquarters, Blue Plaza, City", LocalDateTime.now(), 200);
-        Airline airline4 = new Airline("Sunrise Airways", 9999999990L, "contact@sunriseairways.com", "Sunrise Airways Building, Sunrise Street, Town", LocalDateTime.now(), 150);
-        Airline airline5 = new Airline("SilverCloud Airlines", 10101010100L, "customerservice@silvercloudairlines.com", "SilverCloud Tower, Cloud Avenue, Metropolis", LocalDateTime.now(), 180);
-        Airline airline6 = new Airline("Royal Skies Aviation", 11111111110L, "info@royalskiesaviation.com", "Royal Skies Headquarters, Aviation Street, Capital City", LocalDateTime.now(), 220);
-        Airline airline7 = new Airline("Emerald Airways", 12121212120L, "contactus@emeraldairways.com", "Emerald Tower, Aviation Road, Emerald City", LocalDateTime.now(), 130);
+        Airline airline1 = new Airline("IIT Airlines", 1234567890L, "iitairlines@iit.com", "IIT Airline Address", LocalDateTime.now(), 85, "https://iitairlines.com/logo.png", "IIT Headquarters, Illinois", 100, "IIT Frequent Flyer", new BigDecimal("50000000"));
+        Airline airline2 = new Airline("Seven Seas Aviation", 9876543210L, "info@sevenseasaviation.com", "Seven Seas Address, Coastal City", LocalDateTime.now(), 90, "https://sevenseasaviation.com/logo.png", "Seven Seas Headquarters, Coastal City", 200, "Seven Seas Frequent Flyer", new BigDecimal("60000000"));
+        Airline airline3 = new Airline("BlueWing Airlines", 8888888880L, "info@bluewing.com", "BlueWing Airlines Headquarters, Blue Plaza, City", LocalDateTime.now(), 88, "https://bluewing.com/logo.png", "BlueWing Headquarters, Blue City", 200, "BlueWing Frequent Flyer", new BigDecimal("55000000"));
+        Airline airline4 = new Airline("Sunrise Airways", 9999999990L, "contact@sunriseairways.com", "Sunrise Airways Building, Sunrise Street, Town", LocalDateTime.now(), 92, "https://sunriseairways.com/logo.png", "Sunrise Headquarters, Sunrise City", 150, "Sunrise Frequent Flyer", new BigDecimal("40000000"));
+        Airline airline5 = new Airline("SilverCloud Airlines", 10101010100L, "customerservice@silvercloudairlines.com", "SilverCloud Tower, Cloud Avenue, Metropolis", LocalDateTime.now(), 87, "https://silvercloudairlines.com/logo.png", "SilverCloud Headquarters, Cloud City", 180, "SilverCloud Frequent Flyer", new BigDecimal("48000000"));
+        Airline airline6 = new Airline("Royal Skies Aviation", 11111111110L, "info@royalskiesaviation.com", "Royal Skies Headquarters, Aviation Street, Capital City", LocalDateTime.now(), 95, "https://royalskiesaviation.com/logo.png", "Royal Skies Headquarters, Capital City", 220, "Royal Skies Frequent Flyer", new BigDecimal("75000000"));
+        Airline airline7 = new Airline("Emerald Airways", 12121212120L, "contactus@emeraldairways.com", "Emerald Tower, Aviation Road, Emerald City", LocalDateTime.now(), 89, "https://emeraldairways.com/logo.png", "Emerald Headquarters, Emerald City", 130, "Emerald Frequent Flyer", new BigDecimal("43000000"));
 
         airlineRepository.save(airline1);
         airlineRepository.save(airline2);
