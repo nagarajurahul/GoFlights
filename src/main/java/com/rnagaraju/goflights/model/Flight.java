@@ -32,7 +32,7 @@ public class Flight extends AbstractEntity {
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name="FLIGHT_TYPE")
-    private FlightType type;
+    private FlightType flightType;
 
     //    @PastOrPresent
     @Column(name="FLIGHT_DEPARTURE_DATE_TIME")
@@ -50,7 +50,7 @@ public class Flight extends AbstractEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name="FLIGHT_STATUS")
-    private FlightStatus status;
+    private FlightStatus flightStatus;
 
     @Column(name="FLIGHT_CARBON_EMISSIONS")
     private Double carbonEmissions;
@@ -67,37 +67,37 @@ public class Flight extends AbstractEntity {
     public Flight() {
     }
 
-    public Flight( String flightName, String source, String destination, Integer duration, FlightType type) {
+    public Flight( String flightName, String source, String destination, Integer duration, FlightType flightType) {
         this.flightName = flightName;
         this.source = source;
         this.destination = destination;
         this.duration = duration;
-        this.type = type;
+        this.flightType = flightType;
     }
 
-    public Flight( String flightName, String source, String destination, Integer duration, FlightType type, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity) {
+    public Flight( String flightName, String source, String destination, Integer duration, FlightType flightType, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity) {
         this.flightName = flightName;
         this.source = source;
         this.destination = destination;
         this.duration = duration;
-        this.type = type;
+        this.flightType = flightType;
         this.departureDateTime = departureDateTime;
         this.arrivalDateTime = arrivalDateTime;
         this.price=price;
         this.capacity=capacity;
     }
 
-    public Flight(String flightName, String source, String destination, Integer duration, FlightType type, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity, FlightStatus status, Double carbonEmissions, Long airlineId, Long departureAirportId, Long arrivalAirportId) {
+    public Flight(String flightName, String source, String destination, Integer duration, FlightType flightType, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity, FlightStatus flightStatus, Double carbonEmissions, Long airlineId, Long departureAirportId, Long arrivalAirportId) {
         this.flightName = flightName;
         this.source = source;
         this.destination = destination;
         this.duration = duration;
-        this.type = type;
+        this.flightType = flightType;
         this.departureDateTime = departureDateTime;
         this.arrivalDateTime = arrivalDateTime;
         this.price = price;
         this.capacity = capacity;
-        this.status = status;
+        this.flightStatus = flightStatus;
         this.carbonEmissions = carbonEmissions;
         this.airlineId = airlineId;
         this.departureAirportId = departureAirportId;
@@ -136,12 +136,12 @@ public class Flight extends AbstractEntity {
         this.duration = duration;
     }
 
-    public FlightType getType() {
-        return type;
+    public FlightType getFlightType() {
+        return flightType;
     }
 
-    public void setType(FlightType Type) {
-        this.type = Type;
+    public void setFlightType(FlightType flightType) {
+        this.flightType = flightType;
     }
 
     public LocalDateTime getDepartureDateTime() {
@@ -200,12 +200,12 @@ public class Flight extends AbstractEntity {
         this.arrivalAirportId = arrivalAirportId;
     }
 
-    public FlightStatus getStatus() {
-        return status;
+    public FlightStatus getFlightStatus() {
+        return flightStatus;
     }
 
-    public void setStatus(FlightStatus status) {
-        this.status = status;
+    public void setFlightStatus(FlightStatus flightStatus) {
+        this.flightStatus = flightStatus;
     }
 
     public Double getCarbonEmissions() {
@@ -224,7 +224,7 @@ public class Flight extends AbstractEntity {
                 ", source='" + source + '\'' +
                 ", destination='" + destination + '\'' +
                 ", duration=" + duration +
-                ", type=" + type +
+                ", flightType=" + flightType +
                 ", departureDateTime=" + departureDateTime +
                 ", arrivalDateTime=" + arrivalDateTime +
                 ", price=" + price +
@@ -232,7 +232,7 @@ public class Flight extends AbstractEntity {
                 ", airlineId=" + airlineId +
                 ", departureAirportId=" + departureAirportId +
                 ", arrivalAirportId=" + arrivalAirportId +
-                ", status=" + status +
+                ", flightStatus=" + flightStatus +
                 ", carbonEmissions=" + carbonEmissions +
                 '}';
     }

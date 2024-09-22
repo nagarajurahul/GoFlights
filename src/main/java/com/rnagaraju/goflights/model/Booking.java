@@ -23,11 +23,11 @@ public class Booking extends AbstractEntity{
     private String paymentStatus;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "BOOKING_Status")
+    @Column(name = "BOOKING_STATUS")
     private BookingStatus bookingStatus;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "BOOKING_Class")
+    @Column(name = "BOOKING_CLASS")
     private BookingClass bookingClass;
 
     @Column(name = "BOOKING_SPECIAL_MEAL_REQUEST")
