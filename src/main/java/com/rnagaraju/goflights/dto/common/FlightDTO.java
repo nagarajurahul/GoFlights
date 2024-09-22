@@ -1,6 +1,5 @@
 package com.rnagaraju.goflights.dto.common;
 
-
 import java.time.LocalDateTime;
 
 public class FlightDTO{

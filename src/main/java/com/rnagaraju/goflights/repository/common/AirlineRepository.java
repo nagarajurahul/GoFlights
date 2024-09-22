@@ -1,4 +1,4 @@
-package com.rnagaraju.goflights.repository;
+package com.rnagaraju.goflights.repository.common;
 
 import com.rnagaraju.goflights.model.Airline;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,8 +1,8 @@
 package com.rnagaraju.goflights.seeder;
 
 import com.rnagaraju.goflights.model.*;
-import com.rnagaraju.goflights.repository.*;
 
+import com.rnagaraju.goflights.repository.common.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

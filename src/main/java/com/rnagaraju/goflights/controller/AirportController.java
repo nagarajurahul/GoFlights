@@ -1,7 +1,7 @@
 package com.rnagaraju.goflights.controller;
 
 import com.rnagaraju.goflights.dto.AirportDTO;
-import com.rnagaraju.goflights.service.AirportService;
+import com.rnagaraju.goflights.service.common.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,13 +25,13 @@ public class AirportController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AirportDTO> getAirportById(@PathVariable Long id) {
+    public ResponseEntity<AirportDTO> getAirportById(@PathVariable("id") Long id) {
        AirportDTO airportDTO=airportService.getAirportById(id);
        return ResponseEntity.ok(airportDTO);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAirportById(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteAirportById(@PathVariable("id") Long id) {
         airportService.deleteAirportById(id);
         return ResponseEntity.noContent().build();
     }

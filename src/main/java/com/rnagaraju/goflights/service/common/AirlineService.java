@@ -1,10 +1,10 @@
-package com.rnagaraju.goflights.service;
+package com.rnagaraju.goflights.service.common;
 
 import com.rnagaraju.goflights.dto.AirlineDTO;
 import com.rnagaraju.goflights.exception.ResourceNotFoundException;
 import com.rnagaraju.goflights.mapper.AirlineMapper;
 import com.rnagaraju.goflights.model.Airline;
-import com.rnagaraju.goflights.repository.AirlineRepository;
+import com.rnagaraju.goflights.repository.common.AirlineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;

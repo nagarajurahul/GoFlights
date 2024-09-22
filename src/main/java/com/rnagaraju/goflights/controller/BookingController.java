@@ -2,7 +2,7 @@ package com.rnagaraju.goflights.controller;
 
 
 import com.rnagaraju.goflights.dto.BookingDTO;
-import com.rnagaraju.goflights.service.BookingService;
+import com.rnagaraju.goflights.service.common.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
