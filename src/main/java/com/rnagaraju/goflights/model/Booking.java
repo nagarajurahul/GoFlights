@@ -5,8 +5,6 @@ import jakarta.validation.constraints.PastOrPresent;
 import java.time.LocalDateTime;
 
 @Entity
-@NamedQuery(name="Booking.findAll",query="select booking from Booking booking where booking.deleted = false")
-@NamedQuery(name = "Booking.findByUsername", query="select booking from Booking booking where booking.username= :uname and booking.deleted = false")
 public class Booking extends AbstractEntity{
 
     @PastOrPresent

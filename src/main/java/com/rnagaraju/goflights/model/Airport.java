@@ -2,13 +2,11 @@ package com.rnagaraju.goflights.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.NamedQuery;
 import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@NamedQuery(name="Airport.findAll",query="select airport from Airport airport where airport.deleted = false")
 //@Table(name="AIRPORT_TABLE")
 public class Airport extends AbstractEntity {
 

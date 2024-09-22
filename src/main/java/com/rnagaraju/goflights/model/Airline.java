@@ -2,7 +2,6 @@ package com.rnagaraju.goflights.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.NamedQuery;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -14,8 +13,6 @@ import java.time.LocalDateTime;
 
 @Entity
 //@Table(name="AIRLINE_TABLE")
-@NamedQuery(name="Airline.findAll",query="select airline from Airline airline where airline.deleted = false")
-@NamedQuery(name = "Airline.findByUsername", query="select airline from Airline airline where airline.user.userName= :uname and airline.deleted = false")
 public class Airline extends AbstractEntity{
 
     @NotBlank

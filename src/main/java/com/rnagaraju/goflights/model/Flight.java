@@ -5,15 +5,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.NamedQuery;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
 //@Table(name="Flight_Table")
-@NamedQuery(name="Flight.findAll",query="select flight from Flight flight where flight.deleted = false")
-@NamedQuery(name="Flight.findAllByAirline",query="select flight from Flight flight where flight.airline.id = :id and flight.deleted = false")
 public class Flight extends AbstractEntity {
 
     @NotBlank

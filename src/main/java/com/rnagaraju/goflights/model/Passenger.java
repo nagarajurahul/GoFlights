@@ -4,8 +4,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.NamedQuery;
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -16,9 +14,6 @@ import java.util.Objects;
 
 @Entity
 //@Table(name="PASSENGER_TABLE")
-@NamedQuery(name="Passenger.findAll",query="select passenger from Passenger passenger where passenger.deleted = false")
-@NamedQuery(name = "Passenger.findByUsername", query="select passenger from Passenger passenger where passenger.user.userName = :uname and passenger.deleted = false")
-@NamedQuery(name="Passenger.findByOwner",query="select passenger from Passenger passenger where passenger.owner= :owner and passenger.deleted = false")
 public class Passenger extends AbstractEntity {
 
     @NotBlank
