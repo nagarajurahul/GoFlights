@@ -1,9 +1,7 @@
 package com.rnagaraju.goflights.controller;
 
-import com.rnagaraju.goflights.dto.airline.AirlineFlightDTO;
-import com.rnagaraju.goflights.dto.common.BookingDTO;
 import com.rnagaraju.goflights.dto.common.FlightDTO;
-import com.rnagaraju.goflights.dto.user.UserFlightDTO;
+import com.rnagaraju.goflights.dto.common.RoundTripFlightsDTO;
 import com.rnagaraju.goflights.service.common.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -43,13 +41,13 @@ public class FlightController {
     }
 
     @GetMapping("/search/one-way")
-    public ResponseEntity<List<UserFlightDTO>> getOneWayFlights(
+    public ResponseEntity<List<FlightDTO>> getOneWayFlights(
             @RequestParam String source,
             @RequestParam String destination,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime departureDateTime) {
 
         // Call service to fetch flights based on source, destination, and departureDateTime
-        List<UserFlightDTO> flights = flightService.getOneWayFlights(source, destination, departureDateTime);
+        List<FlightDTO> flights = flightService.getOneWayFlights(source, destination, departureDateTime);
 
         if(flights.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -59,14 +57,14 @@ public class FlightController {
     }
 
     @GetMapping("/search/round-trip")
-    public ResponseEntity<BookingDTO.RoundTripFlightsDTO> getRoundTripFlights(
+    public ResponseEntity<RoundTripFlightsDTO> getRoundTripFlights(
             @RequestParam String source,
             @RequestParam String destination,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime departureDateTime,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime returnDateTime) {
 
         // Call service to fetch flights based on source, destination, and date
-        BookingDTO.RoundTripFlightsDTO roundTripFlights = flightService.getRoundTripFlights(source, destination, departureDateTime, returnDateTime);
+        RoundTripFlightsDTO roundTripFlights = flightService.getRoundTripFlights(source, destination, departureDateTime, returnDateTime);
 
         if(roundTripFlights == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -76,8 +74,8 @@ public class FlightController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<AirlineFlightDTO> createFlight(@RequestBody AirlineFlightDTO flightDTO) {
-        AirlineFlightDTO flight =flightService.createFlight(flightDTO);
+    public ResponseEntity<FlightDTO> createFlight(@RequestBody FlightDTO flightDTO) {
+       FlightDTO flight =flightService.createFlight(flightDTO);
         if (flight == null) {
             return ResponseEntity.badRequest().build();
         }
@@ -85,8 +83,8 @@ public class FlightController {
     }
 
     @GetMapping("/airline/{id}")
-    public ResponseEntity<List<AirlineFlightDTO>> getAllFlightsByAirlineId(@PathVariable("id") Long id) {
-        List<AirlineFlightDTO> flights=flightService.getAllFlightsByAirlineId(id);
+    public ResponseEntity<List<FlightDTO>> getAllFlightsByAirlineId(@PathVariable("id") Long id) {
+        List<FlightDTO> flights=flightService.getAllFlightsByAirlineId(id);
         if (flights.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
