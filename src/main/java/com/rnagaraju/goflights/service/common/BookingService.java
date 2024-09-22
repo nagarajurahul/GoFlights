@@ -1,13 +1,8 @@
 package com.rnagaraju.goflights.service.common;
 
-import com.rnagaraju.goflights.dto.airline.AirlineBookingDTO;
 import com.rnagaraju.goflights.dto.common.BookingDTO;
-import com.rnagaraju.goflights.dto.user.CreateUserBookingDTO;
-import com.rnagaraju.goflights.dto.user.UserBookingDTO;
 import com.rnagaraju.goflights.exception.ResourceNotFoundException;
-import com.rnagaraju.goflights.mapper.airline.AirlineBookingMapper;
 import com.rnagaraju.goflights.mapper.common.BookingMapper;
-import com.rnagaraju.goflights.mapper.user.UserBookingMapper;
 import com.rnagaraju.goflights.model.Booking;
 import com.rnagaraju.goflights.repository.common.BookingRepository;
 import jakarta.validation.ConstraintViolationException;
