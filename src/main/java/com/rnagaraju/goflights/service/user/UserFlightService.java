@@ -41,9 +41,9 @@ public class UserFlightService {
         return UserFlightMapper.toDTOList(flights);
     }
 
-    public RoundTripFlightsDTO getRoundTripFlights(String source, String destination,
-                                                   LocalDateTime departureDateTime,
-                                                   LocalDateTime returnDateTime) {
+    public BookingDTO.RoundTripFlightsDTO getRoundTripFlights(String source, String destination,
+                                                              LocalDateTime departureDateTime,
+                                                              LocalDateTime returnDateTime) {
 
         LocalDateTime departureStart = departureDateTime.toLocalDate().atStartOfDay();
         LocalDateTime departureEnd = departureStart.plusDays(1).minusNanos(1);
@@ -59,7 +59,7 @@ public class UserFlightService {
                 destination, source, returnStart, returnEnd);
 
         // Map flights to DTOs
-        RoundTripFlightsDTO roundTripFlightsDTO = new RoundTripFlightsDTO();
+        BookingDTO.RoundTripFlightsDTO roundTripFlightsDTO = new BookingDTO.RoundTripFlightsDTO();
         roundTripFlightsDTO.setOutgoingFlights(UserFlightMapper.toDTOList(outgoingFlights));
         roundTripFlightsDTO.setReturnFlights(UserFlightMapper.toDTOList(returnFlights));
 

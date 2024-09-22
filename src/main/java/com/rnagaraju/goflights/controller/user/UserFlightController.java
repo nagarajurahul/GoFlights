@@ -1,6 +1,6 @@
 package com.rnagaraju.goflights.controller.user;
 
-import com.rnagaraju.goflights.dto.user.RoundTripFlightsDTO;
+import com.rnagaraju.goflights.dto.common.BookingDTO;
 import com.rnagaraju.goflights.dto.user.UserFlightDTO;
 import com.rnagaraju.goflights.service.user.UserFlightService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,14 +54,14 @@ public class UserFlightController {
     }
 
     @GetMapping("/search/round-trip")
-    public ResponseEntity<RoundTripFlightsDTO> getRoundTripFlights(
+    public ResponseEntity<BookingDTO.RoundTripFlightsDTO> getRoundTripFlights(
             @RequestParam String source,
             @RequestParam String destination,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime departureDateTime,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime returnDateTime) {
 
         // Call service to fetch flights based on source, destination, and date
-        RoundTripFlightsDTO roundTripFlights = flightService.getRoundTripFlights(source, destination, departureDateTime, returnDateTime);
+        BookingDTO.RoundTripFlightsDTO roundTripFlights = flightService.getRoundTripFlights(source, destination, departureDateTime, returnDateTime);
 
         if(roundTripFlights == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

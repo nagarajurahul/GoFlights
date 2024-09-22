@@ -1,6 +1,7 @@
 package com.rnagaraju.goflights.service.common;
 
 import com.rnagaraju.goflights.dto.common.FlightDTO;
+import com.rnagaraju.goflights.dto.common.RoundTripFlightsDTO;
 import com.rnagaraju.goflights.exception.ResourceNotFoundException;
 import com.rnagaraju.goflights.mapper.common.FlightMapper;
 import com.rnagaraju.goflights.model.Flight;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -38,5 +40,51 @@ public class FlightService {
             // Handle foreign key constraint violation
             throw new DataIntegrityViolationException("Cannot delete flight. It may be linked to existing bookings.");
         }
+    }
+
+    public List<FlightDTO> getOneWayFlights(String source, String destination, LocalDateTime departureDateTime) {
+        // Define a range around the dateTime to account for the entire day
+        LocalDateTime startOfDay = departureDateTime.toLocalDate().atStartOfDay();
+        LocalDateTime endOfDay = startOfDay.plusDays(1).minusNanos(1);
+
+        // Query the database using the date range
+        List<Flight> flights = flightRepository.findBySourceAndDestinationAndDepartureDateTimeBetween(
+                source, destination, startOfDay, endOfDay);
+
+        return FlightMapper.toDTOList(flights);
+    }
+
+    public RoundTripFlightsDTO getRoundTripFlights(String source, String destination,
+                                                   LocalDateTime departureDateTime,
+                                                   LocalDateTime returnDateTime) {
+
+        LocalDateTime departureStart = departureDateTime.toLocalDate().atStartOfDay();
+        LocalDateTime departureEnd = departureStart.plusDays(1).minusNanos(1);
+
+        LocalDateTime returnStart = returnDateTime.toLocalDate().atStartOfDay();
+        LocalDateTime returnEnd = returnStart.plusDays(1).minusNanos(1);
+
+        // Find outgoing and return flights
+        List<Flight> outgoingFlights = flightRepository.findBySourceAndDestinationAndDepartureDateTimeBetween(
+                source, destination, departureStart, departureEnd);
+
+        List<Flight> returnFlights = flightRepository.findBySourceAndDestinationAndDepartureDateTimeBetween(
+                destination, source, returnStart, returnEnd);
+
+        // Map flights to DTOs
+        RoundTripFlightsDTO roundTripFlightsDTO = new RoundTripFlightsDTO();
+        roundTripFlightsDTO.setOutgoingFlights(FlightMapper.toDTOList(outgoingFlights));
+        roundTripFlightsDTO.setReturnFlights(FlightMapper.toDTOList(returnFlights));
+
+        return roundTripFlightsDTO;
+    }
+
+    public FlightDTO createFlight(FlightDTO flightDTO) {
+        return null;
+    }
+
+    public List<FlightDTO> getAllFlightsByAirlineId(Long id) {
+        List<Flight> flights = flightRepository.findByAirlineId(id);
+        return FlightMapper.toDTOList(flights);
     }
 }
