@@ -29,4 +29,14 @@ public enum FlightStatus {
     public String toString() {
         return status;
     }
+
+    public static FlightStatus fromString(String status) {
+        for (FlightStatus flightStatus : FlightStatus.values()) {
+            if (flightStatus.getStatus().equalsIgnoreCase(status)) {
+                return flightStatus;
+            }
+        }
+        throw new IllegalArgumentException("No enum constant for status: " + status);
+    }
+
 }

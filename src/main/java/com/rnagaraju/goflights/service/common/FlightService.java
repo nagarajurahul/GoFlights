@@ -6,6 +6,7 @@ import com.rnagaraju.goflights.exception.ResourceNotFoundException;
 import com.rnagaraju.goflights.mapper.common.FlightMapper;
 import com.rnagaraju.goflights.model.Flight;
 import com.rnagaraju.goflights.repository.common.FlightRepository;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -80,7 +81,17 @@ public class FlightService {
     }
 
     public FlightDTO createFlight(FlightDTO flightDTO) {
-        return null;
+        try{
+            Flight flight=FlightMapper.toEntity(flightDTO);
+            Flight savedFlight=flightRepository.save(flight);
+            return FlightMapper.toDTO(savedFlight);
+        }catch (DataIntegrityViolationException e) {
+            throw new RuntimeException("Data integrity violation occurred.", e);
+        } catch (ConstraintViolationException e) {
+            throw new RuntimeException("Validation error: " + e.getMessage(), e);
+        } catch (Exception e) {
+            throw new RuntimeException("An unexpected error occurred.", e);
+        }
     }
 
     public List<FlightDTO> getAllFlightsByAirlineId(Long id) {

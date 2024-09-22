@@ -6,13 +6,22 @@ public enum FlightType {
     NON_STOP("Non Stop"),
     CONNECTING("Connecting");
 
-    private String label;
+    private final String type;
 
-    private FlightType(String label) {
-        this.label = label;
+    private FlightType(String type) {
+        this.type = type;
     }
 
-    public String getLabel(){
-        return label;
+    public String getType(){
+        return type;
+    }
+
+    public static FlightType fromString(String status) {
+        for (FlightType flightType : FlightType.values()) {
+            if (flightType.getType().equalsIgnoreCase(status)) {
+                return flightType;
+            }
+        }
+        throw new IllegalArgumentException("No enum constant for status: " + status);
     }
 }
