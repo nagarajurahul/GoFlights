@@ -8,12 +8,12 @@ public class FlightDTO{
     private String source;
     private String destination;
     private Integer duration;
-    private String type;
+    private String flightType;
     private LocalDateTime departureDateTime;
     private LocalDateTime arrivalDateTime;
     private Double price;
     private Integer capacity;
-    private String status;
+    private String flightStatus;
     private Double carbonEmissions;
     private Long airlineId;
     private Long departureAirportId;
@@ -24,31 +24,31 @@ public class FlightDTO{
     }
 
     public FlightDTO(String flightName, String source, String destination, Integer duration,
-                         String type, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime,
+                         String flightType, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime,
                          Double price, Integer capacity) {
         this.flightName = flightName;
         this.source = source;
         this.destination = destination;
         this.duration = duration;
-        this.type = type;
+        this.flightType = flightType;
         this.departureDateTime = departureDateTime;
         this.arrivalDateTime = arrivalDateTime;
         this.price = price;
         this.capacity = capacity;
     }
 
-    public FlightDTO(Long id, String flightName, String source, String destination, Integer duration, String type, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity, String status, Double carbonEmissions, Long airlineId, Long departureAirportId, Long arrivalAirportId) {
+    public FlightDTO(Long id, String flightName, String source, String destination, Integer duration, String flightType, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity, String flightStatus, Double carbonEmissions, Long airlineId, Long departureAirportId, Long arrivalAirportId) {
         this.id=id;
         this.flightName = flightName;
         this.source = source;
         this.destination = destination;
         this.duration = duration;
-        this.type = type;
+        this.flightType = flightType;
         this.departureDateTime = departureDateTime;
         this.arrivalDateTime = arrivalDateTime;
         this.price = price;
         this.capacity = capacity;
-        this.status = status;
+        this.flightStatus = flightStatus;
         this.carbonEmissions = carbonEmissions;
         this.airlineId = airlineId;
         this.departureAirportId = departureAirportId;
@@ -95,12 +95,12 @@ public class FlightDTO{
         this.duration = duration;
     }
 
-    public String getType() {
-        return type;
+    public String getFlightType() {
+        return flightType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setFlightType(String flightType) {
+        this.flightType = flightType;
     }
 
     public LocalDateTime getDepartureDateTime() {
@@ -135,12 +135,12 @@ public class FlightDTO{
         this.capacity = capacity;
     }
 
-    public String getStatus() {
-        return status;
+    public String getFlightStatus() {
+        return flightStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setFlightStatus(String flightStatus) {
+        this.flightStatus    = flightStatus;
     }
 
     public Double getCarbonEmissions() {

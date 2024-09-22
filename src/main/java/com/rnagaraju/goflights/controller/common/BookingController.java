@@ -35,13 +35,13 @@ public class BookingController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BookingDTO> getBooking(@PathVariable Long id) {
+    public ResponseEntity<BookingDTO> getBookingById(@PathVariable("id") Long id) {
         BookingDTO bookingDTO = bookingService.getBookingById(id);
         return ResponseEntity.ok(bookingDTO);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBooking(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteBookingById(@PathVariable("id") Long id) {
         bookingService.deleteBookingById(id);
         return ResponseEntity.noContent().build();
     }
