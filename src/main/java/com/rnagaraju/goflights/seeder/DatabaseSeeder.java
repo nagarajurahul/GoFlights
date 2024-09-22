@@ -1,12 +1,12 @@
 package com.rnagaraju.goflights.seeder;
 
 import com.rnagaraju.goflights.model.*;
-
 import com.rnagaraju.goflights.repository.common.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -30,22 +30,66 @@ public class DatabaseSeeder implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        // Creating Airport objects with updated fields
-        Airport airport1 = new Airport("Los Angeles International Airport (LAX)", "California", "America/Los Angeles", 1500, LocalDateTime.now(), "LAX", 1234567890L, "info@lax.com", "Wheelchair assistance available");
-        Airport airport2 = new Airport("Hartsfield-Jackson Atlanta International Airport", "Georgia", "America/Atlanta", 2200, LocalDateTime.now(), "ATL", 9876543210L, "info@atl.com", "Sign language interpreter available");
-        Airport airport3 = new Airport("Indira Gandhi International Airport", "Delhi", "Asia/Kolkata", 3000, LocalDateTime.now(), "DEL", 1122334455L, "info@del.com", "Braille signage available");
-        Airport airport4 = new Airport("Abu Dhabi International Airport", "Abu Dhabi", "Asia/Dubai", 2500, LocalDateTime.now(), "AUH", 9988776655L, "info@auh.com", "Service animals permitted");
-        Airport airport5 = new Airport("Tokyo Haneda Airport", "Tokyo", "Asia/Tokyo", 3200, LocalDateTime.now(), "HND", 5544332211L, "info@hnd.com", "Priority boarding available");
-        Airport airport6 = new Airport("Toronto Pearson International Airport", "Toronto", "America/Toronto", 2800, LocalDateTime.now(), "YYZ", 3344556677L, "info@yyz.com", "Assistance for visually impaired travelers");
-        Airport airport7 = new Airport("Heathrow Airport", "London", "Europe/London", 3500, LocalDateTime.now(), "LHR", 2233445566L, "info@lhr.com", "Accessible parking spaces available");
-        Airport airport8 = new Airport("Denver International Airport", "Denver", "America/Denver", 2700, LocalDateTime.now(), "DEN", 7788990011L, "info@den.com", "Assistance for travelers with cognitive disabilities");
-        Airport airport9 = new Airport("San Francisco International Airport", "San Francisco", "America/Los_Angeles", 3000, LocalDateTime.now(), "SFO", 9900112233L, "info@sfo.com", "Priority security screening available");
-        Airport airport10 = new Airport("Chicago O'Hare International Airport", "Chicago", "America/Chicago", 2800, LocalDateTime.now(), "ORD", 6677889900L, "info@ord.com", "Accessible restrooms available");
-        Airport airport11 = new Airport("Dubai International Airport", "Dubai", "Asia/Dubai", 4000, LocalDateTime.now(), "DXB", 1122334455L, "info@dxb.com", "Ramps for boarding available");
-        Airport airport12 = new Airport("Singapore Changi Airport", "Singapore", "Asia/Singapore", 3500, LocalDateTime.now(), "SIN", 9988776655L, "info@sin.com", "Assistance for travelers with medical conditions");
-        Airport airport13 = new Airport("Paris Charles de Gaulle Airport", "Paris", "Europe/Paris", 3000, LocalDateTime.now(), "CDG", 5544332211L, "info@cdg.com", "Emergency evacuation assistance available");
-        Airport airport14 = new Airport("Sydney Kingsford Smith Airport", "Sydney", "Australia/Sydney", 2800, LocalDateTime.now(), "SYD", 3344556677L, "info@syd.com", "Assistance for travelers with hearing impairments");
-        Airport airport15 = new Airport("Frankfurt Airport", "Frankfurt", "Europe/Berlin", 3200, LocalDateTime.now(), "FRA", 1122334455L, "info@fra.com", "Assistance for travelers with allergies");
+        // Updated Airport objects with realistic data
+        Airport airport1 = new Airport("Los Angeles International Airport (LAX)", "California", "America/Los_Angeles", 50000,
+                LocalDateTime.of(1930, 10, 1, 0, 0), "LAX", 1234567890L, "info@lax.com",
+                "Wheelchair assistance available", 4, 9, new BigDecimal("6500000000"), 12.5);
+
+        Airport airport2 = new Airport("Hartsfield-Jackson Atlanta International Airport", "Georgia", "America/New_York", 63000,
+                LocalDateTime.of(1925, 4, 16, 0, 0), "ATL", 9876543210L, "info@atl.com",
+                "Sign language interpreter available", 5, 7, new BigDecimal("7000000000"), 10.2);
+
+        Airport airport3 = new Airport("Indira Gandhi International Airport", "Delhi", "Asia/Kolkata", 37000,
+                LocalDateTime.of(1962, 5, 2, 0, 0), "DEL", 1122334455L, "info@del.com",
+                "Braille signage available", 3, 8, new BigDecimal("3500000000"), 15.8);
+
+        Airport airport4 = new Airport("Abu Dhabi International Airport", "Abu Dhabi", "Asia/Dubai", 26000,
+                LocalDateTime.of(1982, 1, 1, 0, 0), "AUH", 9988776655L, "info@auh.com",
+                "Service animals permitted", 2, 3, new BigDecimal("3000000000"), 8.7);
+
+        Airport airport5 = new Airport("Tokyo Haneda Airport", "Tokyo", "Asia/Tokyo", 45000,
+                LocalDateTime.of(1931, 8, 25, 0, 0), "HND", 5544332211L, "info@hnd.com",
+                "Priority boarding available", 5, 4, new BigDecimal("5500000000"), 6.4);
+
+        Airport airport6 = new Airport("Toronto Pearson International Airport", "Toronto", "America/Toronto", 49000,
+                LocalDateTime.of(1937, 9, 7, 0, 0), "YYZ", 3344556677L, "info@yyz.com",
+                "Assistance for visually impaired travelers", 5, 2, new BigDecimal("6700000000"), 9.8);
+
+        Airport airport7 = new Airport("Heathrow Airport", "London", "Europe/London", 76000,
+                LocalDateTime.of(1946, 1, 1, 0, 0), "LHR", 2233445566L, "info@lhr.com",
+                "Accessible parking spaces available", 4, 5, new BigDecimal("8500000000"), 11.3);
+
+        Airport airport8 = new Airport("Denver International Airport", "Denver", "America/Denver", 35000,
+                LocalDateTime.of(1995, 2, 28, 0, 0), "DEN", 7788990011L, "info@den.com",
+                "Assistance for travelers with cognitive disabilities", 6, 3, new BigDecimal("4200000000"), 13.0);
+
+        Airport airport9 = new Airport("San Francisco International Airport", "San Francisco", "America/Los_Angeles", 38000,
+                LocalDateTime.of(1927, 5, 7, 0, 0), "SFO", 9900112233L, "info@sfo.com",
+                "Priority security screening available", 4, 4, new BigDecimal("6100000000"), 14.5);
+
+        Airport airport10 = new Airport("Chicago O'Hare International Airport", "Chicago", "America/Chicago", 68000,
+                LocalDateTime.of(1955, 10, 30, 0, 0), "ORD", 6677889900L, "info@ord.com",
+                "Accessible restrooms available", 8, 5, new BigDecimal("9000000000"), 12.8);
+
+        Airport airport11 = new Airport("Dubai International Airport", "Dubai", "Asia/Dubai", 55000,
+                LocalDateTime.of(1960, 9, 30, 0, 0), "DXB", 1122334455L, "info@dxb.com",
+                "Ramps for boarding available", 2, 3, new BigDecimal("7000000000"), 7.2);
+
+        Airport airport12 = new Airport("Singapore Changi Airport", "Singapore", "Asia/Singapore", 42000,
+                LocalDateTime.of(1981, 7, 1, 0, 0), "SIN", 9988776655L, "info@sin.com",
+                "Assistance for travelers with medical conditions", 4, 3, new BigDecimal("6000000000"), 9.5);
+
+        Airport airport13 = new Airport("Paris Charles de Gaulle Airport", "Paris", "Europe/Paris", 62000,
+                LocalDateTime.of(1974, 3, 8, 0, 0), "CDG", 5544332211L, "info@cdg.com",
+                "Emergency evacuation assistance available", 4, 4, new BigDecimal("7500000000"), 11.0);
+
+        Airport airport14 = new Airport("Sydney Kingsford Smith Airport", "Sydney", "Australia/Sydney", 41000,
+                LocalDateTime.of(1933, 1, 19, 0, 0), "SYD", 3344556677L, "info@syd.com",
+                "Assistance for travelers with hearing impairments", 3, 3, new BigDecimal("4800000000"), 8.3);
+
+        Airport airport15 = new Airport("Frankfurt Airport", "Frankfurt", "Europe/Berlin", 69000,
+                LocalDateTime.of(1936, 7, 8, 0, 0), "FRA", 1122334455L, "info@fra.com",
+                "Assistance for travelers with allergies", 4, 5, new BigDecimal("8300000000"), 10.9);
 
         airportRepository.save(airport1);
         airportRepository.save(airport2);
