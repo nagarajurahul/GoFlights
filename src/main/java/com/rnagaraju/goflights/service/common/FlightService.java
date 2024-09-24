@@ -57,6 +57,18 @@ public class FlightService {
         return FlightMapper.toDTOList(flights);
     }
 
+    public List<FlightDTO> getOneWayFlightsBetweenDates(String source, String destination, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        // Define a range around the dateTime to account for the entire day
+        LocalDateTime startOfDay = startDateTime.toLocalDate().atStartOfDay();
+        LocalDateTime endOfDay = endDateTime.toLocalDate().atStartOfDay().plusDays(1).minusNanos(1);
+
+        // Query the database using the date range
+        List<Flight> flights = flightRepository.findBySourceAndDestinationAndDepartureDateTimeBetween(
+                source, destination, startOfDay, endOfDay);
+
+        return FlightMapper.toDTOList(flights);
+    }
+
     public RoundTripFlightsDTO getRoundTripFlights(String source, String destination,
                                                    LocalDateTime departureDateTime,
                                                    LocalDateTime returnDateTime) {

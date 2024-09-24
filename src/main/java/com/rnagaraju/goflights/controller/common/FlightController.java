@@ -72,6 +72,23 @@ public class FlightController {
         return new ResponseEntity<>(flights, HttpStatus.OK);
     }
 
+    @GetMapping("/search/one-way/date-range")
+    public ResponseEntity<List<FlightDTO>> getOneWayFlightsBetweenDates(
+            @RequestParam String source,
+            @RequestParam String destination,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDateTime,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime endDateTime) {
+
+        // Call service to fetch flights based on source, destination, and departureDateTime
+        List<FlightDTO> flights = flightService.getOneWayFlightsBetweenDates(source, destination, startDateTime,endDateTime);
+
+        if(flights.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(flights, HttpStatus.OK);
+    }
+
     @GetMapping("/search/round-trip")
     public ResponseEntity<RoundTripFlightsDTO> getRoundTripFlights(
             @RequestParam String source,
