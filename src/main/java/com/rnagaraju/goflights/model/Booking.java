@@ -14,10 +14,8 @@ public class Booking extends AbstractEntity{
     @Column(name = "BOOKING_TOTAL_PRICE")
     private double totalPrice;
 
-
     @Column(name = "BOOKING_SEAT_NUMBER")
     private String seatNumber;
-
 
     @Column(name = "BOOKING_PAYMENT_STATUS")
     private String paymentStatus;
