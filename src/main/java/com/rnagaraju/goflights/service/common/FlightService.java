@@ -2,9 +2,11 @@ package com.rnagaraju.goflights.service.common;
 
 import com.rnagaraju.goflights.dto.common.FlightDTO;
 import com.rnagaraju.goflights.dto.common.RoundTripFlightsDTO;
+import com.rnagaraju.goflights.exception.FlightAlreadyCancelledException;
 import com.rnagaraju.goflights.exception.ResourceNotFoundException;
 import com.rnagaraju.goflights.mapper.common.FlightMapper;
 import com.rnagaraju.goflights.model.Flight;
+import com.rnagaraju.goflights.model.FlightStatus;
 import com.rnagaraju.goflights.repository.common.FlightRepository;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,5 +108,26 @@ public class FlightService {
             throw new ResourceNotFoundException("Flight not found with name: " + flightName);
         }
         return FlightMapper.toDTO(flight);
+    }
+
+    public boolean cancelFlight(Long id) {
+        Flight flight=flightRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Flight not found with id: " + id));
+        try{
+            if(flight.getFlightStatus()==FlightStatus.CANCELLED){
+                System.out.println("Inside if");
+                // Why throwing 500 error code - please check
+                throw new FlightAlreadyCancelledException("Flight with id " + id + " is already cancelled.");
+            }
+            flight.setFlightStatus(FlightStatus.CANCELLED);
+            flightRepository.save(flight);
+            return true;
+        }catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Data integrity violation occurred.", e);
+        }catch (ConstraintViolationException e) {
+            throw new RuntimeException("Validation error: " + e.getMessage(), e);
+        } catch (Exception e) {
+            throw new RuntimeException("An unexpected error occurred.", e);
+        }
     }
 }

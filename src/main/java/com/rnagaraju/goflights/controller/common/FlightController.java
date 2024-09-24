@@ -97,4 +97,14 @@ public class FlightController {
         }
         return ResponseEntity.ok(flights);
     }
+
+    @PatchMapping("/{id}/cancel")
+    public ResponseEntity<Void> cancelFlight(@PathVariable("id") Long id) {
+        boolean isCancelled = flightService.cancelFlight(id);
+        if (!isCancelled) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().build();
+    }
+
 }
