@@ -227,6 +227,18 @@ public class DatabaseSeeder implements CommandLineRunner {
                 LocalDateTime.of(2025, 5, 25, 22, 0), LocalDateTime.of(2025, 5, 26, 12, 0), 1300.0, 250,
                 FlightStatus.ON_TIME, 110.0, airline4.getId(), airport1.getId(), airport14.getId());
 
+        Flight flight26 = new Flight("AA1026","New York", "Los Angeles",240,FlightType.NON_STOP,
+                LocalDateTime.of(2025,5,2,10,0), LocalDateTime.of(2025,5,2,14,0), 400.0, 200,
+                FlightStatus.ON_TIME,40.0,airline1.getId(),airport2.getId(),airline1.getId());
+
+        Flight flight27 = new Flight("AA1027", "Los Angeles", "New York", 300, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 3, 8, 0), LocalDateTime.of(2025, 5, 3, 12, 0), 300.0, 150,
+                FlightStatus.ON_TIME, 50.0, airline1.getId(), airport1.getId(), airport2.getId());
+
+        Flight flight28 = new Flight("AA1028", "Los Angeles", "New York", 300, FlightType.DIRECT,
+                LocalDateTime.of(2025, 5, 4, 8, 0), LocalDateTime.of(2025, 5, 4, 12, 0), 300.0, 150,
+                FlightStatus.ON_TIME, 50.0, airline1.getId(), airport1.getId(), airport2.getId());
+
         flightRepository.save(flight1);
         flightRepository.save(flight2);
         flightRepository.save(flight3);
@@ -252,6 +264,9 @@ public class DatabaseSeeder implements CommandLineRunner {
         flightRepository.save(flight23);
         flightRepository.save(flight24);
         flightRepository.save(flight25);
+        flightRepository.save(flight26);
+        flightRepository.save(flight27);
+        flightRepository.save(flight28);
 
         Passenger passenger1 = new Passenger(
                 "John", "Doe", 1234567890L, "john.doe@example.com",
