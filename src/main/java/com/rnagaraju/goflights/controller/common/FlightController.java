@@ -124,4 +124,10 @@ public class FlightController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/{id}/seats")
+    public ResponseEntity<Integer> getAvailableSeats(@PathVariable Long id) {
+        int availableSeats = flightService.getAvailableSeats(id);
+        return ResponseEntity.ok(availableSeats);
+    }
+
 }

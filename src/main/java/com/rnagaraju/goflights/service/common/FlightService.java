@@ -142,4 +142,8 @@ public class FlightService {
             throw new RuntimeException("An unexpected error occurred.", e);
         }
     }
+
+    public int getAvailableSeats(Long id) {
+        return 0;
+    }
 }
