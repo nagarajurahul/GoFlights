@@ -7,6 +7,7 @@ import com.rnagaraju.goflights.exception.ResourceNotFoundException;
 import com.rnagaraju.goflights.mapper.common.FlightMapper;
 import com.rnagaraju.goflights.model.Flight;
 import com.rnagaraju.goflights.model.FlightStatus;
+import com.rnagaraju.goflights.model.FlightType;
 import com.rnagaraju.goflights.repository.common.FlightRepository;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -151,5 +152,67 @@ public class FlightService {
             throw new ResourceNotFoundException("Flight not found with id: " + id);
         }
         return availableSeats;
+    }
+
+    public FlightDTO updateFlight(Long id, FlightDTO flightDTO) {
+        Flight flight=flightRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Flight not found with id: " + id));
+
+        if(flightDTO.getFlightName()!=null){
+            flight.setFlightName(flightDTO.getFlightName());
+        }
+        if (flightDTO.getSource()!=null){
+            flight.setSource(flightDTO.getSource());
+        }
+        if(flightDTO.getDestination()!=null){
+            flight.setDestination(flightDTO.getDestination());
+        }
+        if(flightDTO.getDuration()!=null){
+            flight.setDuration(flightDTO.getDuration());
+        }
+        if(flightDTO.getFlightType()!=null){
+            flight.setFlightType(FlightType.fromString(flightDTO.getFlightType()));
+        }
+        if(flightDTO.getDepartureDateTime()!=null){
+            flight.setDepartureDateTime(flightDTO.getDepartureDateTime());
+        }
+        if(flightDTO.getArrivalDateTime()!=null){
+            flight.setArrivalDateTime(flightDTO.getArrivalDateTime());
+        }
+        if(flightDTO.getPrice()!=null){
+            flight.setPrice(flightDTO.getPrice());
+        }
+        if(flightDTO.getCapacity()!=null){
+            flight.setCapacity(flightDTO.getCapacity());
+        }
+        if(flightDTO.getAvailableSeats()!=null){
+            flight.setAvailableSeats(flightDTO.getAvailableSeats());
+        }
+        if(flightDTO.getFlightStatus()!=null){
+            flight.setFlightStatus(FlightStatus.fromString(flightDTO.getFlightStatus()));
+        }
+        if(flightDTO.getCarbonEmissions()!=null){
+            flight.setCarbonEmissions(flightDTO.getCarbonEmissions());
+        }
+        if (flightDTO.getAirlineId()!=null){
+            flight.setAirlineId(flightDTO.getAirlineId());
+        }
+        if(flightDTO.getDepartureAirportId()!=null){
+            flight.setDepartureAirportId(flightDTO.getDepartureAirportId());
+        }
+        if(flightDTO.getArrivalAirportId()!=null){
+            flight.setArrivalAirportId(flightDTO.getArrivalAirportId());
+        }
+
+        try{
+            flightRepository.save(flight);
+            return FlightMapper.toDTO(flight);
+        } catch (DataIntegrityViolationException e) {
+            throw new DataIntegrityViolationException("Data integrity violation occurred.", e);
+        } catch (ConstraintViolationException e) {
+            throw new RuntimeException("Validation error: " + e.getMessage(), e);
+        }catch (Exception e) {
+            throw new RuntimeException("An unexpected error occurred.", e);
+        }
     }
 }

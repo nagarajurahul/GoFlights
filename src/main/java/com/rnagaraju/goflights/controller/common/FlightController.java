@@ -19,7 +19,6 @@ public class FlightController {
     @Autowired
     private FlightService flightService;
 
-
     @GetMapping("/flightName")
     public ResponseEntity<FlightDTO> getFlightByFlightName(@RequestParam String flightName) {
         FlightDTO flight=flightService.getFlightByFlightName(flightName);
@@ -54,6 +53,15 @@ public class FlightController {
     public ResponseEntity<Void> deleteFlightById(@PathVariable("id") Long id){
         flightService.deleteFlightById(id);
         return ResponseEntity.noContent().build(); // Response code 204
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<FlightDTO> updateFlight(@PathVariable("id") Long id, @RequestBody FlightDTO flightDTO){
+        FlightDTO updatedFlight=flightService.updateFlight(id,flightDTO);
+        if(updatedFlight==null){
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(updatedFlight);
     }
 
     @GetMapping("/search/one-way")
