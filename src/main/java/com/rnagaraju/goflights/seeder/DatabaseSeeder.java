@@ -126,117 +126,117 @@ public class DatabaseSeeder implements CommandLineRunner {
 
         // Creating Flight objects
         Flight flight1 = new Flight("AA1001", "Los Angeles", "New York", 300, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 1, 8, 0), LocalDateTime.of(2025, 5, 1, 12, 0), 300.0, 150,
+                LocalDateTime.of(2025, 5, 1, 8, 0), LocalDateTime.of(2025, 5, 1, 12, 0), 300.0, 150,150,
                 FlightStatus.ON_TIME, 50.0, airline1.getId(), airport1.getId(), airport2.getId());
 
         Flight flight2 = new Flight("AA1002", "Atlanta", "San Francisco", 330, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 2, 9, 0), LocalDateTime.of(2025, 5, 2, 14, 0), 350.0, 160,
+                LocalDateTime.of(2025, 5, 2, 9, 0), LocalDateTime.of(2025, 5, 2, 14, 0), 350.0, 160,160,
                 FlightStatus.ON_TIME, 55.0, airline2.getId(), airport2.getId(), airport9.getId());
 
         Flight flight3 = new Flight("AA1003", "Dubai", "Los Angeles", 960, FlightType.NON_STOP,
-                LocalDateTime.of(2025, 5, 3, 1, 0), LocalDateTime.of(2025, 5, 3, 17, 0), 1200.0, 220,
+                LocalDateTime.of(2025, 5, 3, 1, 0), LocalDateTime.of(2025, 5, 3, 17, 0), 1200.0, 220,220,
                 FlightStatus.DELAYED, 85.0, airline3.getId(), airport11.getId(), airport1.getId());
 
         Flight flight4 = new Flight("AA1004", "Toronto", "Chicago", 120, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 4, 13, 30), LocalDateTime.of(2025, 5, 4, 15, 30), 200.0, 140,
+                LocalDateTime.of(2025, 5, 4, 13, 30), LocalDateTime.of(2025, 5, 4, 15, 30), 200.0, 140,140,
                 FlightStatus.ON_TIME, 40.0, airline4.getId(), airport6.getId(), airport10.getId());
 
         Flight flight5 = new Flight("AA1005", "Heathrow", "Delhi", 600, FlightType.NON_STOP,
-                LocalDateTime.of(2025, 5, 5, 10, 0), LocalDateTime.of(2025, 5, 5, 20, 0), 900.0, 180,
+                LocalDateTime.of(2025, 5, 5, 10, 0), LocalDateTime.of(2025, 5, 5, 20, 0), 900.0, 180,180,
                 FlightStatus.CANCELLED, 65.0, airline5.getId(), airport7.getId(), airport3.getId());
 
         Flight flight6 = new Flight("AA1006", "Atlanta", "Denver", 180, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 6, 12, 30), LocalDateTime.of(2025, 5, 6, 15, 30), 280.0, 130,
+                LocalDateTime.of(2025, 5, 6, 12, 30), LocalDateTime.of(2025, 5, 6, 15, 30), 280.0, 130, 130,
                 FlightStatus.ON_TIME, 48.0, airline6.getId(), airport2.getId(), airport8.getId());
 
         Flight flight7 = new Flight("AA1007", "Tokyo", "San Francisco", 600, FlightType.NON_STOP,
-                LocalDateTime.of(2025, 5, 7, 6, 0), LocalDateTime.of(2025, 5, 7, 14, 0), 750.0, 200,
+                LocalDateTime.of(2025, 5, 7, 6, 0), LocalDateTime.of(2025, 5, 7, 14, 0), 750.0, 200, 200,
                 FlightStatus.ON_TIME, 60.0, airline7.getId(), airport5.getId(), airport9.getId());
 
         Flight flight8 = new Flight("AA1008", "Frankfurt", "Abu Dhabi", 420, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 8, 22, 30), LocalDateTime.of(2025, 5, 9, 4, 30), 550.0, 160,
+                LocalDateTime.of(2025, 5, 8, 22, 30), LocalDateTime.of(2025, 5, 9, 4, 30), 550.0, 160, 160,
                 FlightStatus.DELAYED, 70.0, airline1.getId(), airport15.getId(), airport4.getId());
 
         Flight flight9 = new Flight("AA1009", "Sydney", "Tokyo", 540, FlightType.NON_STOP,
-                LocalDateTime.of(2025, 5, 9, 9, 30), LocalDateTime.of(2025, 5, 9, 18, 0), 680.0, 190,
+                LocalDateTime.of(2025, 5, 9, 9, 30), LocalDateTime.of(2025, 5, 9, 18, 0), 680.0, 190, 190,
                 FlightStatus.ON_TIME, 55.0, airline2.getId(), airport14.getId(), airport5.getId());
 
         Flight flight10 = new Flight("AA1010", "Chicago", "Singapore", 900, FlightType.NON_STOP,
-                LocalDateTime.of(2025, 5, 10, 11, 0), LocalDateTime.of(2025, 5, 11, 2, 0), 1100.0, 230,
+                LocalDateTime.of(2025, 5, 10, 11, 0), LocalDateTime.of(2025, 5, 11, 2, 0), 1100.0, 230, 230,
                 FlightStatus.ON_TIME, 90.0, airline3.getId(), airport10.getId(), airport12.getId());
 
         // Creating Flight objects from 11 to 20
         Flight flight11 = new Flight("AA1011", "New York", "London", 420, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 11, 18, 0), LocalDateTime.of(2025, 5, 12, 0, 0), 700.0, 180,
+                LocalDateTime.of(2025, 5, 11, 18, 0), LocalDateTime.of(2025, 5, 12, 0, 0), 700.0, 180, 180,
                 FlightStatus.ON_TIME, 80.0, airline4.getId(), airport2.getId(), airport7.getId());
 
         Flight flight12 = new Flight("AA1012", "Los Angeles", "Tokyo", 720, FlightType.NON_STOP,
-                LocalDateTime.of(2025, 5, 12, 12, 30), LocalDateTime.of(2025, 5, 13, 6, 30), 850.0, 200,
+                LocalDateTime.of(2025, 5, 12, 12, 30), LocalDateTime.of(2025, 5, 13, 6, 30), 850.0, 200, 200,
                 FlightStatus.ON_TIME, 90.0, airline5.getId(), airport1.getId(), airport5.getId());
 
         Flight flight13 = new Flight("AA1013", "Dubai", "Toronto", 840, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 13, 5, 0), LocalDateTime.of(2025, 5, 13, 19, 0), 1100.0, 210,
+                LocalDateTime.of(2025, 5, 13, 5, 0), LocalDateTime.of(2025, 5, 13, 19, 0), 1100.0, 210, 210,
                 FlightStatus.DELAYED, 85.0, airline6.getId(), airport11.getId(), airport6.getId());
 
         Flight flight14 = new Flight("AA1014", "Chicago", "New Delhi", 780, FlightType.NON_STOP,
-                LocalDateTime.of(2025, 5, 14, 9, 0), LocalDateTime.of(2025, 5, 15, 10, 0), 1200.0, 220,
+                LocalDateTime.of(2025, 5, 14, 9, 0), LocalDateTime.of(2025, 5, 15, 10, 0), 1200.0, 220, 220,
                 FlightStatus.ON_TIME, 95.0, airline7.getId(), airport10.getId(), airport3.getId());
 
         Flight flight15 = new Flight("AA1015", "Sydney", "San Francisco", 660, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 15, 7, 30), LocalDateTime.of(2025, 5, 15, 18, 30), 880.0, 190,
+                LocalDateTime.of(2025, 5, 15, 7, 30), LocalDateTime.of(2025, 5, 15, 18, 30), 880.0, 190, 190,
                 FlightStatus.ON_TIME, 75.0, airline1.getId(), airport14.getId(), airport9.getId());
 
         Flight flight16 = new Flight("AA1016", "Atlanta", "Dubai", 960, FlightType.NON_STOP,
-                LocalDateTime.of(2025, 5, 16, 14, 0), LocalDateTime.of(2025, 5, 17, 6, 0), 1400.0, 250,
+                LocalDateTime.of(2025, 5, 16, 14, 0), LocalDateTime.of(2025, 5, 17, 6, 0), 1400.0, 250,  250,
                 FlightStatus.DELAYED, 100.0, airline2.getId(), airport2.getId(), airport11.getId());
 
         Flight flight17 = new Flight("AA1017", "Frankfurt", "Chicago", 540, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 17, 16, 0), LocalDateTime.of(2025, 5, 17, 23, 0), 750.0, 180,
+                LocalDateTime.of(2025, 5, 17, 16, 0), LocalDateTime.of(2025, 5, 17, 23, 0), 750.0, 180, 180,
                 FlightStatus.ON_TIME, 80.0, airline3.getId(), airport15.getId(), airport10.getId());
 
         Flight flight18 = new Flight("AA1018", "Tokyo", "Frankfurt", 660, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 18, 10, 0), LocalDateTime.of(2025, 5, 18, 21, 0), 900.0, 200,
+                LocalDateTime.of(2025, 5, 18, 10, 0), LocalDateTime.of(2025, 5, 18, 21, 0), 900.0, 200, 200,
                 FlightStatus.CANCELLED, 95.0, airline4.getId(), airport5.getId(), airport15.getId());
 
         Flight flight19 = new Flight("AA1019", "Abu Dhabi", "Heathrow", 480, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 19, 3, 30), LocalDateTime.of(2025, 5, 19, 11, 30), 600.0, 170,
+                LocalDateTime.of(2025, 5, 19, 3, 30), LocalDateTime.of(2025, 5, 19, 11, 30), 600.0, 170, 170,
                 FlightStatus.ON_TIME, 70.0, airline5.getId(), airport4.getId(), airport7.getId());
 
         Flight flight20 = new Flight("AA1020", "Los Angeles", "Chicago", 240, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 20, 7, 0), LocalDateTime.of(2025, 5, 20, 11, 0), 400.0, 150,
+                LocalDateTime.of(2025, 5, 20, 7, 0), LocalDateTime.of(2025, 5, 20, 11, 0), 400.0, 150, 150,
                 FlightStatus.ON_TIME, 65.0, airline6.getId(), airport1.getId(), airport10.getId());
 
         // Creating Flight objects from 21 to 25
         Flight flight21 = new Flight("AA1021", "San Francisco", "London", 660, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 21, 15, 0), LocalDateTime.of(2025, 5, 22, 3, 0), 900.0, 200,
+                LocalDateTime.of(2025, 5, 21, 15, 0), LocalDateTime.of(2025, 5, 22, 3, 0), 900.0, 200, 200,
                 FlightStatus.ON_TIME, 85.0, airline7.getId(), airport9.getId(), airport7.getId());
 
         Flight flight22 = new Flight("AA1022", "New York", "Dubai", 720, FlightType.NON_STOP,
-                LocalDateTime.of(2025, 5, 22, 9, 0), LocalDateTime.of(2025, 5, 23, 6, 0), 950.0, 210,
+                LocalDateTime.of(2025, 5, 22, 9, 0), LocalDateTime.of(2025, 5, 23, 6, 0), 950.0, 210, 210,
                 FlightStatus.DELAYED, 100.0, airline1.getId(), airport2.getId(), airport11.getId());
 
         Flight flight23 = new Flight("AA1023", "Chicago", "Tokyo", 840, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 23, 10, 0), LocalDateTime.of(2025, 5, 24, 6, 0), 1050.0, 230,
+                LocalDateTime.of(2025, 5, 23, 10, 0), LocalDateTime.of(2025, 5, 24, 6, 0), 1050.0, 230, 230,
                 FlightStatus.ON_TIME, 90.0, airline2.getId(), airport10.getId(), airport5.getId());
 
         Flight flight24 = new Flight("AA1024", "Toronto", "Paris", 420, FlightType.NON_STOP,
-                LocalDateTime.of(2025, 5, 24, 16, 30), LocalDateTime.of(2025, 5, 25, 0, 30), 700.0, 180,
+                LocalDateTime.of(2025, 5, 24, 16, 30), LocalDateTime.of(2025, 5, 25, 0, 30), 700.0, 180, 180,
                 FlightStatus.CANCELLED, 70.0, airline3.getId(), airport6.getId(), airport8.getId());
 
         Flight flight25 = new Flight("AA1025", "Los Angeles", "Sydney", 960, FlightType.NON_STOP,
-                LocalDateTime.of(2025, 5, 25, 22, 0), LocalDateTime.of(2025, 5, 26, 12, 0), 1300.0, 250,
+                LocalDateTime.of(2025, 5, 25, 22, 0), LocalDateTime.of(2025, 5, 26, 12, 0), 1300.0, 250, 250,
                 FlightStatus.ON_TIME, 110.0, airline4.getId(), airport1.getId(), airport14.getId());
 
         Flight flight26 = new Flight("AA1026","New York", "Los Angeles",240,FlightType.NON_STOP,
-                LocalDateTime.of(2025,5,2,10,0), LocalDateTime.of(2025,5,2,14,0), 400.0, 200,
+                LocalDateTime.of(2025,5,2,10,0), LocalDateTime.of(2025,5,2,14,0), 400.0, 200, 200,
                 FlightStatus.ON_TIME,40.0,airline1.getId(),airport2.getId(),airline1.getId());
 
         Flight flight27 = new Flight("AA1027", "Los Angeles", "New York", 300, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 3, 8, 0), LocalDateTime.of(2025, 5, 3, 12, 0), 300.0, 150,
+                LocalDateTime.of(2025, 5, 3, 8, 0), LocalDateTime.of(2025, 5, 3, 12, 0), 300.0, 150, 150,
                 FlightStatus.ON_TIME, 50.0, airline1.getId(), airport1.getId(), airport2.getId());
 
         Flight flight28 = new Flight("AA1028", "Los Angeles", "New York", 300, FlightType.DIRECT,
-                LocalDateTime.of(2025, 5, 4, 8, 0), LocalDateTime.of(2025, 5, 4, 12, 0), 300.0, 150,
+                LocalDateTime.of(2025, 5, 4, 8, 0), LocalDateTime.of(2025, 5, 4, 12, 0), 300.0, 150, 150,
                 FlightStatus.ON_TIME, 50.0, airline1.getId(), airport1.getId(), airport2.getId());
 
         flightRepository.save(flight1);

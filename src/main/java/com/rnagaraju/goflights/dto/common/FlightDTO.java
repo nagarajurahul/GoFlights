@@ -13,6 +13,7 @@ public class FlightDTO{
     private LocalDateTime arrivalDateTime;
     private Double price;
     private Integer capacity;
+    private Integer availableSeats;
     private String flightStatus;
     private Double carbonEmissions;
     private Long airlineId;
@@ -37,7 +38,7 @@ public class FlightDTO{
         this.capacity = capacity;
     }
 
-    public FlightDTO(Long id, String flightName, String source, String destination, Integer duration, String flightType, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity, String flightStatus, Double carbonEmissions, Long airlineId, Long departureAirportId, Long arrivalAirportId) {
+    public FlightDTO(Long id, String flightName, String source, String destination, Integer duration, String flightType, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity, Integer availableSeats, String flightStatus, Double carbonEmissions, Long airlineId, Long departureAirportId, Long arrivalAirportId) {
         this.id=id;
         this.flightName = flightName;
         this.source = source;
@@ -48,6 +49,7 @@ public class FlightDTO{
         this.arrivalDateTime = arrivalDateTime;
         this.price = price;
         this.capacity = capacity;
+        this.availableSeats = availableSeats;
         this.flightStatus = flightStatus;
         this.carbonEmissions = carbonEmissions;
         this.airlineId = airlineId;
@@ -133,6 +135,14 @@ public class FlightDTO{
 
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;
+    }
+
+    public Integer getAvailableSeats() {
+        return availableSeats;
+    }
+
+    public void setAvailableSeats(Integer availableSeats) {
+        this.availableSeats = availableSeats;
     }
 
     public String getFlightStatus() {

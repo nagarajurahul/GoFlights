@@ -48,6 +48,9 @@ public class Flight extends AbstractEntity {
     @Column(name="FLIGHT_CAPACITY")
     private Integer capacity;
 
+    @Column(name="FLIGHT_AVAILABLE_SEATS")
+    private Integer availableSeats;
+
     @Enumerated(EnumType.STRING)
     @Column(name="FLIGHT_STATUS")
     private FlightStatus flightStatus;
@@ -87,7 +90,7 @@ public class Flight extends AbstractEntity {
         this.capacity=capacity;
     }
 
-    public Flight(String flightName, String source, String destination, Integer duration, FlightType flightType, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity, FlightStatus flightStatus, Double carbonEmissions, Long airlineId, Long departureAirportId, Long arrivalAirportId) {
+    public Flight(String flightName, String source, String destination, Integer duration, FlightType flightType, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, Double price, Integer capacity, Integer availableSeats, FlightStatus flightStatus, Double carbonEmissions, Long airlineId, Long departureAirportId, Long arrivalAirportId) {
         this.flightName = flightName;
         this.source = source;
         this.destination = destination;
@@ -97,6 +100,7 @@ public class Flight extends AbstractEntity {
         this.arrivalDateTime = arrivalDateTime;
         this.price = price;
         this.capacity = capacity;
+        this.availableSeats = availableSeats;
         this.flightStatus = flightStatus;
         this.carbonEmissions = carbonEmissions;
         this.airlineId = airlineId;
@@ -176,6 +180,14 @@ public class Flight extends AbstractEntity {
         this.capacity = capacity;
     }
 
+    public Integer getAvailableSeats() {
+        return availableSeats;
+    }
+
+    public void setAvailableSeats(Integer availableSeats) {
+        this.availableSeats = availableSeats;
+    }
+
     public Long getAirlineId() {
         return airlineId;
     }
@@ -229,6 +241,7 @@ public class Flight extends AbstractEntity {
                 ", arrivalDateTime=" + arrivalDateTime +
                 ", price=" + price +
                 ", capacity=" + capacity +
+                ", availableSeats=" + availableSeats +
                 ", airlineId=" + airlineId +
                 ", departureAirportId=" + departureAirportId +
                 ", arrivalAirportId=" + arrivalAirportId +
