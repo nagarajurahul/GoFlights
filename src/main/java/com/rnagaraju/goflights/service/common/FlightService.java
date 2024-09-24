@@ -144,6 +144,12 @@ public class FlightService {
     }
 
     public int getAvailableSeats(Long id) {
-        return 0;
+        // Custom-query
+        Integer availableSeats= flightRepository.findAvailableSeatsById(id);
+
+        if(availableSeats==null){
+            throw new ResourceNotFoundException("Flight not found with id: " + id);
+        }
+        return availableSeats;
     }
 }
