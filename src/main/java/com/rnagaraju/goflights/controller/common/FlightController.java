@@ -19,6 +19,13 @@ public class FlightController {
     @Autowired
     private FlightService flightService;
 
+
+    @GetMapping("/flightName")
+    public ResponseEntity<FlightDTO> getFlightByFlightName(@RequestParam String flightName) {
+        FlightDTO flight=flightService.getFlightByFlightName(flightName);
+        return ResponseEntity.ok(flight);
+    }
+
     @GetMapping("/")
     public ResponseEntity<List<FlightDTO>> getAllFlights(){
         List<FlightDTO> flightDTOS= flightService.getAllFlights();

@@ -98,4 +98,13 @@ public class FlightService {
         List<Flight> flights = flightRepository.findByAirlineId(id);
         return FlightMapper.toDTOList(flights);
     }
+
+    public FlightDTO getFlightByFlightName(String flightName) {
+        // Why or-rlse-throw not coming
+        Flight flight=flightRepository.findByFlightName(flightName);
+        if(flight==null){
+            throw new ResourceNotFoundException("Flight not found with name: " + flightName);
+        }
+        return FlightMapper.toDTO(flight);
+    }
 }
