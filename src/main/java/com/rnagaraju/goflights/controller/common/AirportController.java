@@ -45,4 +45,10 @@ public class AirportController {
         airportService.deleteAirportById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/airportCode/{airportCode}")
+    public ResponseEntity<AirportDTO> getAirportByAirportCode(@PathVariable("airportCode") String airportCode) {
+        AirportDTO airport = airportService.getAirportByAirportCode(airportCode);
+        return ResponseEntity.ok(airport);
+    }
 }

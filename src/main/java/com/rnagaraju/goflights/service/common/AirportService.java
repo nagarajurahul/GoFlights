@@ -54,4 +54,12 @@ public class AirportService {
             throw new RuntimeException("An unexpected error occurred.", e);
         }
     }
+
+    public AirportDTO getAirportByAirportCode(String airportCode) {
+        Airport airport = airportRepository.findByAirportCode(airportCode);
+        if(airport == null) {
+            throw new ResourceNotFoundException("Airport not found with code:"+airportCode);
+        }
+        return AirportMapper.toDTO(airport);
+    }
 }
