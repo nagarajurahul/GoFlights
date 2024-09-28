@@ -51,4 +51,21 @@ public class AirportController {
         AirportDTO airport = airportService.getAirportByAirportCode(airportCode);
         return ResponseEntity.ok(airport);
     }
+
+    @GetMapping("/searchAirports")
+    public ResponseEntity<List<AirportDTO>> searchAirports(
+            @RequestParam(required = false) String location,
+            @RequestParam(required = false) Integer minRunways,
+            @RequestParam(required = false) Integer maxRunways,
+            @RequestParam(required = false) Integer minTerminals,
+            @RequestParam(required = false) Integer maxTerminals) {
+
+        List<AirportDTO> airports = airportService.searchAirports(location, minRunways, maxRunways, minTerminals, maxTerminals);
+
+        if (airports.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(airports);
+    }
+
 }
