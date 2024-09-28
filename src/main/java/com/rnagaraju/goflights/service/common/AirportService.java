@@ -66,11 +66,19 @@ public class AirportService {
         return AirportMapper.toDTO(airport);
     }
 
-    public List<AirportDTO> searchAirports(String location, Integer minRunways, Integer maxRunways, Integer minTerminals, Integer maxTerminals) {
+    public List<AirportDTO> searchAirports(String airportName, String location, String airportCode, Integer minRunways, Integer maxRunways, Integer minTerminals, Integer maxTerminals) {
         Specification<Airport> spec = Specification.where(null); // Initial specification (starts with no condition)
+
+        if(airportName != null) {
+            spec=spec.and(AirportSpecifications.hasAirportName(airportName));
+        }
 
         if (location != null) {
             spec = spec.and(AirportSpecifications.hasLocation(location));
+        }
+
+        if (airportCode != null) {
+            spec=spec.and(AirportSpecifications.hasAirportCode(airportCode));
         }
 
         if (minRunways != null) {

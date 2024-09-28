@@ -5,10 +5,20 @@ import org.springframework.data.jpa.domain.Specification;
 
 public class AirportSpecifications {
 
+    public static Specification<Airport> hasAirportName(String airportName) {
+        return (root,query, criteriaBuilder) ->
+                criteriaBuilder.equal(root.get("airportName"), airportName);
+    }
+
     // Specification for filtering by location
     public static Specification<Airport> hasLocation(String location) {
         return (root, query, criteriaBuilder) ->
                 criteriaBuilder.equal(root.get("location"), location);
+    }
+
+    public static Specification<Airport> hasAirportCode(String airportCode){
+        return (root, query, criteriaBuilder)->
+                criteriaBuilder.equal(root.get("airportCode"), airportCode);
     }
 
     // Specification for filtering by minimum runways (mapped to runwayCount)

@@ -60,13 +60,15 @@ public class AirportController {
 
     @GetMapping("/searchAirports")
     public ResponseEntity<List<AirportDTO>> searchAirports(
+            @RequestParam(required = false) String airportName,
             @RequestParam(required = false) String location,
+            @RequestParam(required = false) String airportCode,
             @RequestParam(required = false) Integer minRunways,
             @RequestParam(required = false) Integer maxRunways,
             @RequestParam(required = false) Integer minTerminals,
             @RequestParam(required = false) Integer maxTerminals) {
 
-        List<AirportDTO> airports = airportService.searchAirports(location, minRunways, maxRunways, minTerminals, maxTerminals);
+        List<AirportDTO> airports = airportService.searchAirports(airportName, location, airportCode, minRunways, maxRunways, minTerminals, maxTerminals);
 
         if (airports.isEmpty()) {
             return ResponseEntity.noContent().build();
