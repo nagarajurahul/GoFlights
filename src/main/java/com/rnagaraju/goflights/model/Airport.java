@@ -23,6 +23,7 @@ public class Airport extends AbstractEntity {
     private String timeZone;
 
     @NotNull
+    @Min(500)
     @Column(name="AIRPORT_TOTAL_EMPLOYEES")
     private Integer totalEmployees;
 
@@ -31,14 +32,15 @@ public class Airport extends AbstractEntity {
     private LocalDateTime establishmentDate;
 
     @NotBlank
-    @Column(name="AIRPORT_CODE")
+    @Column(name="AIRPORT_CODE",nullable=false,unique=true)
     private String airportCode;
 
     @NotNull
     @Column(name="AIRPORT_CONTACT")
     private Long contact;
 
-    @Column(name="AIRPORT_EMAIL")
+    @NotBlank
+    @Column(name="AIRPORT_EMAIL",nullable=false,unique=true)
     private String email;
 
     @Column(name="AIRPORT_ACCESSBILITY_FEATURES")

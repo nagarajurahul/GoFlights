@@ -52,6 +52,12 @@ public class AirportController {
         return ResponseEntity.ok(airport);
     }
 
+    @GetMapping("/airportName/{airportName}")
+    public ResponseEntity<AirportDTO> getAirportByAirportName(@PathVariable("airportName") String airportName) {
+        AirportDTO airport=airportService.getAirportByAirportName(airportName);
+        return ResponseEntity.ok(airport);
+    }
+
     @GetMapping("/searchAirports")
     public ResponseEntity<List<AirportDTO>> searchAirports(
             @RequestParam(required = false) String location,

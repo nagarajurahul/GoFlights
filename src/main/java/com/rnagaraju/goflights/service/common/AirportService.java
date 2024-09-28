@@ -93,4 +93,12 @@ public class AirportService {
         return AirportMapper.toDTOList(airports);
 
     }
+
+    public AirportDTO getAirportByAirportName(String airportName) {
+        Airport airport = airportRepository.findByAirportName(airportName);
+        if(airport == null) {
+            throw new ResourceNotFoundException("Airport not found with name:"+airportName);
+        }
+        return AirportMapper.toDTO(airport);
+    }
 }
