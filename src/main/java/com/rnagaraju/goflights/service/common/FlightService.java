@@ -13,9 +13,14 @@ import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import  com.rnagaraju.goflights.specification.FlightSpecification;
 
+
+import org.springframework.data.jpa.domain.Specification;
 import java.time.LocalDateTime;
 import java.util.List;
+
+
 
 @Service
 public class FlightService {
@@ -132,6 +137,50 @@ public class FlightService {
 
         List<Flight> flights = flightRepository.findBySourceAndDestinationAndDepartureDateTimeBetweenAndPriceBetween(
                 source, destination, startOfDay, endOfDay, minPrice, maxPrice);
+
+        return FlightMapper.toDTOList(flights);
+    }
+
+    public List<FlightDTO> advancedSearch(
+            String source, String destination, LocalDateTime departureStart,Double minPrice, Double maxPrice,
+            Integer maxDuration, Boolean nonStop, Double maxEmissions) {
+
+
+        Specification<Flight> spec = Specification.where(null);
+
+        if (source != null && !source.isEmpty()) {
+            spec = spec.and(FlightSpecification.hasSource(source));
+        }
+
+        if (departureStart != null ){
+            LocalDateTime startOfDay = departureStart.toLocalDate().atStartOfDay();
+//            LocalDateTime endOfDay = departureEnd.toLocalDate().atStartOfDay().plusDays(1).minusNanos(1);
+
+            spec = spec.and(FlightSpecification.hasDepartureDateAndTime(startOfDay));
+
+        }
+
+        if (destination != null && !destination.isEmpty()) {
+            spec = spec.and(FlightSpecification.hasDestination(destination));
+        }
+
+        if (minPrice != null && maxPrice != null) {
+            spec = spec.and(FlightSpecification.hasPriceBetween(minPrice, maxPrice));
+        }
+
+        if (maxDuration != null) {
+            spec = spec.and(FlightSpecification.hasDurationLessThan(maxDuration));
+        }
+
+        if (nonStop != null && nonStop) {
+            spec = spec.and(FlightSpecification.isNonStop());
+        }
+
+        if (maxEmissions != null) {
+            spec = spec.and(FlightSpecification.hasCarbonEmissionsLessThan(maxEmissions));
+        }
+
+       List<Flight> flights =  flightRepository.findAll(spec);
 
         return FlightMapper.toDTOList(flights);
     }
