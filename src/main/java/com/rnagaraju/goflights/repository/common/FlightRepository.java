@@ -1,9 +1,11 @@
 package com.rnagaraju.goflights.repository.common;
 
 import com.rnagaraju.goflights.model.Flight;
+import com.rnagaraju.goflights.model.FlightStatus;
 import jakarta.data.repository.Param;
 import jakarta.data.repository.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,4 +23,7 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
 
     @Query("SELECT f.availableSeats FROM Flight f WHERE f.id=:flightId")
     Integer findAvailableSeatsById(@Param("flightId") Long flightId);
+
+//    @Query("UPDATE Flight f SET f.flightStatus=:flightStatus WHERE f.id=:id")
+//    void updateFlightStatus(@Param("id") Long id, @Param("flightStatus") FlightStatus flightStatus);
 }

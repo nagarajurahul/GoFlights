@@ -9,6 +9,7 @@ import com.rnagaraju.goflights.model.Flight;
 import com.rnagaraju.goflights.model.FlightStatus;
 import com.rnagaraju.goflights.model.FlightType;
 import com.rnagaraju.goflights.repository.common.FlightRepository;
+import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -215,4 +216,21 @@ public class FlightService {
             throw new RuntimeException("An unexpected error occurred.", e);
         }
     }
+
+//    public boolean updateFlightStatus(Long id, String flightStatusString) {
+//        if(flightStatusString==null || flightStatusString.isEmpty() ){
+//            throw new IllegalArgumentException("Flight status cannot be null.");
+//        }
+//        try{
+//            FlightStatus flightStatus=FlightStatus.fromString(flightStatusString);
+//            flightRepository.updateFlightStatus(id,flightStatus);
+//            return true;
+//        } catch (DataIntegrityViolationException e) {
+//            throw new DataIntegrityViolationException("Data integrity violation occurred.", e);
+//        } catch (ConstraintViolationException e) {
+//            throw new RuntimeException("Validation error: " + e.getMessage(), e);
+//        } catch (Exception e) {
+//            throw new RuntimeException("An unexpected error occurred.", e);
+//        }
+//    }
 }
