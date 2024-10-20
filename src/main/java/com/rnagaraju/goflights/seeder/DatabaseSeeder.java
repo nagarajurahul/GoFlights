@@ -24,6 +24,7 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Autowired
     private PassengerRepository passengerRepository;
+
     @Autowired
     private BookingRepository bookingRepository;
 

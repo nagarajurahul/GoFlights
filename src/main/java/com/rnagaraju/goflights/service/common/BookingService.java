@@ -9,6 +9,7 @@ import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.resource.ResourceUrlProvider;
 
 import java.util.List;
 
@@ -17,6 +18,8 @@ public class BookingService {
 
     @Autowired
     private BookingRepository bookingRepository;
+    @Autowired
+    private ResourceUrlProvider mvcResourceUrlProvider;
 
     public BookingDTO getBookingById(Long id) {
 
