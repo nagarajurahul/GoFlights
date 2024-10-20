@@ -19,7 +19,17 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
             String destination,
             LocalDateTime startDateTime,
             LocalDateTime endDateTime);
+
+    List<Flight> findBySourceAndDestinationAndDepartureDateTimeBetweenAndPriceBetween(
+            String source,
+            String destination,
+            LocalDateTime startDateTime,
+            LocalDateTime endDateTime,
+            Double minPrice,
+            Double maxPrice
+    );
     Flight findByFlightName(String flightName);
+
 
     @Query("SELECT f.availableSeats FROM Flight f WHERE f.id=:flightId")
     Integer findAvailableSeatsById(@Param("flightId") Long flightId);
