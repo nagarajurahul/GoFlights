@@ -137,5 +137,23 @@ public class FlightController {
         int availableSeats = flightService.getAvailableSeats(id);
         return ResponseEntity.ok(availableSeats);
     }
+    @GetMapping("/search/price")
+    public ResponseEntity<List<FlightDTO>> getFlightByPrice(
+            @RequestParam String source,
+            @RequestParam String destination,
+            @RequestParam LocalDateTime departureStart,
+            @RequestParam LocalDateTime departureEnd,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam Double maxPrice
+            ) {
+
+
+
+        List<FlightDTO> flights = flightService.getFlightByPrice(
+                source, destination, departureStart, departureEnd, minPrice, maxPrice);
+
+        return new ResponseEntity<>(flights, HttpStatus.OK);
+    }
+
 
 }

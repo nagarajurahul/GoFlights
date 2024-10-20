@@ -123,6 +123,19 @@ public class FlightService {
         return FlightMapper.toDTO(flight);
     }
 
+    public List<FlightDTO> getFlightByPrice(String source, String destination,
+                                         LocalDateTime departureStart, LocalDateTime departureEnd,
+                                         Double minPrice, Double maxPrice) {
+
+        LocalDateTime startOfDay = departureStart.toLocalDate().atStartOfDay();
+        LocalDateTime endOfDay = departureEnd.toLocalDate().atStartOfDay().plusDays(1).minusNanos(1);
+
+        List<Flight> flights = flightRepository.findBySourceAndDestinationAndDepartureDateTimeBetweenAndPriceBetween(
+                source, destination, startOfDay, endOfDay, minPrice, maxPrice);
+
+        return FlightMapper.toDTOList(flights);
+    }
+
     public boolean cancelFlight(Long id) {
         Flight flight=flightRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Flight not found with id: " + id));
