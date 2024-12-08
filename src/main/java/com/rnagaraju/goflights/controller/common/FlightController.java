@@ -156,4 +156,19 @@ public class FlightController {
     }
 
 
+    @GetMapping("/search/advSearch")
+    public List<FlightDTO> searchFlights(
+            @RequestParam(required = false) String source,
+            @RequestParam(required = false) String destination,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDateTime,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam(required = false) Double maxPrice,
+            @RequestParam(required = false) Integer maxDuration,
+            @RequestParam(required = false) Boolean nonStop,
+            @RequestParam(required = false) Double maxEmissions) {
+
+        return flightService.advancedSearch(source, destination, startDateTime, minPrice, maxPrice, maxDuration, nonStop, maxEmissions);
+    }
+
+
 }

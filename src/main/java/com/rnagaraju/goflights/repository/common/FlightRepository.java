@@ -5,13 +5,14 @@ import com.rnagaraju.goflights.model.FlightStatus;
 import jakarta.data.repository.Param;
 import jakarta.data.repository.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 
-public interface FlightRepository extends JpaRepository<Flight, Long> {
+public interface FlightRepository extends JpaRepository<Flight, Long>, JpaSpecificationExecutor<Flight> {
     Flight findById(long id);
     List<Flight> findByAirlineId(Long id);
     List<Flight> findBySourceAndDestinationAndDepartureDateTimeBetween(
