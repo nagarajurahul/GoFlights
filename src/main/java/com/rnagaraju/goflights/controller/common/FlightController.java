@@ -147,8 +147,6 @@ public class FlightController {
             @RequestParam Double maxPrice
             ) {
 
-
-
         List<FlightDTO> flights = flightService.getFlightByPrice(
                 source, destination, departureStart, departureEnd, minPrice, maxPrice);
 
@@ -157,7 +155,7 @@ public class FlightController {
 
 
     @GetMapping("/search/advSearch")
-    public List<FlightDTO> searchFlights(
+    public ResponseEntity<List<FlightDTO>> searchFlights(
             @RequestParam(required = false) String source,
             @RequestParam(required = false) String destination,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDateTime,
@@ -167,7 +165,8 @@ public class FlightController {
             @RequestParam(required = false) Boolean nonStop,
             @RequestParam(required = false) Double maxEmissions) {
 
-        return flightService.advancedSearch(source, destination, startDateTime, minPrice, maxPrice, maxDuration, nonStop, maxEmissions);
+        List<FlightDTO> flightDTOS = flightService.advancedSearch(source, destination, startDateTime, minPrice, maxPrice, maxDuration, nonStop, maxEmissions);
+        return new ResponseEntity<>(flightDTOS, HttpStatus.OK);
     }
 
 
