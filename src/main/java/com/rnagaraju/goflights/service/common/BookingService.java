@@ -5,12 +5,15 @@ import com.rnagaraju.goflights.exception.ResourceNotFoundException;
 import com.rnagaraju.goflights.mapper.common.BookingMapper;
 import com.rnagaraju.goflights.model.Booking;
 import com.rnagaraju.goflights.repository.common.BookingRepository;
+import com.rnagaraju.goflights.specification.BookingSpecification;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.resource.ResourceUrlProvider;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -65,5 +68,27 @@ public class BookingService {
         } catch (Exception e) {
             throw new RuntimeException("An unexpected error occurred.", e);
         }
+    }
+
+    public List<Booking> getBookingsByFilters(LocalDateTime startDate, LocalDateTime endDate, String bookingStatus, String bookingClass, Long flightId, Long passengerId) {
+        Specification<Booking> spec = Specification.where(null);
+
+        if (startDate != null && endDate != null) {
+            spec = spec.and(BookingSpecification.hasBookingDateTimeBetween(startDate, endDate));
+        }
+        if (bookingStatus != null) {
+            spec = spec.and(BookingSpecification.hasBookingStatus(bookingStatus));
+        }
+        if (bookingClass != null) {
+            spec = spec.and(BookingSpecification.hasBookingClass(bookingClass));
+        }
+        if (flightId != null) {
+            spec = spec.and(BookingSpecification.hasFlightId(flightId));
+        }
+        if (passengerId != null) {
+            spec = spec.and(BookingSpecification.hasPassengerId(passengerId));
+        }
+
+        return bookingRepository.findAll(spec);
     }
 }

@@ -1,12 +1,15 @@
 package com.rnagaraju.goflights.controller.common;
 
 import com.rnagaraju.goflights.dto.common.BookingDTO;
+import com.rnagaraju.goflights.mapper.common.BookingMapper;
+import com.rnagaraju.goflights.model.Booking;
 import com.rnagaraju.goflights.service.common.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -62,5 +65,24 @@ public class BookingController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(booking);
+    }
+
+    @GetMapping("/advBooking/")
+    public ResponseEntity<List<BookingDTO>> getBookings(
+            @RequestParam(required = false) LocalDateTime startDate,
+            @RequestParam(required = false) LocalDateTime endDate,
+            @RequestParam(required = false) String bookingStatus,
+            @RequestParam(required = false) String bookingClass,
+            @RequestParam(required = false) Long flightId,
+            @RequestParam(required = false) Long passengerId) {
+
+        List<Booking> bookings = bookingService.getBookingsByFilters(startDate, endDate, bookingStatus, bookingClass, flightId, passengerId);
+        List<BookingDTO> bookingDTOs = BookingMapper.toDTOList(bookings);
+
+        if (bookingDTOs.isEmpty()) {
+            return ResponseEntity.noContent().build(); // HTTP 204 if no bookings found
+        }
+
+        return ResponseEntity.ok(bookingDTOs); // HTTP 200 with the list of bookings
     }
 }
