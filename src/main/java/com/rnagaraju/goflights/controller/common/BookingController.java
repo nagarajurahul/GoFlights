@@ -76,13 +76,12 @@ public class BookingController {
             @RequestParam(required = false) Long flightId,
             @RequestParam(required = false) Long passengerId) {
 
-        List<Booking> bookings = bookingService.getBookingsByFilters(startDate, endDate, bookingStatus, bookingClass, flightId, passengerId);
-        List<BookingDTO> bookingDTOs = BookingMapper.toDTOList(bookings);
+        List<BookingDTO> bookingDTOs = bookingService.getBookingsByFilters(startDate, endDate, bookingStatus, bookingClass, flightId, passengerId);
 
         if (bookingDTOs.isEmpty()) {
-            return ResponseEntity.noContent().build(); // HTTP 204 if no bookings found
+            return ResponseEntity.noContent().build();
         }
 
-        return ResponseEntity.ok(bookingDTOs); // HTTP 200 with the list of bookings
+        return ResponseEntity.ok(bookingDTOs);
     }
 }

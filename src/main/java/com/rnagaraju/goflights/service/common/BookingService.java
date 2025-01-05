@@ -70,7 +70,8 @@ public class BookingService {
         }
     }
 
-    public List<Booking> getBookingsByFilters(LocalDateTime startDate, LocalDateTime endDate, String bookingStatus, String bookingClass, Long flightId, Long passengerId) {
+    public List<BookingDTO> getBookingsByFilters(LocalDateTime startDate, LocalDateTime endDate, String bookingStatus, String bookingClass, Long flightId, Long passengerId) {
+
         Specification<Booking> spec = Specification.where(null);
 
         if (startDate != null && endDate != null) {
@@ -89,6 +90,7 @@ public class BookingService {
             spec = spec.and(BookingSpecification.hasPassengerId(passengerId));
         }
 
-        return bookingRepository.findAll(spec);
+        List<Booking> bookings = bookingRepository.findAll(spec);
+        return BookingMapper.toDTOList(bookings);
     }
 }
