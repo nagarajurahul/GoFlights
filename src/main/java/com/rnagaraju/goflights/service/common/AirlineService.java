@@ -62,6 +62,7 @@ public class AirlineService {
 
     public List<AirlineDTO> findAirlines(String name, BigDecimal minRevenue, LocalDateTime certificationDate,
                                          String headquarters, Integer minEmployees, Integer maxEmployees) {
+
         // Build the specification dynamically using conditional if statements
         Specification<Airline> specification = Specification.where(null);
 
@@ -84,30 +85,7 @@ public class AirlineService {
             specification = specification.and(AirlineSpecification.hasMaxEmployees(maxEmployees));
         }
 
-
-        // Retrieve the airlines matching the specification
         List<Airline> airlines = airlineRepository.findAll(specification);
-
-        // Convert the list of Airline entities to DTOs
-        List<AirlineDTO> airlineDTOs = new ArrayList<>();
-        for (Airline airline : airlines) {
-            AirlineDTO airlineDTO = new AirlineDTO(
-                    airline.getId(),
-                    airline.getAirlineName(),
-                    airline.getContact(),
-                    airline.getEmail(),
-                    airline.getAddress(),
-                    airline.getCertificationDateTime(),
-                    airline.getCustomerReviews(),
-                    airline.getLogoUrl(),
-                    airline.getHeadquarters(),
-                    airline.getTotalEmployees(),
-                    airline.getFrequentFlyerProgram(),
-                    airline.getAnnualRevenue()
-            );
-            airlineDTOs.add(airlineDTO);
-        }
-
-        return airlineDTOs;
+        return AirlineMapper.toDTOList(airlines);
     }
 }
