@@ -25,10 +25,10 @@ import java.util.List;
  * Represents a user in the security system.
  * @author rahul
  */
-@Entity
-@Table(name="SEC_USER")
-@EntityListeners(UserPasswordHash.class)
-@NamedQuery(name="User.findAll",query="select u from User u")
+//@Entity
+//@Table(name="SEC_USER")
+//@EntityListeners(UserPasswordHash.class)
+//@NamedQuery(name="User.findAll",query="select u from User u")
 public class User {
 
     /**

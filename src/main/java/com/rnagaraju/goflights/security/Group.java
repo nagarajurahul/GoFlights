@@ -21,10 +21,10 @@ import java.util.List;
  * Represents a group in the security system.
  * Author: rahul
  */
-@Entity
-@Table(name="SEC_GROUP")
-@NamedQuery(name="Group.findAll",query="select g from Group g")
-@NamedQuery(name="Group.findByGroupName",query="select g from Group g where g.groupName = :gname")
+//@Entity
+//@Table(name="SEC_GROUP")
+//@NamedQuery(name="Group.findAll",query="select g from Group g")
+//@NamedQuery(name="Group.findByGroupName",query="select g from Group g where g.groupName = :gname")
 public class Group {
 
     /**
