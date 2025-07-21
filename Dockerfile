@@ -6,7 +6,7 @@ RUN mvn clean package -DskipTests
 
 # -------- Stage 2: Runtime --------
 #FROM eclipse-temurin:21-jre-alpine
-FROM eclipse-temurin:21-jdk-slim
+FROM eclipse-temurin:21-jdk
 RUN apt-get update && apt-get install -y bash coreutils
 WORKDIR /app
 COPY --from=builder /app/target/*.jar app.jar
